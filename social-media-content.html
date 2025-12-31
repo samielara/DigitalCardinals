@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Media & Video Content | Digital Cardinal LLC</title>
+    <meta name="description"
+        content="Done-for-you social media and video content to keep your brand active and professional online.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cardinal: { DEFAULT: '#FF0033', dark: '#cc0029', glow: '#ff4d70' },
+                        cyan: { DEFAULT: '#00f2ff', dim: '#00a3cc' },
+                        void: { 950: '#000000', 900: '#050505', 800: '#0a0a0f' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern':
+                            "linear-gradient(to right, #1f1f1f 1px, transparent 1px)," +
+                            "linear-gradient(to bottom, #1f1f1f 1px, transparent 1px)"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-void-950 text-slate-200 antialiased overflow-x-hidden selection:bg-cardinal selection:text-white">
+    <div id="canvas-container" class="fixed inset-0 -z-10 bg-grid bg-grid-pattern"></div>
+
+    <div data-include="components/header.html"></div>
+
+    <main class="relative z-20 pt-24 pb-24">
+        <!-- Hero -->
+        <section class="py-16">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-xs font-mono uppercase tracking-[0.25em] text-slate-300 mb-4">Social & Video Content</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Stay visible with content that actually looks professional.
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+                    We plan, create, and edit your posts and videos so your brand stays active—even when you’re busy
+                    running the business.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="py-10 bg-void-900/70 border-y border-white/5">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 md:grid-cols-2">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">What we handle for you</h2>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-calendar-alt mt-1 text-cyan"></i>
+                            <span><strong>Content calendar.</strong> Monthly plan for what we’ll post, where, and
+                                why.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-images mt-1 text-cyan"></i>
+                            <span><strong>Feed posts & carousels.</strong> Branded graphics and copy for Instagram,
+                                Facebook, and LinkedIn.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-video mt-1 text-cyan"></i>
+                            <span><strong>Short-form video.</strong> Reels, Shorts, and TikToks cut from raw footage or
+                                filmed content.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-comments mt-1 text-cyan"></i>
+                            <span><strong>Community management (optional).</strong> Light reply support to keep your
+                                pages feeling alive.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-void-800/80 border border-white/10 rounded-3xl p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-white mb-4">How it works month to month</h3>
+                    <ol class="list-decimal list-inside space-y-3 text-slate-300">
+                        <li><strong>Kickoff call.</strong> We define your voice, offers, and “no-go” topics.</li>
+                        <li><strong>Monthly plan.</strong> You approve the themes and rough ideas for the month.</li>
+                        <li><strong>Production.</strong> We design graphics, edit videos, and write captions.</li>
+                        <li><strong>Scheduling.</strong> We schedule everything at optimal times for your audience.</li>
+                        <li><strong>Review.</strong> We send performance summaries and tweak next month’s plan.</li>
+                    </ol>
+
+                    <div class="mt-6 pt-4 border-t border-white/10 text-xs text-slate-400 font-mono">
+                        <p>// Platforms</p>
+                        <p>Instagram · Facebook · TikTok · YouTube Shorts · LinkedIn</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Pair content with a strong website</h2>
+                <p class="text-slate-300 mb-8">
+                    Great content is even more powerful when it sends people to a site that looks just as good.
+                    Most clients pair this service with our web development or ad management.
+                </p>
+                <a href="contact.html"
+                    class="inline-flex items-center px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan transition-all hover:shadow-[0_0_25px_rgba(0,242,255,0.4)]">
+                    Talk about a content plan
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="assets/js/include.js"></script>
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/site-config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+
+</html>

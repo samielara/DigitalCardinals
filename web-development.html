@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Development | Digital Cardinal LLC</title>
+    <meta name="description"
+        content="Full-service web development for small businesses: hosting, backend, frontend, and ongoing support.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cardinal: { DEFAULT: '#FF0033', dark: '#cc0029', glow: '#ff4d70' },
+                        cyan: { DEFAULT: '#00f2ff', dim: '#00a3cc' },
+                        void: { 950: '#000000', 900: '#050505', 800: '#0a0a0f' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern':
+                            "linear-gradient(to right, #1f1f1f 1px, transparent 1px)," +
+                            "linear-gradient(to bottom, #1f1f1f 1px, transparent 1px)"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-void-950 text-slate-200 antialiased overflow-x-hidden selection:bg-cardinal selection:text-white">
+    <div id="canvas-container" class="fixed inset-0 -z-10 bg-grid bg-grid-pattern"></div>
+
+    <div data-include="components/header.html"></div>
+
+    <main class="relative z-20 pt-24 pb-24">
+        <!-- Hero -->
+        <section class="py-16">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-xs font-mono uppercase tracking-[0.25em] text-cyan mb-4">Web Development</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Custom websites that actually move the needle.
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+                    We don’t just “make a website”. We build a full online system: fast, secure, easy for customers,
+                    and easy for you to manage.
+                </p>
+            </div>
+        </section>
+
+        <!-- What you get -->
+        <section class="py-10 bg-void-900/70 border-y border-white/5">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 md:grid-cols-2">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">What’s included</h2>
+                    <p class="text-slate-400 mb-6">
+                        Everything you need to go from “we should have a website” to “we’re getting leads every week.”
+                    </p>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check mt-1 text-cyan"></i>
+                            <span><strong>Design-first approach.</strong> We design the full UI first so you see exactly
+                                what you’re getting before we write a single line of code.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check mt-1 text-cyan"></i>
+                            <span><strong>Responsive frontend.</strong> Built with modern tech so your site looks sharp
+                                on phones, tablets, and desktops.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check mt-1 text-cyan"></i>
+                            <span><strong>Backend & database.</strong> .NET Core APIs + SQL for bookings, contact forms,
+                                customer portals, and more.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check mt-1 text-cyan"></i>
+                            <span><strong>Hosting & deployment.</strong> We set up hosting, domains, SSL, and
+                                deployments for you.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check mt-1 text-cyan"></i>
+                            <span><strong>Weekly or bi-weekly check-ins.</strong> Live walkthroughs of progress so
+                                you’re
+                                never wondering what’s happening.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check mt-1 text-cyan"></i>
+                            <span><strong>Maintenance options.</strong> We can keep things updated, backed up, and
+                                secure
+                                after launch.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-void-800/80 border border-white/10 rounded-3xl p-6 md:p-8 space-y-6">
+                    <h3 class="text-xl font-bold text-white">Perfect if you need…</h3>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-px bg-cardinal"></span> A first website for your service business
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-px bg-cardinal"></span> A redesign that actually looks like 2025
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-px bg-cardinal"></span> Online booking or payment flows
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-px bg-cardinal"></span> A custom portal or dashboard for your clients
+                        </li>
+                    </ul>
+
+                    <div class="mt-4 pt-4 border-t border-white/10 text-sm text-slate-400 font-mono">
+                        <p>// Tech stack examples</p>
+                        <p>.NET Core APIs · SQL Server · Tailwind · custom integrations (CRMs, payment gateways, etc.)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our process -->
+        <section class="py-16">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-10 text-center">How we work with you</h2>
+                <div class="grid gap-8 md:grid-cols-4 text-sm text-slate-300">
+                    <div class="bg-void-900/80 border border-white/10 rounded-2xl p-5">
+                        <p class="text-xs uppercase tracking-widest text-cyan mb-2">Step 1</p>
+                        <h3 class="text-lg font-bold text-white mb-2">Discovery</h3>
+                        <p>We learn about your business, customers, and what “success” means for you.</p>
+                    </div>
+                    <div class="bg-void-900/80 border border-white/10 rounded-2xl p-5">
+                        <p class="text-xs uppercase tracking-widest text-cyan mb-2">Step 2</p>
+                        <h3 class="text-lg font-bold text-white mb-2">Design</h3>
+                        <p>We design the full UI, page by page. You approve layouts before we code.</p>
+                    </div>
+                    <div class="bg-void-900/80 border border-white/10 rounded-2xl p-5">
+                        <p class="text-xs uppercase tracking-widest text-cyan mb-2">Step 3</p>
+                        <h3 class="text-lg font-bold text-white mb-2">Build</h3>
+                        <p>We build the frontend + backend, connect integrations, and test everything.</p>
+                    </div>
+                    <div class="bg-void-900/80 border border-white/10 rounded-2xl p-5">
+                        <p class="text-xs uppercase tracking-widest text-cyan mb-2">Step 4</p>
+                        <h3 class="text-lg font-bold text-white mb-2">Launch & support</h3>
+                        <p>We launch, monitor, and optionally stay on as your technical partner.</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="index.html#packages"
+                        class="inline-flex items-center px-8 py-4 bg-cardinal text-white font-bold rounded-full hover:bg-cardinal-glow transition-all hover:shadow-[0_0_25px_rgba(255,0,51,0.4)]">
+                        See website packages
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="assets/js/include.js"></script>
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/site-config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+
+</html>

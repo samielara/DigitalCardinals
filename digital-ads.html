@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Ads Management | Digital Cardinal LLC</title>
+    <meta name="description"
+        content="High-ROI digital ad campaigns for small businesses across Google, Meta, YouTube, and LinkedIn.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cardinal: { DEFAULT: '#FF0033', dark: '#cc0029', glow: '#ff4d70' },
+                        cyan: { DEFAULT: '#00f2ff', dim: '#00a3cc' },
+                        void: { 950: '#000000', 900: '#050505', 800: '#0a0a0f' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern':
+                            "linear-gradient(to right, #1f1f1f 1px, transparent 1px)," +
+                            "linear-gradient(to bottom, #1f1f1f 1px, transparent 1px)"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-void-950 text-slate-200 antialiased overflow-x-hidden selection:bg-cardinal selection:text-white">
+    <div id="canvas-container" class="fixed inset-0 -z-10 bg-grid bg-grid-pattern"></div>
+
+    <div data-include="components/header.html"></div>
+
+    <main class="relative z-20 pt-24 pb-24">
+        <!-- Hero -->
+        <section class="py-16">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-xs font-mono uppercase tracking-[0.25em] text-cardinal mb-4">Digital Ads</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Ads that bring in calls, not just clicks.
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+                    We design, launch, and optimize campaigns on Google, Meta, YouTube, and LinkedIn to get you more
+                    qualified leads for every dollar you spend.
+                </p>
+            </div>
+        </section>
+
+        <!-- Channels + benefits -->
+        <section class="py-10 bg-void-900/70 border-y border-white/5">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 md:grid-cols-2">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Where we run your ads</h2>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fab fa-google mt-1 text-cyan"></i>
+                            <span><strong>Google Search & Maps.</strong> Show up when people are actively looking for
+                                your service in your city.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fab fa-facebook mt-1 text-cardinal"></i>
+                            <span><strong>Facebook & Instagram.</strong> Great for local awareness, offers, and
+                                retargeting people who visited your site.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fab fa-youtube mt-1 text-red-500"></i>
+                            <span><strong>YouTube.</strong> Video ads that show what you do, not just what you
+                                say.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fab fa-linkedin mt-1 text-blue-400"></i>
+                            <span><strong>LinkedIn.</strong> Perfect for B2B services and higher-ticket offers.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-void-800/80 border border-white/10 rounded-3xl p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-white mb-4">How we protect your budget</h3>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-chart-line mt-1 text-cyan"></i>
+                            <span><strong>Conversion tracking.</strong> We track real outcomes: calls, form fills,
+                                bookings—not vanity metrics.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-bullseye mt-1 text-cyan"></i>
+                            <span><strong>Audience targeting.</strong> We use location, interests, and keyword intent so
+                                you don’t pay for random traffic.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-sync mt-1 text-cyan"></i>
+                            <span><strong>Ongoing optimization.</strong> We keep adjusting bids, keywords, and creatives
+                                weekly to improve performance.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-file-invoice-dollar mt-1 text-cyan"></i>
+                            <span><strong>Clear reporting.</strong> Simple monthly reports: how much you spent, how many
+                                leads you got, and cost per lead.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages pointer -->
+        <section class="py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Plug into a full funnel</h2>
+                <p class="text-slate-300 mb-8">
+                    Ads work best when the landing page, tracking, and follow-up are all aligned.
+                    That’s why our ad management pairs perfectly with our web development and content packages.
+                </p>
+                <a href="index.html#packages"
+                    class="inline-flex items-center px-8 py-4 bg-cardinal text-white font-bold rounded-full hover:bg-cardinal-glow transition-all hover:shadow-[0_0_25px_rgba(255,0,51,0.4)]">
+                    View ad-friendly packages
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="assets/js/include.js"></script>
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/site-config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+
+</html>

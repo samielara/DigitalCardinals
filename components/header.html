@@ -1,0 +1,52 @@
+<nav class="fixed w-full z-40 transition-all duration-300" id="navbar">
+    <div data-navbar-bg class="absolute inset-0 transition-all duration-300 bg-transparent border-b border-transparent"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <a href="index.html#top" class="flex items-center gap-3 group" aria-label="Digital Cardinal Home">
+                <img src="assets/video/Cardinal-Logo.png" alt="Digital Cardinal Logo" class="h-10 w-10 md:h-12 md:w-12" />
+
+                <span class="text-2xl font-bold tracking-tighter brand-font">
+                    <span class="text-white">DIGITAL</span>
+                    <span class="text-cardinal">CARDINAL</span>
+                </span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a data-nav="home" href="index.html#top" class="nav-underline text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a>
+                <a data-nav="services" href="services.html" class="nav-underline text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a>
+                <a data-nav="packages" href="packages.html" class="nav-underline text-sm font-medium text-slate-300 hover:text-white transition-colors">Packages</a>
+                <a data-nav="about" href="about.html" class="nav-underline text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+                <a data-nav="contact" href="contact.html" class="nav-underline text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
+
+                <a href="https://calendar.google.com" target="_blank" rel="noreferrer"
+                class="px-8 py-3 font-bold rounded-full w-full text-center max-w-xs border border-white text-white bg-transparent hover:bg-white hover:text-cardinal transition-all duration-300">
+                Book Consultation
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="hidden md:hidden absolute top-20 left-0 w-full bg-void-900/95 backdrop-blur-xl border-b border-white/10">
+        <div class="px-4 pt-5 pb-8 space-y-4 flex flex-col items-center">
+            <a data-nav="home" href="index.html#top" class="text-lg font-medium text-slate-300 hover:text-white">Home</a>
+            <a data-nav="services" href="services.html" class="text-lg font-medium text-slate-300 hover:text-white">Services</a>
+            <a data-nav="packages" href="packages.html" class="text-lg font-medium text-slate-300 hover:text-white">Packages</a>
+            <a data-nav="about" href="about.html" class="text-lg font-medium text-slate-300 hover:text-white">About</a>
+            <a data-nav="contact" href="contact.html" class="text-lg font-medium text-slate-300 hover:text-white">Contact</a>
+
+            <a href="https://calendar.google.com" target="_blank" rel="noreferrer"
+                class="btn-glass btn-glass--cardinal px-8 py-3 font-bold rounded-full w-full text-center max-w-xs">
+                Book Consultation
+            </a>
+        </div>
+    </div>
+</nav>

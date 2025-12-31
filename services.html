@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Digital Cardinal</title>
+  <meta name="description" content="Digital Cardinal services: web development, web design, SEO, digital ads, social & video content, and AI agents." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cardinal: { DEFAULT: '#E60023', dark: '#cc0029', glow: '#ff4d70' },
+            cyan: { DEFAULT: '#00f2ff', dim: '#00a3cc' },
+            void: { 950: '#000000', 900: '#050505', 800: '#0a0a0f' }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          backgroundImage: {
+            'grid-pattern':
+              "linear-gradient(to right, #1f1f1f 1px, transparent 1px)," +
+              "linear-gradient(to bottom, #1f1f1f 1px, transparent 1px)"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-void-950 text-slate-200 antialiased overflow-x-hidden selection:bg-cardinal selection:text-white">
+  <div id="top"></div>
+  <div id="canvas-container" class="fixed inset-0 -z-10 bg-grid bg-grid-pattern"></div>
+
+  <div data-include="components/header.html"></div>
+
+  <main class="relative z-10 pt-28 pb-24">
+
+    <!-- Hero -->
+    <section class="pb-14">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-black/50 border border-white/10 rounded-[40px] p-10 md:p-14 relative overflow-hidden">
+          <div class="absolute -inset-1 bg-gradient-to-r from-cyan/10 via-white/5 to-cardinal/10 blur-2xl"></div>
+          <div class="relative">
+            <p class="text-xs font-mono uppercase tracking-[0.25em] text-slate-400">Services</p>
+            <h1 class="mt-4 text-4xl md:text-5xl font-extrabold text-white brand-font">Everything you need to look premium — and get leads</h1>
+            <p class="mt-5 text-lg text-slate-300 max-w-3xl">
+              Pick one service, or combine them into a full growth system. We keep the work clean, measurable, and built for long-term maintainability.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="packages.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-white rounded-full hover:bg-cyan transition-all duration-200 hover:scale-[1.03]">See Packages <i class="fas fa-arrow-right ml-2"></i></a>
+              <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/5 border border-white/15 rounded-full hover:bg-white/10 transition-all duration-200">Talk to Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services grid -->
+    <section class="py-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+          <a href="web-development.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-cyan/50 transition-all">
+            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-700 mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-laptop-code text-2xl text-white"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">Web Development</h2>
+            <p class="text-slate-300">High-performance websites and custom web apps (APIs, portals, booking, payments, dashboards).</p>
+            <div class="mt-6 inline-flex items-center gap-2 text-cyan font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
+          </a>
+
+          <a href="web-design.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-blue-400/50 transition-all">
+            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-paint-brush text-2xl text-white"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">Web Design</h2>
+            <p class="text-slate-300">Premium UI/UX, landing pages, and brand polish that converts visitors into customers.</p>
+            <div class="mt-6 inline-flex items-center gap-2 text-blue-300 font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
+          </a>
+
+          <a href="seo.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-emerald-400/50 transition-all">
+            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-700 mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-search text-2xl text-white"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">SEO</h2>
+            <p class="text-slate-300">Technical cleanup, local SEO, and content strategy to win “near me” search demand.</p>
+            <div class="mt-6 inline-flex items-center gap-2 text-emerald-300 font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
+          </a>
+
+          <a href="digital-ads.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-cardinal/50 transition-all">
+            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-red-500 to-cardinal mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-bullseye text-2xl text-white"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">Digital Ads</h2>
+            <p class="text-slate-300">Google + Meta campaigns built for ROI: call, book, or buy — with clean tracking.</p>
+            <div class="mt-6 inline-flex items-center gap-2 text-cardinal font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
+          </a>
+
+          <a href="social-media-content.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-purple-400/50 transition-all">
+            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-400 to-indigo-700 mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-video text-2xl text-white"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">Social & Video Content</h2>
+            <p class="text-slate-300">A repeatable content system: scripts, shoot plans, edits, and posting cadence.</p>
+            <div class="mt-6 inline-flex items-center gap-2 text-purple-300 font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
+          </a>
+
+          <a href="ai-agents.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-yellow-300/50 transition-all">
+            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 mb-6 group-hover:scale-110 transition-transform">
+              <i class="fas fa-robot text-2xl text-white"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">AI Agents</h2>
+            <p class="text-slate-300">Automated lead qualification + follow-up across text, email, and web chat — 24/7.</p>
+            <div class="mt-6 inline-flex items-center gap-2 text-yellow-200 font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="py-16 border-t border-white/5 bg-void-900/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <span class="text-cyan font-mono text-sm tracking-widest uppercase mb-2 block">Process</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white brand-font">Simple, structured, and fast</h2>
+          <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Clear deliverables. Clear timeline. No guessing where your money went.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-black/60 border border-white/10 rounded-3xl p-8">
+            <p class="text-xs font-mono uppercase tracking-widest text-slate-500">Step 01</p>
+            <h3 class="mt-2 text-xl font-bold text-white">Strategy + Scope</h3>
+            <p class="mt-3 text-slate-300">We map your offer, audience, and conversion path. You get a clear plan and estimate.</p>
+          </div>
+          <div class="bg-black/60 border border-white/10 rounded-3xl p-8">
+            <p class="text-xs font-mono uppercase tracking-widest text-slate-500">Step 02</p>
+            <h3 class="mt-2 text-xl font-bold text-white">Design + Build</h3>
+            <p class="mt-3 text-slate-300">Premium UI/UX first, then fast implementation with performance, SEO, and analytics baked in.</p>
+          </div>
+          <div class="bg-black/60 border border-white/10 rounded-3xl p-8">
+            <p class="text-xs font-mono uppercase tracking-widest text-slate-500">Step 03</p>
+            <h3 class="mt-2 text-xl font-bold text-white">Launch + Optimize</h3>
+            <p class="mt-3 text-slate-300">Go live with clean tracking, then iterate based on real data (calls, forms, bookings, sales).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative overflow-hidden rounded-[44px] border border-white/10 bg-black/50 p-10 md:p-14">
+          <div class="absolute -inset-1 bg-gradient-to-r from-cardinal/10 via-white/5 to-cyan/10 blur-2xl"></div>
+          <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold text-white brand-font">Not sure what you need?</h2>
+              <p class="mt-3 text-slate-300">Send a short message. We’ll recommend the best starting point.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-white rounded-full hover:bg-cyan transition-all duration-200 hover:scale-[1.03]">Get a Recommendation</a>
+              <a href="packages.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/5 border border-white/15 rounded-full hover:bg-white/10 transition-all duration-200">View Packages</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="components/footer.html"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/particles.js"></script>
+  <script src="assets/js/site-config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Digital Cardinal</title>
+  <meta name="description" content="Contact Digital Cardinal for websites, SEO, digital ads, content, and AI agents." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cardinal: { DEFAULT: '#E60023', dark: '#cc0029', glow: '#ff4d70' },
+            cyan: { DEFAULT: '#00f2ff', dim: '#00a3cc' },
+            void: { 950: '#000000', 900: '#050505', 800: '#0a0a0f' }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          backgroundImage: {
+            'grid-pattern':
+              "linear-gradient(to right, #1f1f1f 1px, transparent 1px)," +
+              "linear-gradient(to bottom, #1f1f1f 1px, transparent 1px)"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-void-950 text-slate-200 antialiased overflow-x-hidden selection:bg-cardinal selection:text-white">
+  <div id="top"></div>
+  <div id="canvas-container" class="fixed inset-0 -z-10 bg-grid bg-grid-pattern"></div>
+
+  <div data-include="components/header.html"></div>
+
+  <main class="relative z-10 pt-28">
+
+    <section class="pb-10">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-black/50 border border-white/10 rounded-[40px] p-10 md:p-14 relative overflow-hidden">
+          <div class="absolute -inset-1 bg-gradient-to-r from-cyan/10 via-white/5 to-cardinal/10 blur-2xl"></div>
+          <div class="relative">
+            <p class="text-xs font-mono uppercase tracking-[0.25em] text-slate-400">Contact</p>
+            <h1 class="mt-4 text-4xl md:text-5xl font-extrabold text-white brand-font">Let’s build something that converts.</h1>
+            <p class="mt-5 text-lg text-slate-300 max-w-3xl">
+              Tell us what you need — we’ll reply with a clear estimate and next steps.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div data-include="components/contact.html"></div>
+
+    <div class="pt-10" data-include="components/footer.html"></div>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/particles.js"></script>
+  <script src="assets/js/site-config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+
+</html>
