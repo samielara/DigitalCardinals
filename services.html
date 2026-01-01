@@ -38,119 +38,286 @@
 
 <body class="bg-void-950 text-slate-200 antialiased overflow-x-hidden selection:bg-cardinal selection:text-white">
   <div id="top"></div>
-  <div id="canvas-container" class="fixed inset-0 -z-10 bg-grid bg-grid-pattern"></div>
+
 
   <div data-include="components/header.html"></div>
 
   <main class="relative z-10 pt-28 pb-24">
 
-    <!-- Hero -->
-    <section class="pb-14">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-black/50 border border-white/10 rounded-[40px] p-10 md:p-14 relative overflow-hidden">
-          <div class="absolute -inset-1 bg-gradient-to-r from-cyan/10 via-white/5 to-cardinal/10 blur-2xl"></div>
-          <div class="relative">
-            <p class="text-xs font-mono uppercase tracking-[0.25em] text-slate-400">Services</p>
-            <h1 class="mt-4 text-4xl md:text-5xl font-extrabold text-white brand-font">Everything you need to look premium — and get leads</h1>
-            <p class="mt-5 text-lg text-slate-300 max-w-3xl">
-              Pick one service, or combine them into a full growth system. We keep the work clean, measurable, and built for long-term maintainability.
-            </p>
-            <div class="mt-8 flex flex-col sm:flex-row gap-4">
-              <a href="packages.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-white rounded-full hover:bg-cyan transition-all duration-200 hover:scale-[1.03]">See Packages <i class="fas fa-arrow-right ml-2"></i></a>
-              <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/5 border border-white/15 rounded-full hover:bg-white/10 transition-all duration-200">Talk to Us</a>
+    <!-- Hero Section with Background Video -->
+    <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <!-- Global Background Video (Fixed/Absolute) -->
+      <video class="hero-bg-video pointer-events-none" autoplay muted playsinline loop preload="metadata" poster="assets/images/hero-poster.jpg" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
+        <source src="assets/video/hero-aurora.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/20 to-black/90 pointer-events-none"></div>
+
+      <div class="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
+        <p class="text-sm font-mono uppercase tracking-[0.25em] text-cyan mb-4">Our Expertise</p>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white brand-font mb-6 leading-tight">
+          Services that <span class="text-cardinal">scale</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          From high-performance code to campaigns that convert. We build the systems you need to grow.
+        </p>
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+          <a href="#web-development" class="px-6 py-2.5 font-bold text-lg rounded-full w-full text-center max-w-xs border border-white text-white bg-transparent hover:bg-white hover:text-cardinal transition-all duration-300">Explore Services</a>
+          <a href="packages.html" class="px-6 py-2.5 font-bold text-lg rounded-full w-full text-center max-w-xs border border-white text-white bg-transparent hover:bg-white hover:text-cardinal transition-all duration-300">View Pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Sections (Detailed & Alternating) -->
+    
+    <!-- 1. Web Development -->
+    <section id="web-development" class="py-24 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="order-2 lg:order-1">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cyan/10 border border-cyan/20 text-cyan mb-6 shadow-[0_0_30px_rgba(34,211,238,0.15)]">
+              <i class="fas fa-laptop-code text-3xl"></i>
             </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 brand-font">Web Development</h2>
+            <p class="text-lg text-slate-300 leading-relaxed mb-8">
+              We don't just build websites; we build performance engines. Whether it's a custom web application, a client portal, or a high-converting landing page, our code is clean, fast, and secure.
+            </p>
+            <ul class="space-y-4 mb-8 text-slate-400">
+              <li class="flex items-start"><i class="fas fa-check text-cyan mt-1 mr-3"></i> <span>Custom React & Next.js Applications</span></li>
+              <li class="flex items-start"><i class="fas fa-check text-cyan mt-1 mr-3"></i> <span>Secure API Integrations & Payments</span></li>
+              <li class="flex items-start"><i class="fas fa-check text-cyan mt-1 mr-3"></i> <span>Fast Load Times (90+ Google PSI)</span></li>
+            </ul>
+            <a href="web-development.html" class="inline-flex items-center text-cyan font-bold hover:tracking-wide transition-all">
+              Learn more about Development <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+          <div class="order-1 lg:order-2 relative">
+             <div class="absolute inset-0 bg-cyan/20 blur-[100px] rounded-full pointer-events-none opacity-40"></div>
+             <!-- In a real scenario, use a relevant screenshot or graphic here. For now, a styled container -->
+             <div class="relative bg-black border border-white/10 rounded-3xl p-8 aspect-video flex items-center justify-center overflow-hidden group">
+                <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+                <i class="fas fa-code text-9xl text-cyan/5 group-hover:text-cyan/10 transition-colors duration-500"></i>
+                <div class="absolute bottom-6 left-6 right-6 p-4 bg-white/5 backdrop-blur-md rounded-xl border border-white/10">
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div class="ml-auto text-xs text-slate-400 font-mono">index.tsx</div>
+                  </div>
+                </div>
+             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services grid -->
-    <section class="py-14">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-
-          <a href="web-development.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-cyan/50 transition-all">
-            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-700 mb-6 group-hover:scale-110 transition-transform">
-              <i class="fas fa-laptop-code text-2xl text-white"></i>
+    <!-- 2. Web Design -->
+    <section id="web-design" class="py-24 relative overflow-hidden bg-black/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-1 relative">
+               <div class="absolute inset-0 bg-blue-500/20 blur-[100px] rounded-full pointer-events-none opacity-40"></div>
+               <div class="relative bg-black border border-white/10 rounded-3xl p-8 aspect-video flex items-center justify-center overflow-hidden group">
+                  <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+                  <i class="fas fa-palette text-9xl text-blue-500/5 group-hover:text-blue-500/10 transition-colors duration-500"></i>
+                  <!-- Decorative UI mockup -->
+                  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-void-900 border border-white/10 rounded-xl shadow-2xl skew-y-3 group-hover:skew-y-0 transition-transform duration-500"></div>
+               </div>
             </div>
-            <h2 class="text-2xl font-bold text-white mb-2">Web Development</h2>
-            <p class="text-slate-300">High-performance websites and custom web apps (APIs, portals, booking, payments, dashboards).</p>
-            <div class="mt-6 inline-flex items-center gap-2 text-cyan font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
-          </a>
-
-          <a href="web-design.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-blue-400/50 transition-all">
-            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 mb-6 group-hover:scale-110 transition-transform">
-              <i class="fas fa-paint-brush text-2xl text-white"></i>
+            <div class="order-2">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6 shadow-[0_0_30px_rgba(96,165,250,0.15)]">
+                <i class="fas fa-paint-brush text-3xl"></i>
+              </div>
+              <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 brand-font">Web Design</h2>
+              <p class="text-lg text-slate-300 leading-relaxed mb-8">
+                Your website is your digital storefront. We create premium, user-centric designs that build trust instantly and guide your visitors toward making a purchase.
+              </p>
+              <ul class="space-y-4 mb-8 text-slate-400">
+                <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 mr-3"></i> <span>Modern, Responsive UI/UX</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 mr-3"></i> <span>Brand Identity & Logos</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 mr-3"></i> <span>Conversion-Focused Layouts</span></li>
+              </ul>
+              <a href="web-design.html" class="inline-flex items-center text-blue-400 font-bold hover:tracking-wide transition-all">
+                See Design Portfolio <i class="fas fa-arrow-right ml-2"></i>
+              </a>
             </div>
-            <h2 class="text-2xl font-bold text-white mb-2">Web Design</h2>
-            <p class="text-slate-300">Premium UI/UX, landing pages, and brand polish that converts visitors into customers.</p>
-            <div class="mt-6 inline-flex items-center gap-2 text-blue-300 font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
-          </a>
-
-          <a href="seo.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-emerald-400/50 transition-all">
-            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-700 mb-6 group-hover:scale-110 transition-transform">
-              <i class="fas fa-search text-2xl text-white"></i>
-            </div>
-            <h2 class="text-2xl font-bold text-white mb-2">SEO</h2>
-            <p class="text-slate-300">Technical cleanup, local SEO, and content strategy to win “near me” search demand.</p>
-            <div class="mt-6 inline-flex items-center gap-2 text-emerald-300 font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
-          </a>
-
-          <a href="digital-ads.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-cardinal/50 transition-all">
-            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-red-500 to-cardinal mb-6 group-hover:scale-110 transition-transform">
-              <i class="fas fa-bullseye text-2xl text-white"></i>
-            </div>
-            <h2 class="text-2xl font-bold text-white mb-2">Digital Ads</h2>
-            <p class="text-slate-300">Google + Meta campaigns built for ROI: call, book, or buy — with clean tracking.</p>
-            <div class="mt-6 inline-flex items-center gap-2 text-cardinal font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
-          </a>
-
-          <a href="social-media-content.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-purple-400/50 transition-all">
-            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-400 to-indigo-700 mb-6 group-hover:scale-110 transition-transform">
-              <i class="fas fa-video text-2xl text-white"></i>
-            </div>
-            <h2 class="text-2xl font-bold text-white mb-2">Social & Video Content</h2>
-            <p class="text-slate-300">A repeatable content system: scripts, shoot plans, edits, and posting cadence.</p>
-            <div class="mt-6 inline-flex items-center gap-2 text-purple-300 font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
-          </a>
-
-          <a href="ai-agents.html" class="group bg-black/70 border border-white/10 rounded-3xl p-8 hover:border-yellow-300/50 transition-all">
-            <div class="flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 mb-6 group-hover:scale-110 transition-transform">
-              <i class="fas fa-robot text-2xl text-white"></i>
-            </div>
-            <h2 class="text-2xl font-bold text-white mb-2">AI Agents</h2>
-            <p class="text-slate-300">Automated lead qualification + follow-up across text, email, and web chat — 24/7.</p>
-            <div class="mt-6 inline-flex items-center gap-2 text-yellow-200 font-semibold">View details <i class="fas fa-arrow-right text-xs"></i></div>
-          </a>
-
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+  
+    <!-- 3. SEO -->
+    <section id="seo" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-6 shadow-[0_0_30px_rgba(52,211,153,0.15)]">
+                <i class="fas fa-search text-3xl"></i>
+              </div>
+              <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 brand-font">SEO</h2>
+              <p class="text-lg text-slate-300 leading-relaxed mb-8">
+                Stop chasing algorithms. We implement a solid SEO foundation that captures existing demand in your local market. Get found by people who are already looking for you.
+              </p>
+              <ul class="space-y-4 mb-8 text-slate-400">
+                <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-3"></i> <span>Local SEO (Google Business Profile)</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-3"></i> <span>Technical Site Audits</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-3"></i> <span>Content Strategy for Targeted Keywords</span></li>
+              </ul>
+              <a href="seo.html" class="inline-flex items-center text-emerald-400 font-bold hover:tracking-wide transition-all">
+                Boost Your Ranking <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+            <div class="order-1 lg:order-2 relative">
+               <div class="absolute inset-0 bg-emerald-500/20 blur-[100px] rounded-full pointer-events-none opacity-40"></div>
+               <div class="relative bg-black border border-white/10 rounded-3xl p-8 aspect-video flex items-center justify-center overflow-hidden group">
+                <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+                  <i class="fas fa-chart-line text-9xl text-emerald-500/5 group-hover:text-emerald-500/10 transition-colors duration-500"></i>
+                    <!-- Rank graphic -->
+                  <div class="absolute bottom-8 left-8 right-8 h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div class="h-full bg-emerald-500 w-3/4 rounded-full"></div>
+                  </div>
+                  <div class="absolute bottom-12 right-8 text-emerald-400 font-mono font-bold">Rank #1</div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- 4. Digital Ads -->
+    <section id="digital-ads" class="py-24 relative overflow-hidden bg-black/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-1 relative">
+               <div class="absolute inset-0 bg-cardinal/20 blur-[100px] rounded-full pointer-events-none opacity-40"></div>
+               <div class="relative bg-black border border-white/10 rounded-3xl p-8 aspect-video flex items-center justify-center overflow-hidden group">
+                <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+                  <i class="fas fa-ad text-9xl text-cardinal/5 group-hover:text-cardinal/10 transition-colors duration-500"></i>
+                  <div class="absolute flex gap-4">
+                      <div class="bg-cardinal/10 border border-cardinal/30 px-6 py-3 rounded-lg text-cardinal font-bold">Google Ads</div>
+                      <div class="bg-blue-600/10 border border-blue-600/30 px-6 py-3 rounded-lg text-blue-400 font-bold">Meta Ads</div>
+                  </div>
+               </div>
+            </div>
+            <div class="order-2">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-cardinal/10 border border-cardinal/20 text-cardinal mb-6 shadow-[0_0_30px_rgba(230,0,35,0.15)]">
+                <i class="fas fa-bullseye text-3xl"></i>
+              </div>
+              <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 brand-font">Digital Ads</h2>
+              <p class="text-lg text-slate-300 leading-relaxed mb-8">
+                Need leads yesterday? We launch high-precision ad campaigns that put your offer in front of the right people at the right time. We track every dollar to ensure positive ROI.
+              </p>
+              <ul class="space-y-4 mb-8 text-slate-400">
+                <li class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i> <span>Google Search & Display</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i> <span>Facebook & Instagram Retargeting</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i> <span>A/B Testing & Optimization</span></li>
+              </ul>
+              <a href="digital-ads.html" class="inline-flex items-center text-cardinal font-bold hover:tracking-wide transition-all">
+                Launch Ads <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- 5. Social & Video -->
+    <section id="social-content" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 mb-6 shadow-[0_0_30px_rgba(168,85,247,0.15)]">
+                <i class="fas fa-video text-3xl"></i>
+              </div>
+              <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 brand-font">Social & Video</h2>
+              <p class="text-lg text-slate-300 leading-relaxed mb-8">
+                Content is the new currency. We help you stay relevant with a consistent stream of high-quality videos and social posts that engage your audience and build brand authority.
+              </p>
+              <ul class="space-y-4 mb-8 text-slate-400">
+                <li class="flex items-start"><i class="fas fa-check text-purple-400 mt-1 mr-3"></i> <span>Short-Form Video (Reels/TikTok)</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-purple-400 mt-1 mr-3"></i> <span>Content Planning & Scripts</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-purple-400 mt-1 mr-3"></i> <span>Professional Editing</span></li>
+              </ul>
+              <a href="social-media-content.html" class="inline-flex items-center text-purple-400 font-bold hover:tracking-wide transition-all">
+                See Our Content <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+            <div class="order-1 lg:order-2 relative">
+               <div class="absolute inset-0 bg-purple-500/20 blur-[100px] rounded-full pointer-events-none opacity-40"></div>
+               <div class="relative bg-black border border-white/10 rounded-3xl p-8 aspect-video flex items-center justify-center overflow-hidden group">
+                <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+                  <i class="fas fa-play-circle text-9xl text-purple-500/5 group-hover:text-purple-500/10 transition-colors duration-500"></i>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- 6. AI Agents -->
+    <section id="ai-agents" class="py-24 relative overflow-hidden bg-black/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-1 relative">
+               <div class="absolute inset-0 bg-yellow-500/20 blur-[100px] rounded-full pointer-events-none opacity-40"></div>
+               <div class="relative bg-black border border-white/10 rounded-3xl p-8 aspect-video flex items-center justify-center overflow-hidden group">
+                <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+                  <i class="fas fa-robot text-9xl text-yellow-500/5 group-hover:text-yellow-500/10 transition-colors duration-500"></i>
+                  <!-- Chat bubble graphic -->
+                   <div class="absolute bottom-8 right-8 bg-white/10 backdrop-blur rounded-t-xl rounded-bl-xl p-4 max-w-[200px] border border-white/10">
+                       <div class="h-2 w-full bg-yellow-500/50 rounded mb-2"></div>
+                       <div class="h-2 w-2/3 bg-yellow-500/30 rounded"></div>
+                   </div>
+               </div>
+            </div>
+            <div class="order-2">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 mb-6 shadow-[0_0_30px_rgba(250,204,21,0.15)]">
+                <i class="fas fa-microchip text-3xl"></i>
+              </div>
+              <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 brand-font">AI Agents</h2>
+              <p class="text-lg text-slate-300 leading-relaxed mb-8">
+                The future is automated. We deploy 24/7 AI agents that handle your customer support, appointment booking, and lead qualification instantly, freeing up your team.
+              </p>
+              <ul class="space-y-4 mb-8 text-slate-400">
+                <li class="flex items-start"><i class="fas fa-check text-yellow-400 mt-1 mr-3"></i> <span>24/7 Customer Support</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-yellow-400 mt-1 mr-3"></i> <span>Instant Scheduling</span></li>
+                <li class="flex items-start"><i class="fas fa-check text-yellow-400 mt-1 mr-3"></i> <span>CRM Integration</span></li>
+              </ul>
+              <a href="ai-agents.html" class="inline-flex items-center text-yellow-400 font-bold hover:tracking-wide transition-all">
+                Automate Your Workflow <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
     <!-- Process -->
-    <section class="py-16 border-t border-white/5 bg-void-900/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <span class="text-cyan font-mono text-sm tracking-widest uppercase mb-2 block">Process</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-white brand-font">Simple, structured, and fast</h2>
-          <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Clear deliverables. Clear timeline. No guessing where your money went.</p>
+    <section class="py-24 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+          <span class="text-cardinal font-mono text-sm tracking-widest uppercase mb-2 block">Our Process</span>
+          <h2 class="text-3xl md:text-5xl font-bold text-white brand-font">Simple, structured, and fast</h2>
+          <p class="text-slate-400 mt-4 max-w-2xl mx-auto text-lg">Clear deliverables. Clear timeline. No guessing where your money went.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-8">
-            <p class="text-xs font-mono uppercase tracking-widest text-slate-500">Step 01</p>
-            <h3 class="mt-2 text-xl font-bold text-white">Strategy + Scope</h3>
-            <p class="mt-3 text-slate-300">We map your offer, audience, and conversion path. You get a clear plan and estimate.</p>
+          <!-- Step 01 -->
+          <div class="group relative p-8 rounded-3xl bg-black border border-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
+            <p class="relative z-10 text-xs font-mono uppercase tracking-widest text-slate-500 mb-4">Step 01</p>
+            <h3 class="relative z-10 mt-2 text-2xl font-bold text-white">Strategy + Scope</h3>
+            <p class="relative z-10 mt-4 text-slate-400 leading-relaxed">We map your offer, audience, and conversion path. You get a clear plan and estimate.</p>
           </div>
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-8">
-            <p class="text-xs font-mono uppercase tracking-widest text-slate-500">Step 02</p>
-            <h3 class="mt-2 text-xl font-bold text-white">Design + Build</h3>
-            <p class="mt-3 text-slate-300">Premium UI/UX first, then fast implementation with performance, SEO, and analytics baked in.</p>
+
+          <!-- Step 02 -->
+          <div class="group relative p-8 rounded-3xl bg-black border border-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
+            <p class="relative z-10 text-xs font-mono uppercase tracking-widest text-slate-500 mb-4">Step 02</p>
+            <h3 class="relative z-10 mt-2 text-2xl font-bold text-white">Design + Build</h3>
+            <p class="relative z-10 mt-4 text-slate-400 leading-relaxed">Premium UI/UX first, then fast implementation with performance, SEO, and analytics baked in.</p>
           </div>
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-8">
-            <p class="text-xs font-mono uppercase tracking-widest text-slate-500">Step 03</p>
-            <h3 class="mt-2 text-xl font-bold text-white">Launch + Optimize</h3>
-            <p class="mt-3 text-slate-300">Go live with clean tracking, then iterate based on real data (calls, forms, bookings, sales).</p>
+
+          <!-- Step 03 -->
+          <div class="group relative p-8 rounded-3xl bg-black border border-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
+            <p class="relative z-10 text-xs font-mono uppercase tracking-widest text-slate-500 mb-4">Step 03</p>
+            <h3 class="relative z-10 mt-2 text-2xl font-bold text-white">Launch + Optimize</h3>
+            <p class="relative z-10 mt-4 text-slate-400 leading-relaxed">Go live with clean tracking, then iterate based on real data (calls, forms, bookings, sales).</p>
           </div>
         </div>
       </div>
@@ -167,8 +334,8 @@
               <p class="mt-3 text-slate-300">Send a short message. We’ll recommend the best starting point.</p>
             </div>
             <div class="flex flex-col sm:flex-row gap-4">
-              <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-white rounded-full hover:bg-cyan transition-all duration-200 hover:scale-[1.03]">Get a Recommendation</a>
-              <a href="packages.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/5 border border-white/15 rounded-full hover:bg-white/10 transition-all duration-200">View Packages</a>
+              <a href="contact.html" class="px-6 py-2.5 font-bold text-lg rounded-full w-full text-center max-w-xs border border-white text-white bg-transparent hover:bg-white hover:text-cardinal transition-all duration-300">Get a Recommendation</a>
+              <a href="packages.html" class="px-6 py-2.5 font-bold text-lg rounded-full w-full text-center max-w-xs border border-white text-white bg-transparent hover:bg-white hover:text-cardinal transition-all duration-300">View Packages</a>
             </div>
           </div>
         </div>
@@ -181,7 +348,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="assets/js/include.js"></script>
-  <script src="assets/js/particles.js"></script>
+
   <script src="assets/js/site-config.js"></script>
 <script src="assets/js/main.js"></script>
 </body>

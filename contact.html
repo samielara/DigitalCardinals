@@ -38,24 +38,28 @@
 
 <body class="bg-void-950 text-slate-200 antialiased overflow-x-hidden selection:bg-cardinal selection:text-white">
   <div id="top"></div>
-  <div id="canvas-container" class="fixed inset-0 -z-10 bg-grid bg-grid-pattern"></div>
+
 
   <div data-include="components/header.html"></div>
 
   <main class="relative z-10 pt-28">
 
-    <section class="pb-10">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-black/50 border border-white/10 rounded-[40px] p-10 md:p-14 relative overflow-hidden">
-          <div class="absolute -inset-1 bg-gradient-to-r from-cyan/10 via-white/5 to-cardinal/10 blur-2xl"></div>
-          <div class="relative">
-            <p class="text-xs font-mono uppercase tracking-[0.25em] text-slate-400">Contact</p>
-            <h1 class="mt-4 text-4xl md:text-5xl font-extrabold text-white brand-font">Let’s build something that converts.</h1>
-            <p class="mt-5 text-lg text-slate-300 max-w-3xl">
-              Tell us what you need — we’ll reply with a clear estimate and next steps.
-            </p>
-          </div>
-        </div>
+    <!-- Hero Section with Background Video -->
+    <section class="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+      <!-- Global Background Video (Fixed/Absolute) -->
+      <video class="hero-bg-video pointer-events-none" autoplay muted playsinline loop preload="metadata" poster="assets/images/hero-poster.jpg" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
+        <source src="assets/video/hero-aurora.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/20 to-black/90 pointer-events-none"></div>
+
+      <div class="relative z-20 text-center px-4 max-w-4xl mx-auto mt-12">
+        <p class="text-sm font-mono uppercase tracking-[0.25em] text-cyan mb-4">Contact</p>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white brand-font mb-6 leading-tight">
+          Let’s build something <span class="text-cardinal">great</span>.
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Tell us what you need. We’ll reply with a clear estimate and next steps.
+        </p>
       </div>
     </section>
 
@@ -67,7 +71,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="assets/js/include.js"></script>
-  <script src="assets/js/particles.js"></script>
+
   <script src="assets/js/site-config.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
