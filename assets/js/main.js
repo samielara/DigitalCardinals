@@ -377,3 +377,48 @@ function initPageScripts() {
 
 // Run after components are injected
 document.addEventListener("includesLoaded", initPageScripts);
+
+// Expose switchTab globally so inline onclicks work
+window.switchTab = function (tabName) {
+  // Reset all buttons
+  const buttons = document.querySelectorAll("#packages button");
+  buttons.forEach((btn) => {
+    // Remove active classes (Solid White, Red Text)
+    btn.classList.remove("bg-white", "text-cardinal");
+
+    // Add inactive classes (Transparent, White Border, Hover Effect)
+    btn.classList.add(
+      "bg-transparent",
+      "text-white",
+      "hover:bg-white",
+      "hover:text-cardinal"
+    );
+  });
+
+  // Activate clicked button
+  const activeBtn = document.getElementById("tab-" + tabName);
+  if (activeBtn) {
+    // Remove inactive classes
+    activeBtn.classList.remove(
+      "bg-transparent",
+      "text-white",
+      "hover:bg-white",
+      "hover:text-cardinal"
+    );
+
+    // Add active classes (Solid White, Red Text)
+    activeBtn.classList.add("bg-white", "text-cardinal");
+  }
+
+  // Hide all content
+  const contents = document.querySelectorAll(".package-content");
+  contents.forEach((content) => {
+    content.classList.add("hidden");
+  });
+
+  // Show selected content
+  const selectedContent = document.getElementById("content-" + tabName);
+  if (selectedContent) {
+    selectedContent.classList.remove("hidden");
+  }
+};

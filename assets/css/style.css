@@ -63,6 +63,21 @@ h1, h2, h3, .brand-font {
 }
 
 /* ============================== */
+/* UTILITY CLASSES                */
+/* ============================== */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* ============================== */
 /* NAVBAR (PROFESSIONAL)          */
 /* ============================== */
 
@@ -154,6 +169,7 @@ h1, h2, h3, .brand-font {
 }
 
 /* Hero background video */
+/* Hero background video */
 .hero-bg-video {
   position: absolute;
   inset: 0;
@@ -162,8 +178,8 @@ h1, h2, h3, .brand-font {
   object-fit: cover;
   z-index: 0;
 
-  /* keep text readable */
-  filter: brightness(0.55) contrast(1.05) saturate(1.1);
+  /* keep text readable but much brighter */
+  filter: brightness(0.85) contrast(1.1) saturate(1.1);
 }
 
 /* Navbar: transparent at top, solid on scroll */
