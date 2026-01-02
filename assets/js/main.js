@@ -6,7 +6,11 @@ function initPageScripts() {
   const navbar = document.getElementById("navbar");
   if (navbar) {
     const onScroll = () => {
-      navbar.classList.toggle("is-scrolled", window.scrollY > 20);
+      if (window.scrollY > 20) {
+        navbar.classList.add("is-scrolled");
+      } else {
+        navbar.classList.remove("is-scrolled");
+      }
     };
 
     onScroll(); // initial check
@@ -98,6 +102,41 @@ function initPageScripts() {
 
     if (prefersReducedMotion) return;
 
+    // Animated button spotlight (video-style)
+    (function initOrbitButtons() {
+      // We use a MutationObserver in case buttons are loaded dynamically via include.js
+      const observer = new MutationObserver(() => {
+        const buttons = document.querySelectorAll(
+          ".card-spotlight:not([data-orbit-init])"
+        );
+        buttons.forEach((btn) => {
+          btn.setAttribute("data-orbit-init", "true");
+          const setVars = (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            btn.style.setProperty("--mx", `${x}%`);
+            btn.style.setProperty("--my", `${y}%`);
+          };
+
+          // Pointer events handle mouse + pen + touch
+          btn.addEventListener("pointerenter", setVars);
+          btn.addEventListener("pointermove", setVars);
+
+          // On touch, set spotlight to touch point
+          btn.addEventListener("pointerdown", setVars);
+
+          // Optional: on leave, reset to center
+          btn.addEventListener("pointerleave", () => {
+            btn.style.setProperty("--mx", "50%");
+            btn.style.setProperty("--my", "50%");
+          });
+        });
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
+    })();
     const services = [
       {
         label: "Web Development",
@@ -283,6 +322,10 @@ function initPageScripts() {
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
+        // Only process forms with name="contact"
+        if (form.getAttribute("name") !== "contact") return;
+
+        // Spam bot check (Netlify/Formspree honeypot)
         const honeypot =
           (form.querySelector('[name="bot-field"]') || {}).value || "";
         if (honeypot) {
@@ -312,12 +355,12 @@ function initPageScripts() {
           return;
         }
 
-        setBusy(true);
-        setStatus("Sending…", false);
+        // 1) If we have an endpoint, try it.
+        if (endpoint) {
+          setBusy(true);
+          setStatus("Sending…", false);
 
-        try {
-          // 1) Configured endpoint (Formspree / custom)
-          if (endpoint) {
+          try {
             const fd = new FormData(form);
             fd.append("to", to);
 
@@ -333,41 +376,48 @@ function initPageScripts() {
               return;
             }
             throw new Error("Endpoint submission failed.");
+          } catch (err) {
+            console.error(err);
+            // Fallthrough to mailto
           }
+        }
 
-          // 2) Netlify Forms (works when deployed on Netlify)
-          const isFileProtocol =
-            window.location && window.location.protocol === "file:";
-          if (!isFileProtocol) {
+        // 2) If no endpoint, check if we are possibly on Netlify (not file protocol)
+        // If we are mostly likely plain HTML, skip straight to mailto logic to avoid "Error" flash.
+        const isFileProtocol = window.location.protocol === "file:";
+
+        // If we really want to try Netlify forms implicitly:
+        if (!endpoint && !isFileProtocol) {
+          setBusy(true);
+          setStatus("Sending…", false);
+          try {
             const fd = new FormData(form);
             const res = await fetch("/", {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
               body: encodeFormData(fd),
             });
-
             if (res.ok) {
               setStatus("Sent! We’ll reply soon.", false);
               form.reset();
+              setBusy(false); // Important: clear busy here if returning
               return;
             }
+          } catch (e) {
+            // Fallthrough
           }
-
-          // 3) Fallback to mailto
-          setStatus(
-            "Couldn’t submit directly — opening your email as a fallback…",
-            false
-          );
-          window.location.href = buildMailto(to, values);
-        } catch (err) {
-          setStatus(
-            "Couldn’t submit directly — opening your email as a fallback…",
-            false
-          );
-          window.location.href = buildMailto(to, values);
-        } finally {
-          setBusy(false);
         }
+
+        // 3) Fallback to mailto (Direct open)
+        // If we never had an endpoint and Netlify failed or we skipped it:
+        setBusy(false); // Ensure button is clickable again
+        setStatus("Opening your email client...", false);
+
+        setTimeout(() => {
+          window.location.href = buildMailto(to, values);
+          setStatus("Please send the email that was created.", false);
+          form.reset();
+        }, 800);
       });
     });
   })();
@@ -379,35 +429,32 @@ function initPageScripts() {
 document.addEventListener("includesLoaded", initPageScripts);
 
 // Expose switchTab globally so inline onclicks work
+// Mobile Tabs Scroll Helper
+window.scrollTabs = function (direction) {
+  const container = document.getElementById("tabs-container");
+  if (!container) return;
+
+  const scrollAmount = 200; // Adjust scroll distance
+
+  if (direction === "left") {
+    container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  } else {
+    container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  }
+};
+
+// ... existing code ...
 window.switchTab = function (tabName) {
   // Reset all buttons
   const buttons = document.querySelectorAll("#packages button");
   buttons.forEach((btn) => {
-    // Remove active classes (Solid White, Red Text)
-    btn.classList.remove("bg-white", "text-cardinal");
-
-    // Add inactive classes (Transparent, White Border, Hover Effect)
-    btn.classList.add(
-      "bg-transparent",
-      "text-white",
-      "hover:bg-white",
-      "hover:text-cardinal"
-    );
+    btn.classList.remove("active");
   });
 
   // Activate clicked button
   const activeBtn = document.getElementById("tab-" + tabName);
   if (activeBtn) {
-    // Remove inactive classes
-    activeBtn.classList.remove(
-      "bg-transparent",
-      "text-white",
-      "hover:bg-white",
-      "hover:text-cardinal"
-    );
-
-    // Add active classes (Solid White, Red Text)
-    activeBtn.classList.add("bg-white", "text-cardinal");
+    activeBtn.classList.add("active");
   }
 
   // Hide all content
@@ -421,4 +468,27 @@ window.switchTab = function (tabName) {
   if (selectedContent) {
     selectedContent.classList.remove("hidden");
   }
+
+  // Auto-center the active tab in the scroll view (Mobile)
+  if (activeBtn) {
+    activeBtn.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }
 };
+
+// Auto-hide "Service Details" feature blocks if on Home Page (index.html or root)
+// Because we used the same component for both Home and Packages, but only want the details on Packages.
+document.addEventListener("includesLoaded", () => {
+  // Check if we are on the home page (index.html or root)
+  const path = window.location.pathname;
+  const isHome =
+    path === "/" || path.endsWith("index.html") || path.endsWith("/");
+
+  if (isHome) {
+    const details = document.querySelectorAll(".service-detail-block");
+    details.forEach((el) => el.classList.add("hidden"));
+  }
+});

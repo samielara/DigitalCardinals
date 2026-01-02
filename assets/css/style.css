@@ -71,6 +71,183 @@ h1, h2, h3, .brand-font {
   display: none;
 }
 
+/* ============================== */
+/* BUTTON – Blob Effect (Gooey) */
+/* ============================== */
+
+.blob-btn {
+  z-index: 1;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px; /* Adjusted padding */
+  margin-bottom: 0;   /* Reset margin */
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  cursor: pointer;
+  border-radius: 30px;
+  overflow: visible; /* Ensure blobs can be seen if needed, but inner handles hidden */
+}
+
+/* Border pseudo-element */
+.blob-btn::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--cyan);
+  border-radius: 30px;
+}
+
+/* Background fill pseudo-element */
+.blob-btn::after {
+  content: "";
+  z-index: -2;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s 0.2s;
+  border-radius: 30px;
+}
+
+.blob-btn:hover {
+  color: #000; /* Dark text on cyan blobs */
+  border-radius: 30px;
+}
+
+/* Active state for tabs (Solid White Fill) */
+.blob-btn.active {
+  background-color: var(--cyan);
+  color: var(--cardinal-red);
+}
+
+.blob-btn.active:hover {
+  color: var(--cardinal-red); /* Keep red on hover if already active */
+}
+
+.blob-btn:hover::after {
+  transition: all 0.3s;
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+}
+
+.blob-btn__inner {
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background: transparent; /* Transparent base */
+}
+
+.blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  filter: url('#goo');
+}
+
+.blob-btn__blob {
+  position: absolute;
+  top: 2px;
+  width: 25%; /* 100% / 4 blobs */
+  height: 100%;
+  background: var(--cyan);
+  border-radius: 100%;
+  transform: translate3d(0, 150%, 0) scale(1.7);
+  transition: transform 0.45s;
+}
+
+@supports(filter: url('#goo')) {
+  .blob-btn__blob {
+    transform: translate3d(0, 150%, 0) scale(1.4);
+  }
+}
+
+.blob-btn__blob:nth-child(1) { left: 0%; transition-delay: 0s; }
+.blob-btn__blob:nth-child(2) { left: 30%; transition-delay: 0.08s; }
+.blob-btn__blob:nth-child(3) { left: 60%; transition-delay: 0.16s; }
+.blob-btn__blob:nth-child(4) { left: 90%; transition-delay: 0.24s; }
+
+.blob-btn:hover .blob-btn__blob {
+  transform: translateZ(0) scale(1.7);
+}
+
+@supports(filter: url('#goo')) {
+  .blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(1.4);
+  }
+}
+
+
+/* ============================== */
+/* CARD - Spotlight Effect */
+/* ============================== */
+.card-spotlight {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  z-index: 2; /* Check if this covers content? pointer-events-none handles clicks. */
+  pointer-events: none;
+  
+  width: 600px;
+  height: 600px;
+  
+  left: calc(var(--mx, 50%) - 300px);
+  top: calc(var(--my, 50%) - 300px);
+  
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 35%,
+    transparent 70%
+  );
+  
+  opacity: 0;
+  transition: opacity 200ms ease;
+  mix-blend-mode: overlay; /* Helps it blend nicely with dark backgrounds */
+}
+
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* On mobile, show the spotlight effect by default */
+/* On mobile, show the spotlight effect by default */
+@media (max-width: 768px) {
+  .card-spotlight::before {
+    opacity: 1;
+  }
+  /* Force "hover" look for black cards (Starter, Scale) */
+  .package-card.bg-black {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  }
+}
+
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
@@ -83,16 +260,17 @@ h1, h2, h3, .brand-font {
 
 :root {
   --cardinal-red: #E60023;
+  --cyan: #00f2ff;
 }
 
 /* Base nav link styling */
-#navbar a:not(.rounded-full),
+#navbar a:not(.rounded-full):not(.blob-btn),
 .nav-links a {
   color: rgba(255, 255, 255, 0.92);
   transition: color 180ms ease, opacity 180ms ease;
 }
 
-#navbar a:not(.rounded-full):hover,
+#navbar a:not(.rounded-full):not(.blob-btn):hover,
 .nav-links a:hover,
 #navbar a.nav-underline.active {
   color: var(--cardinal-red) !important;
@@ -183,6 +361,26 @@ h1, h2, h3, .brand-font {
 }
 
 /* Navbar: transparent at top, solid on scroll */
+
+/* Logo Slider Animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.logo-track:hover {
+  animation-play-state: paused;
+}
+
+/* ============================== */
+/* GLASS NAVBAR REDESIGN         */
+/* ============================== */
+
+/* Navbar: transparent at top, solid glass on scroll */
 #navbar [data-navbar-bg] {
   background: transparent;
   border-bottom-color: transparent;
@@ -191,85 +389,88 @@ h1, h2, h3, .brand-font {
 }
 
 #navbar.is-scrolled [data-navbar-bg] {
-  background: rgba(0, 0, 0, 0.72);
-  border-bottom-color: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.6);         /* Darker glass */
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);            /* Heavy blur */
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* ============================== */
-/* BEAM ANIMATIONS (Optional)     */
-/* ============================== */
-
-@keyframes beamPulse {
-    0%, 100% { opacity: 0.55; transform: translateX(-50%) scaleY(1); }
-    50%      { opacity: 0.95; transform: translateX(-50%) scaleY(1.06); }
-}
-
-@keyframes beamShimmer {
-    0%   { transform: translateX(-50%) translateY(-40%); opacity: 0; }
-    20%  { opacity: .55; }
-    60%  { opacity: .20; }
-    100% { transform: translateX(-50%) translateY(180%); opacity: 0; }
-}
-
-.beam-pulse { 
-    animation: beamPulse 3.6s ease-in-out infinite; 
-}
-
-.beam-shimmer { 
-    animation: beamShimmer 2.4s ease-in-out infinite; 
-}
-
-.beam-bloom { 
-    opacity: 0.75; 
-}
-
-/* Navbar underline hover (like your screenshot) */
-/* Navbar underline hover (professional: white) */
-#navbar a.nav-underline {
+/* Text Links (Home, Services, etc.) */
+.nav-link {
   position: relative;
-  display: inline-block;
-  padding-bottom: 10px; /* space for underline */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500;
+  color: rgba(226, 232, 240, 0.8); /* slate-200/80 */
+  padding: 0.5rem 0.75rem;
+  transition: color 0.3s ease;
 }
 
-/* show underline on hover/focus */
-#navbar a.nav-underline:hover::after,
-#navbar a.nav-underline:focus-visible::after {
-  transform: scaleX(1);
-  opacity: 1;
+.nav-link:hover {
+  color: #ffffff;
 }
 
-/* keep underline for current page */
-#navbar a.nav-underline.active::after {
-  transform: scaleX(1);
-  opacity: 1;
+.nav-link.active {
+  color: var(--cardinal-red) !important;
 }
 
-
-/* hidden underline by default */
-/* ============================== */
-/* ARC / PLANET HORIZON BACKGROUND (REMOVED) */
-/* ============================== */
-
-/* Logo Slider Animation */
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Animated Underline */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: #ffffff; /* White underline */
+  transition: width 0.3s ease-in-out;
 }
 
-.logo-track {
+.nav-link.active::after {
+  background-color: var(--cardinal-red); /* Red underline for active */
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* CTA "Book Consultation" Button - Make it distinct & smaller */
+.blob-btn--cta {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.05);
+  padding: 10px 24px; /* Reduced from default */
+  font-size: 0.8rem;  /* Smaller text */
+}
+.blob-btn--cta:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255,255,255,0.1);
+}
+
+/* Small Modifier for Filters/Nav */
+.blob-btn--sm {
+  padding: 10px 20px;
+  font-size: 0.8125rem; /* 13px */
+}
+
+@media (max-width: 768px) {
+  .blob-btn--sm {
+    padding: 8px 14px;
+    font-size: 0.7rem; /* 11-12px range */
+  }
+}
+
+/* Package Card Standardization */
+.package-card {
+  min-height: 560px;
   display: flex;
-  width: max-content;
-  animation: scroll 60s linear infinite;
+  flex-direction: column;
+}
+.package-card .blob-btn {
+  margin-top: auto;
+}
+.package-card .features {
+  margin-top: 2rem;
 }
 
-.mask-gradient-x {
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-}
 
-.logo-track:hover {
-  animation-play-state: paused;
-}

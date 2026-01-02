@@ -78,11 +78,11 @@
       <div class="relative">
         <div class="absolute inset-0 bg-gradient-to-br from-cardinal/5 to-cyan/5 rounded-3xl blur-xl -z-10"></div>
 
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-          data-contact-form data-contact-to="SamiElarab@gmail.com" data-form-endpoint=""
+        <form name="contact" method="POST"
           class="bg-void-950 border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
 
           <input type="hidden" name="form-name" value="contact" />
+          
           <p class="hidden">
             <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
           </p>
@@ -129,9 +129,16 @@
 
             <p class="hidden text-sm" data-form-status></p>
 
-            <button type="submit"
-              class="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-cyan transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,242,255,0.30)] hover:scale-[1.02] active:scale-[0.98]">
+            <button type="submit" class="blob-btn w-full mt-4 text-white hover:text-black" style="--cyan: #ffffff; border-color: white;">
               Send Message
+              <span class="blob-btn__inner">
+                <span class="blob-btn__blobs">
+                  <span class="blob-btn__blob" style="background: white;"></span>
+                  <span class="blob-btn__blob" style="background: white;"></span>
+                  <span class="blob-btn__blob" style="background: white;"></span>
+                  <span class="blob-btn__blob" style="background: white;"></span>
+                </span>
+              </span>
             </button>
 
             <p class="text-center text-xs text-slate-500">

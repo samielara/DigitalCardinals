@@ -47,14 +47,14 @@
     <!-- Hero -->
     <!-- Hero -->
     <!-- Hero Section with Background Video -->
-    <section class="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
       <!-- Global Background Video (Fixed/Absolute) -->
       <video class="hero-bg-video pointer-events-none" autoplay muted playsinline loop preload="metadata" poster="assets/images/hero-poster.jpg" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
         <source src="assets/video/hero-aurora.mp4" type="video/mp4" />
       </video>
       <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/20 to-black/90 pointer-events-none"></div>
 
-      <div class="relative z-20 text-center px-4 max-w-4xl mx-auto mt-10">
+      <div class="relative z-20 text-center px-4 max-w-4xl mx-auto">
         <p class="text-sm font-mono uppercase tracking-[0.25em] text-cyan mb-4">About Us</p>
         <h1 class="text-5xl md:text-7xl font-extrabold text-white brand-font mb-6 leading-tight">
           Built for real-world <span class="text-cardinal">growth</span>.
@@ -63,8 +63,28 @@
           We combine strategy, design, and engineering into one streamlined delivery. No agency bloat.
         </p>
         <div class="mt-10 flex flex-wrap justify-center gap-4">
-          <a href="services.html" class="px-6 py-2.5 font-bold text-lg rounded-full w-full text-center max-w-xs border border-white text-white bg-transparent hover:bg-white hover:text-cardinal transition-all duration-300">View Services</a>
-          <a href="packages.html" class="px-6 py-2.5 font-bold text-lg rounded-full w-full text-center max-w-xs border border-white text-white bg-transparent hover:bg-white hover:text-cardinal transition-all duration-300">See Packages</a>
+          <a href="services.html" class="blob-btn px-6 py-2.5 w-full max-w-xs">
+            View Services
+            <span class="blob-btn__inner">
+              <span class="blob-btn__blobs">
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+              </span>
+            </span>
+          </a>
+          <a href="packages.html" class="blob-btn px-6 py-2.5 w-full max-w-xs">
+            See Packages
+            <span class="blob-btn__inner">
+              <span class="blob-btn__blobs">
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+              </span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
@@ -73,21 +93,21 @@
     <section class="py-14">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-8">
+          <div class="card-spotlight bg-black/60 border border-white/10 rounded-3xl p-8">
             <div class="inline-flex items-center justify-center h-12 w-12 rounded-2xl bg-white/5 border border-white/10 mb-6">
               <i class="fas fa-compass text-white"></i>
             </div>
             <h2 class="text-xl font-bold text-white mb-3 brand-font">Strategy-first</h2>
             <p class="text-slate-300">We map your offer, margins, and capacity so the site and marketing drive the right kind of demand.</p>
           </div>
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-8">
+          <div class="card-spotlight bg-black/60 border border-white/10 rounded-3xl p-8">
             <div class="inline-flex items-center justify-center h-12 w-12 rounded-2xl bg-white/5 border border-white/10 mb-6">
               <i class="fas fa-code text-white"></i>
             </div>
             <h2 class="text-xl font-bold text-white mb-3 brand-font">Clean engineering</h2>
             <p class="text-slate-300">Fast performance, solid foundations, and scalable structures — so you’re not rebuilding in 12 months.</p>
           </div>
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-8">
+          <div class="card-spotlight bg-black/60 border border-white/10 rounded-3xl p-8">
             <div class="inline-flex items-center justify-center h-12 w-12 rounded-2xl bg-white/5 border border-white/10 mb-6">
               <i class="fas fa-chart-line text-white"></i>
             </div>
@@ -108,22 +128,22 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-7">
+          <div class="card-spotlight bg-black/60 border border-white/10 rounded-3xl p-7">
             <p class="text-xs font-mono tracking-widest uppercase text-slate-500">Step 01</p>
             <h3 class="mt-3 text-lg font-bold text-white">Discovery</h3>
             <p class="mt-3 text-slate-300 text-sm">We align on goals, audience, and the fastest path to ROI.</p>
           </div>
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-7">
+          <div class="card-spotlight bg-black/60 border border-white/10 rounded-3xl p-7">
             <p class="text-xs font-mono tracking-widest uppercase text-slate-500">Step 02</p>
             <h3 class="mt-3 text-lg font-bold text-white">Design</h3>
             <p class="mt-3 text-slate-300 text-sm">Modern UI/UX, brand polish, and a clear conversion path.</p>
           </div>
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-7">
+          <div class="card-spotlight bg-black/60 border border-white/10 rounded-3xl p-7">
             <p class="text-xs font-mono tracking-widest uppercase text-slate-500">Step 03</p>
             <h3 class="mt-3 text-lg font-bold text-white">Build</h3>
             <p class="mt-3 text-slate-300 text-sm">Fast implementation, performance tuning, and SEO-ready structure.</p>
           </div>
-          <div class="bg-black/60 border border-white/10 rounded-3xl p-7">
+          <div class="card-spotlight bg-black/60 border border-white/10 rounded-3xl p-7">
             <p class="text-xs font-mono tracking-widest uppercase text-slate-500">Step 04</p>
             <h3 class="mt-3 text-lg font-bold text-white">Launch + Iterate</h3>
             <p class="mt-3 text-slate-300 text-sm">We ship, measure, and improve — without breaking what works.</p>

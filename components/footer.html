@@ -1,5 +1,15 @@
-<footer class="bg-black py-16 text-center border-t border-white/[0.05]">
     <div class="max-w-7xl mx-auto px-6">
         <p class="text-[#333] hover:text-[#444] transition-colors text-sm font-medium">© 2025 Digital Cardinal LLC. Helping Small Businesses Grow.</p>
     </div>
+    
+    <!-- SVG Filter for Blob Button Effect -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: block; height: 0; width: 0;">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+          <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+        </filter>
+      </defs>
+    </svg>
 </footer>

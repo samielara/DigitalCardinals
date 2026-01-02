@@ -7,11 +7,10 @@ window.DC_CONFIG = Object.assign(
     contactEmail: "SamiElarab@gmail.com",
 
     // Optional: direct form endpoint (recommended for production).
-    // Examples:
-    //  - Formspree: https://formspree.io/f/xxxxxxxx
-    //  - Your own API endpoint: https://api.yourdomain.com/contact
-    // Leave blank to use Netlify Forms (when deployed on Netlify) with a mailto fallback.
-    formEndpoint: "",
+    // EXAMPLES:
+    //  - Formspree: "https://formspree.io/f/YOUR_FORM_ID"  <-- Recommended
+    //  - FormSubmit.co: "https://formsubmit.co/your-email"
+    formEndpoint: "https://formspree.io/f/xeeoawaq",
   },
   window.DC_CONFIG || {}
 );
