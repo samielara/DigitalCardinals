@@ -286,33 +286,41 @@ function initPageScripts() {
       }
     };
 
+    // Infinite Loop Logic (No disabled states)
     const updateAuthButtons = () => {
-      const tolerance = 5;
-      const atStart = track.scrollLeft <= tolerance;
-      const atEnd =
-        track.scrollLeft >= track.scrollWidth - track.clientWidth - tolerance;
-
-      prev.disabled = atStart;
-      next.disabled = atEnd;
-
-      // Opacity handling for glassmorphism
-      prev.style.opacity = atStart ? "0.3" : "1";
-      next.style.opacity = atEnd ? "0.3" : "1";
-      prev.style.cursor = atStart ? "not-allowed" : "pointer";
-      next.style.cursor = atEnd ? "not-allowed" : "pointer";
+      // Always allow interaction for infinite feel
+      prev.disabled = false;
+      next.disabled = false;
+      prev.style.opacity = "1";
+      next.style.opacity = "1";
+      prev.style.cursor = "pointer";
+      next.style.cursor = "pointer";
     };
 
     const scrollAmount = () => {
-      // Scroll one card width (approx 360px + gap)
-      return window.innerWidth < 768 ? 300 : 380;
+      // Scroll one card width (approx 420px + gap) - Updated for larger cards
+      return window.innerWidth < 768 ? 340 : 440;
     };
 
     prev.addEventListener("click", () => {
-      track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      const tolerance = 5;
+      if (track.scrollLeft <= tolerance) {
+        // Loop to end
+        track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
+      } else {
+        track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      }
     });
 
     next.addEventListener("click", () => {
-      track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      const tolerance = 5;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - tolerance) {
+        // Loop to start
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      }
     });
 
     track.addEventListener("scroll", updateAuthButtons, { passive: true });
@@ -325,16 +333,27 @@ function initPageScripts() {
     checkOverflow();
     updateAuthButtons();
 
-    // Keyboard Nav
+    // Keyboard Nav (Infinite support)
     track.setAttribute("tabindex", "0");
     track.style.outline = "none";
     track.addEventListener("keydown", (e) => {
+      const tolerance = 5;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+
       if (e.key === "ArrowLeft") {
         e.preventDefault();
-        track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+        if (track.scrollLeft <= tolerance) {
+          track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
+        } else {
+          track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+        }
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
-        track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+        if (track.scrollLeft >= maxScroll - tolerance) {
+          track.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+        }
       }
     });
   })();
