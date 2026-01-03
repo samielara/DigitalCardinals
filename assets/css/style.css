@@ -427,7 +427,7 @@ h1, h2, h3, .brand-font {
 }
 
 .nav-link.active::after {
-  background-color: var(--cardinal-red); /* Red underline for active */
+  background-color: #ffffff; /* White underline for active as requested */
 }
 
 .nav-link:hover::after,
@@ -474,3 +474,14 @@ h1, h2, h3, .brand-font {
 }
 
 
+
+/* ============================== */
+/* PACKAGE TABS (Toggle Style)    */
+/* ============================== */
+#tabs-container button.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05); /* Soft glow */
+    border-color: rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+}

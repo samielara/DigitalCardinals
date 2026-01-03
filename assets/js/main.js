@@ -82,7 +82,8 @@ function initPageScripts() {
       "ai-agents.html": "services",
     };
 
-    const active = map[path] || null;
+    // Handle both "services.html" (local) and "services" (live/clean URL)
+    const active = map[path] || map[path + ".html"] || null;
     if (!active) return;
 
     document.querySelectorAll("[data-nav]").forEach((a) => {

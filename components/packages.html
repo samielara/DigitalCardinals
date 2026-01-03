@@ -5,84 +5,39 @@
     <div class="text-center mb-12">
       <h2 class="text-base text-slate-400 font-semibold tracking-wide uppercase">Packages</h2>
       <h3 class="mt-2 text-4xl leading-tight font-extrabold tracking-tight text-white sm:text-5xl brand-font">
-        Clear pricing, real outcomes.
+        Transparent pricing. Measurable results.
       </h3>
       <p class="mt-4 max-w-2xl text-xl text-slate-400 mx-auto">
-        Start lean, then scale. Every package includes strategy and execution.
+        Start lean, then scale with confidence. Every package includes strategy, design, and execution.
       </p>
     </div>
 
     <!-- TABS -->
     <!-- TABS -->
-    <div class="relative max-w-full px-8 md:px-0 mb-16 group">
-      
-      <!-- Left Arrow (Mobile Only) -->
-      <button onclick="scrollTabs('left')" class="md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center text-white bg-black/50 backdrop-blur-sm rounded-full border border-white/10 shadow-lg active:scale-95 transition-all">
-        <i class="fas fa-chevron-left text-xs"></i>
-      </button>
-
-      <!-- Scrollable Container -->
-      <div id="tabs-container" class="flex md:flex-wrap overflow-x-auto md:overflow-visible gap-4 pb-4 md:pb-0 px-2 md:px-0 scroll-smooth no-scrollbar snap-x justify-start md:justify-center">
+    <div class="relative flex justify-center mb-16">
+      <!-- Segmented Toggle Control -->
+      <div id="tabs-container" class="inline-flex flex-wrap justify-center sm:flex-nowrap bg-white/[0.03] backdrop-blur-xl p-1.5 rounded-2xl border border-white/10 gap-1 mx-auto max-w-full overflow-x-auto no-scrollbar">
         
-        <!-- Web Dev (Active) -->
-        <button onclick="switchTab('web')" id="tab-web" class="blob-btn blob-btn--sm active text-sm shrink-0 snap-center" style="--cyan: #ffffff;">
-          Web Development
-          <span class="blob-btn__inner">
-            <span class="blob-btn__blobs">
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-            </span>
-          </span>
+        <!-- Web Dev -->
+        <button onclick="switchTab('web')" id="tab-web" class="whitespace-nowrap px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent active">
+            Web Development
         </button>
 
-        <!-- SEO (Inactive) -->
-        <button onclick="switchTab('seo')" id="tab-seo" class="blob-btn blob-btn--sm text-sm shrink-0 snap-center" style="--cyan: #ffffff;">
-          SEO & Ads
-          <span class="blob-btn__inner">
-            <span class="blob-btn__blobs">
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-            </span>
-          </span>
+        <!-- SEO -->
+        <button onclick="switchTab('seo')" id="tab-seo" class="whitespace-nowrap px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent">
+            SEO & Ads
         </button>
 
-        <!-- Social (Inactive) -->
-        <button onclick="switchTab('social')" id="tab-social" class="blob-btn blob-btn--sm text-sm shrink-0 snap-center" style="--cyan: #ffffff;">
-          Social & Content
-          <span class="blob-btn__inner">
-            <span class="blob-btn__blobs">
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-            </span>
-          </span>
+        <!-- Social -->
+        <button onclick="switchTab('social')" id="tab-social" class="whitespace-nowrap px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent">
+            Social & Content
         </button>
 
-        <!-- AI (Inactive) -->
-        <button onclick="switchTab('ai')" id="tab-ai" class="blob-btn blob-btn--sm text-sm shrink-0 snap-center" style="--cyan: #ffffff;">
-          AI Agents
-          <span class="blob-btn__inner">
-            <span class="blob-btn__blobs">
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-              <span class="blob-btn__blob"></span>
-            </span>
-          </span>
+        <!-- AI -->
+        <button onclick="switchTab('ai')" id="tab-ai" class="whitespace-nowrap px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent">
+            AI Agents
         </button>
-
       </div>
-
-      <!-- Right Arrow (Mobile Only) -->
-      <button onclick="scrollTabs('right')" class="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center text-white bg-black/50 backdrop-blur-sm rounded-full border border-white/10 shadow-lg active:scale-95 transition-all">
-        <i class="fas fa-chevron-right text-xs"></i>
-      </button>
-
     </div>
 
     <!-- CONTENT: WEB DEV (Default) -->
@@ -124,10 +79,10 @@
       <!-- Starter -->
       <div class="package-card w-full max-w-[360px] card-spotlight group relative p-8 rounded-3xl bg-black border border-white/10 hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] overflow-hidden">
         <h4 class="text-xl font-bold text-white mb-2">Starter Kit</h4>
-        <p class="text-sm text-slate-400 mb-6">Perfect for new businesses.</p>
+        <p class="text-sm text-slate-400 mb-6">Launch a premium site that looks credible and converts.</p>
         <div class="mb-8"><span class="text-4xl font-extrabold text-white">$3,000</span><span class="text-slate-500 ml-1">USD</span></div>
         <a href="contact.html" class="blob-btn w-full" style="--cyan: #cbd5e1;">
-            Get Started
+            Start Your Project
             <span class="blob-btn__inner">
               <span class="blob-btn__blobs">
                 <span class="blob-btn__blob"></span>
@@ -138,11 +93,11 @@
             </span>
         </a>
         <div class="features mt-8 space-y-4">
-          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Custom UI/UX Design</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Up to 5 pages</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Mobile-first design</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Contact form + tracking</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Performance + SEO basics</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Custom, premium design (no templates)</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Up to 5 high-impact pages</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Mobile-first, fully responsive</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Conversion-ready contact + lead forms</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-slate-400 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Speed + SEO foundation (best practices)</span></div>
         </div>
       </div>
 
@@ -150,10 +105,10 @@
       <div class="package-card w-full max-w-[360px] card-spotlight relative p-8 rounded-3xl bg-gradient-to-br from-yellow-500/10 to-transparent border border-yellow-500/50 shadow-[0_0_40px_rgba(234,179,8,0.15)] hover:shadow-[0_0_60px_rgba(234,179,8,0.3)] transition-all duration-300 transform md:-translate-y-4 overflow-hidden">
         <div class="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-[22px]">MOST POPULAR</div>
         <h4 class="text-xl font-bold text-white mb-2">Growth Kit</h4>
-        <p class="text-sm text-yellow-100/80 mb-6">For businesses ready to expand.</p>
+        <p class="text-sm text-yellow-100/80 mb-6">Upgrade your brand and turn more visitors into leads.</p>
         <div class="mb-8"><span class="text-4xl font-extrabold text-yellow-400">$6,000</span><span class="text-slate-500 ml-1">USD</span></div>
         <a href="contact.html" class="blob-btn w-full" style="--cyan: #EAB308;">
-            Get Started
+            Scale With Growth
             <span class="blob-btn__inner">
               <span class="blob-btn__blobs">
                 <span class="blob-btn__blob"></span>
@@ -165,20 +120,20 @@
         </a>
         <div class="features mt-8 space-y-4">
           <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-white text-sm font-medium">Everything in Starter</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Premium Branding & Design</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">On-page SEO + local setup</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Conversion improvements</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Analytics dashboard setup</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Complete brand identity upgrade</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">On-page SEO + local SEO setup</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Conversion optimization (CRO) pass</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Analytics + reporting dashboard setup</span></div>
         </div>
       </div>
 
       <!-- Scale -->
       <div class="package-card w-full max-w-[360px] card-spotlight group relative p-8 rounded-3xl bg-black border border-cyan-200/20 hover:bg-white/[0.06] hover:border-cyan-200/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] overflow-hidden">
         <h4 class="text-xl font-bold text-white mb-2">Scale Kit</h4>
-        <p class="text-sm text-slate-400 mb-6">Custom platforms & complex builds.</p>
+        <p class="text-sm text-slate-400 mb-6">Custom software and automation built to dominate your market.</p>
         <div class="mb-8"><span class="text-4xl font-extrabold text-white">Custom</span></div>
         <a href="contact.html" class="blob-btn w-full" style="--cyan: #22D3EE;">
-            Talk to us
+            Talk to Us
             <span class="blob-btn__inner">
               <span class="blob-btn__blobs">
                 <span class="blob-btn__blob"></span>
@@ -189,10 +144,11 @@
             </span>
         </a>
         <div class="features mt-8 space-y-4">
-          <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Portals, payments, integrations</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Advanced security + roles</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Automations + AI assistance</span></div>
-          <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Ongoing iteration & support</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Priority support & maintenance options</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Custom web apps + client portals</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Advanced security + role-based access</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Automation + AI integrations</span></div>
+          <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Ongoing iteration roadmap (monthly)</span></div>
         </div>
       </div>
     </div>
@@ -232,11 +188,11 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto items-start justify-items-center">
         <!-- Starter (SEO) -->
       <div class="package-card w-full max-w-[360px] card-spotlight group relative p-8 rounded-3xl bg-black border border-white/10 hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] overflow-hidden">
-            <h4 class="text-xl font-bold text-white mb-2">SEO Starter</h4>
-            <p class="text-sm text-slate-400 mb-6">Local visibility boost.</p>
+            <h4 class="text-xl font-bold text-white mb-2">Essential SEO</h4>
+            <p class="text-sm text-slate-400 mb-6">Capture local demand and build trust.</p>
             <div class="mb-8"><span class="text-4xl font-extrabold text-emerald-400">$1,500</span><span class="text-slate-500 ml-1">/mo</span></div>
             <a href="contact.html" class="blob-btn w-full" style="--cyan: #10B981;">
-                Get Started
+                Start Growing
                 <span class="blob-btn__inner">
                   <span class="blob-btn__blobs">
                     <span class="blob-btn__blob"></span>
@@ -247,20 +203,20 @@
                 </span>
             </a>
             <div class="features mt-8 space-y-4">
-              <div class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Local SEO Setup (GMB)</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">4 Blog Posts / Month</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Keyword Research</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Google Business Profile Optimization</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Technical Site Audit & Fixes</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-emerald-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Monthly Content Strategy (4 Posts)</span></div>
             </div>
         </div>
 
         <!-- Growth (Ads - CARDINAL) -->
         <div class="package-card w-full max-w-[360px] card-spotlight relative p-8 rounded-3xl bg-gradient-to-br from-cardinal/10 to-transparent border border-cardinal/50 shadow-[0_0_40px_rgba(230,0,35,0.15)] hover:shadow-[0_0_60px_rgba(230,0,35,0.3)] transition-all duration-300 transform md:-translate-y-4 overflow-hidden">
             <div class="absolute top-0 right-0 bg-cardinal text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-[22px]">MOST POPULAR</div>
-            <h4 class="text-xl font-bold text-white mb-2">Ads Growth</h4>
-            <p class="text-sm text-red-200/80 mb-6">High-intent lead generation.</p>
+            <h4 class="text-xl font-bold text-white mb-2">Growth Accelerator</h4>
+            <p class="text-sm text-red-200/80 mb-6">Instant traffic & high-quality leads.</p>
             <div class="mb-8"><span class="text-4xl font-extrabold text-cardinal">$3,000</span><span class="text-slate-500 ml-1">/mo</span></div>
             <a href="contact.html" class="blob-btn w-full" style="--cyan: #E60023;">
-                Get Started
+                Scale With Ads
                 <span class="blob-btn__inner">
                   <span class="blob-btn__blobs">
                     <span class="blob-btn__blob"></span>
@@ -271,20 +227,20 @@
                 </span>
             </a>
             <div class="features mt-8 space-y-4">
-              <div class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i><span class="text-white text-sm font-medium">Google & Meta Ads Mgmt</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i><span class="text-slate-300 text-sm">Custom Landing Page</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i><span class="text-slate-300 text-sm">A/B Testing Creatives</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i><span class="text-slate-300 text-sm">Weekly Reporting</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i><span class="text-white text-sm font-medium">Google & Meta Ads Management</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i><span class="text-slate-300 text-sm">High-Converting Landing Page</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i><span class="text-slate-300 text-sm">A/B Testing & Creative Optimization</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cardinal mt-1 mr-3"></i><span class="text-slate-300 text-sm">Weekly Performance Reporting</span></div>
             </div>
         </div>
 
         <!-- Scale (Full Stack) -->
         <div class="package-card w-full max-w-[360px] card-spotlight group relative p-8 rounded-3xl bg-black border border-cyan-200/20 hover:bg-white/[0.06] hover:border-cyan-200/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] overflow-hidden">
-            <h4 class="text-xl font-bold text-white mb-2">Full Domination</h4>
-            <p class="text-sm text-slate-400 mb-6">SEO + Ads + Content.</p>
+            <h4 class="text-xl font-bold text-white mb-2">Market Domination</h4>
+            <p class="text-sm text-slate-400 mb-6">Complete search & social monopoly.</p>
             <div class="mb-8"><span class="text-4xl font-extrabold text-white">Custom</span></div>
             <a href="contact.html" class="blob-btn w-full" style="--cyan: #22D3EE;">
-                Talk to us
+                Book Strategy Call
                 <span class="blob-btn__inner">
                   <span class="blob-btn__blobs">
                     <span class="blob-btn__blob"></span>
@@ -295,8 +251,8 @@
                 </span>
             </a>
             <div class="features mt-8 space-y-4">
-              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">National SEO Strategy</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Multi-channel Ad Spend >$10k</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">National/Global SEO Strategy</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Omnichannel Ad Spend Mgmt (>$10k)</span></div>
               <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Dedicated Account Manager</span></div>
             </div>
         </div>
@@ -339,8 +295,8 @@
          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto items-start justify-items-center">
         <!-- Starter -->
         <div class="package-card w-full max-w-[360px] card-spotlight group relative p-8 rounded-3xl bg-black border border-purple-400/20 hover:bg-white/[0.06] hover:border-purple-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(192,132,252,0.15)] overflow-hidden">
-            <h4 class="text-xl font-bold text-white mb-2">Content Lite</h4>
-            <p class="text-sm text-slate-400 mb-6">Consistent brand presence.</p>
+            <h4 class="text-xl font-bold text-white mb-2">Brand Presence</h4>
+            <p class="text-sm text-slate-400 mb-6">Stay top-of-mind consistently.</p>
             <div class="mb-8"><span class="text-4xl font-extrabold text-purple-400">$2,000</span><span class="text-slate-500 ml-1">/mo</span></div>
             <a href="contact.html" class="blob-btn w-full" style="--cyan: #A855F7;">
                 Get Started
@@ -354,20 +310,20 @@
                 </span>
             </a>
             <div class="features mt-8 space-y-4">
-              <div class="flex items-start"><i class="fas fa-check text-purple-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">12 Social Posts / Month</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-purple-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Caption & Hashtag Strategy</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-purple-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Community Management</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-purple-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">12 High-Quality Social Posts/mo</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-purple-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Strategic Captioning & Hashtags</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-purple-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Community Engagement & Replies</span></div>
             </div>
         </div>
 
         <!-- Growth (Viral - PINK) -->
         <div class="package-card w-full max-w-[360px] card-spotlight relative p-8 rounded-3xl bg-gradient-to-br from-pink-500/10 to-transparent border border-pink-500/50 shadow-[0_0_40px_rgba(236,72,153,0.15)] hover:shadow-[0_0_60px_rgba(236,72,153,0.3)] transition-all duration-300 transform md:-translate-y-4 overflow-hidden">
             <div class="absolute top-0 right-0 bg-pink-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-[22px]">MOST POPULAR</div>
-            <h4 class="text-xl font-bold text-white mb-2">Viral Growth</h4>
-            <p class="text-sm text-pink-200/80 mb-6">Short-form video focus.</p>
+            <h4 class="text-xl font-bold text-white mb-2">Viral Velocity</h4>
+            <p class="text-sm text-pink-200/80 mb-6">Explode reach with short-form video.</p>
             <div class="mb-8"><span class="text-4xl font-extrabold text-pink-500">$4,500</span><span class="text-slate-500 ml-1">/mo</span></div>
             <a href="contact.html" class="blob-btn w-full" style="--cyan: #EC4899;">
-                Get Started
+                Start Viral Growth
                 <span class="blob-btn__inner">
                   <span class="blob-btn__blobs">
                     <span class="blob-btn__blob"></span>
@@ -378,20 +334,20 @@
                 </span>
             </a>
             <div class="features mt-8 space-y-4">
-              <div class="flex items-start"><i class="fas fa-check text-pink-500 mt-1 mr-3"></i><span class="text-white text-sm font-medium">8 Reels/TikToks per Month</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-pink-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Scripting & Editing</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-pink-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Monthly Strategy Call</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-pink-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Performance Analysis</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-pink-500 mt-1 mr-3"></i><span class="text-white text-sm font-medium">8 Professional Reels/TikToks</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-pink-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Trend Research & Scripting</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-pink-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Pro Editing & Motion Graphics</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-pink-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Monthly Growth Strategy Call</span></div>
             </div>
         </div>
 
         <!-- Scale -->
         <div class="package-card w-full max-w-[360px] card-spotlight group relative p-8 rounded-3xl bg-black border border-cyan-200/20 hover:bg-white/[0.06] hover:border-cyan-200/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] overflow-hidden">
-            <h4 class="text-xl font-bold text-white mb-2">Media House</h4>
-            <p class="text-sm text-slate-400 mb-6">Brand explosion.</p>
+            <h4 class="text-xl font-bold text-white mb-2">Full Media House</h4>
+            <p class="text-sm text-slate-400 mb-6">Turn your brand into a publisher.</p>
             <div class="mb-8"><span class="text-4xl font-extrabold text-white">Custom</span></div>
             <a href="contact.html" class="blob-btn w-full" style="--cyan: #22D3EE;">
-                Talk to us
+                Contact Us
                 <span class="blob-btn__inner">
                   <span class="blob-btn__blobs">
                     <span class="blob-btn__blob"></span>
@@ -402,9 +358,9 @@
                 </span>
             </a>
             <div class="features mt-8 space-y-4">
-              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Daily Content production</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">On-site filming days</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Influencer Management</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Daily Content Production</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">On-Site Filming Sessions</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Influencer/Creator Partnerships</span></div>
             </div>
         </div>
     </div>
@@ -446,8 +402,8 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto items-start justify-items-center">
         <!-- Starter -->
         <div class="package-card w-full max-w-[360px] card-spotlight group relative p-8 rounded-3xl bg-black border border-yellow-400/20 hover:bg-white/[0.06] hover:border-yellow-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(250,204,21,0.15)] overflow-hidden">
-            <h4 class="text-xl font-bold text-white mb-2">Chatbot</h4>
-            <p class="text-sm text-slate-400 mb-6">24/7 Customer Support.</p>
+            <h4 class="text-xl font-bold text-white mb-2">Support Agent</h4>
+            <p class="text-sm text-slate-400 mb-6">Never miss a customer question.</p>
             <div class="mb-8"><span class="text-4xl font-extrabold text-yellow-400">$2,500</span><span class="text-slate-500 ml-1">setup</span></div>
             <a href="contact.html" class="blob-btn w-full" style="--cyan: #EAB308;">
                 Get Started
@@ -461,20 +417,20 @@
                 </span>
             </a>
             <div class="features mt-8 space-y-4">
-              <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Custom Knowledge Base</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Website Integration</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Lead Capture</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">24/7 Instant AI Responses</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Trained on Your Business Data</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Website Widget Integration</span></div>
             </div>
         </div>
 
         <!-- Growth (Booking - ORANGE) -->
         <div class="package-card w-full max-w-[360px] card-spotlight relative p-8 rounded-3xl bg-gradient-to-br from-orange-500/10 to-transparent border border-orange-500/50 shadow-[0_0_40px_rgba(249,115,22,0.15)] hover:shadow-[0_0_60px_rgba(249,115,22,0.3)] transition-all duration-300 transform md:-translate-y-4 overflow-hidden">
             <div class="absolute top-0 right-0 bg-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-[22px]">MOST POPULAR</div>
-            <h4 class="text-xl font-bold text-white mb-2">Booking Agent</h4>
-            <p class="text-sm text-orange-200/80 mb-6">Automate your calendar.</p>
+            <h4 class="text-xl font-bold text-white mb-2">Sales & Booking Agent</h4>
+            <p class="text-sm text-orange-200/80 mb-6">Turn conversations into appointments.</p>
             <div class="mb-8"><span class="text-4xl font-extrabold text-orange-500">$5,000</span><span class="text-slate-500 ml-1">setup</span></div>
             <a href="contact.html" class="blob-btn w-full" style="--cyan: #F97316;">
-                Get Started
+                Automate Sales
                 <span class="blob-btn__inner">
                   <span class="blob-btn__blobs">
                     <span class="blob-btn__blob"></span>
@@ -485,20 +441,20 @@
                 </span>
             </a>
             <div class="features mt-8 space-y-4">
-              <div class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3"></i><span class="text-white text-sm font-medium">Connects to Google/Outlook</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Qualifies Leads via Chat</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Auto-Scheduling</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">CRM Sync</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3"></i><span class="text-white text-sm font-medium">Smart Qualification & Lead Scoring</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Direct Calendar Sync (Google/Outlook)</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">CRM Integration (HubSpot/Salesforce)</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-orange-500 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Proactive Follow-up Sequences</span></div>
             </div>
         </div>
 
         <!-- Scale -->
         <div class="package-card w-full max-w-[360px] card-spotlight group relative p-8 rounded-3xl bg-black border border-cyan-200/20 hover:bg-white/[0.06] hover:border-cyan-200/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] overflow-hidden">
-            <h4 class="text-xl font-bold text-white mb-2">Enterprise AI</h4>
-            <p class="text-sm text-slate-400 mb-6">Workflow automation.</p>
+            <h4 class="text-xl font-bold text-white mb-2">Custom AI Ecosystem</h4>
+            <p class="text-sm text-slate-400 mb-6">End-to-end business automation.</p>
             <div class="mb-8"><span class="text-4xl font-extrabold text-white">Custom</span></div>
             <a href="contact.html" class="blob-btn w-full" style="--cyan: #22D3EE;">
-                Talk to us
+                Talk to Us
                 <span class="blob-btn__inner">
                   <span class="blob-btn__blobs">
                     <span class="blob-btn__blob"></span>
@@ -509,9 +465,9 @@
                 </span>
             </a>
             <div class="features mt-8 space-y-4">
-              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Internal Process Automation</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Custom LLM Training</span></div>
-              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Voice Agents</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Voice Agents (Inbound/Outbound)</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Internal Process Automation Bots</span></div>
+              <div class="flex items-start"><i class="fas fa-check text-cyan-300 mt-1 mr-3"></i><span class="text-slate-300 text-sm">Custom LLM Fine-Tuning</span></div>
             </div>
         </div>
     </div>
