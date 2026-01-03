@@ -263,6 +263,82 @@ function initPageScripts() {
     });
   })();
 
+  // Services Carousel (Specific)
+  (function initServicesLogic() {
+    const track = document.getElementById("serviceCarousel");
+    const prev = document.getElementById("prevBtn");
+    const next = document.getElementById("nextBtn");
+
+    if (!track || !prev || !next) return;
+
+    // Show buttons if content overflows
+    const checkOverflow = () => {
+      if (track.scrollWidth > track.clientWidth) {
+        prev.classList.remove("hidden");
+        next.classList.remove("hidden");
+        prev.classList.add("flex");
+        next.classList.add("flex");
+      } else {
+        prev.classList.add("hidden");
+        next.classList.add("hidden");
+        prev.classList.remove("flex");
+        next.classList.remove("flex");
+      }
+    };
+
+    const updateAuthButtons = () => {
+      const tolerance = 5;
+      const atStart = track.scrollLeft <= tolerance;
+      const atEnd =
+        track.scrollLeft >= track.scrollWidth - track.clientWidth - tolerance;
+
+      prev.disabled = atStart;
+      next.disabled = atEnd;
+
+      // Opacity handling for glassmorphism
+      prev.style.opacity = atStart ? "0.3" : "1";
+      next.style.opacity = atEnd ? "0.3" : "1";
+      prev.style.cursor = atStart ? "not-allowed" : "pointer";
+      next.style.cursor = atEnd ? "not-allowed" : "pointer";
+    };
+
+    const scrollAmount = () => {
+      // Scroll one card width (approx 360px + gap)
+      return window.innerWidth < 768 ? 300 : 380;
+    };
+
+    prev.addEventListener("click", () => {
+      track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+    });
+
+    next.addEventListener("click", () => {
+      track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+    });
+
+    track.addEventListener("scroll", updateAuthButtons, { passive: true });
+    window.addEventListener("resize", () => {
+      checkOverflow();
+      updateAuthButtons();
+    });
+
+    // Init
+    checkOverflow();
+    updateAuthButtons();
+
+    // Keyboard Nav
+    track.setAttribute("tabindex", "0");
+    track.style.outline = "none";
+    track.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      }
+    });
+  })();
+
   // Contact forms
   // Strategy:
   // 1) If a form endpoint is configured (Formspree / serverless), POST to it.

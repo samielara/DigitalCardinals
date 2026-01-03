@@ -14,146 +14,160 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mt-12">
-
-      <!-- Web Development & Design (Cyan) -->
-      <a href="web-development.html" class="group relative block h-full">
-        <!-- Floating Icon -->
-        <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-cyan/50 shadow-[0_0_20px_rgba(34,211,238,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-            <i class="fas fa-layer-group text-2xl text-cyan drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"></i>
-        </div>
+    <!-- Carousel Container Wrapper -->
+    <div class="relative group/carousel">
         
-        <!-- Card Body -->
-        <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-cyan/5 border border-cyan/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(34,211,238,0.25)] hover:bg-cyan/10 overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-cyan/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
-            
-            <div class="relative z-10 flex flex-col items-center text-center h-full">
-                <h4 class="text-2xl font-bold text-cyan mb-3">Development & Design</h4>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    Everything you need: premium custom designs and high-performance code. We build platforms that scale and convert.
-                </p>
-                <div class="mt-auto flex items-center text-sm font-semibold text-cyan tracking-wide">
-                    Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
-                </div>
-            </div>
-        </div>
-      </a>
-
-      <!-- SEO (Emerald) -->
-      <a href="seo.html" class="group relative block h-full">
-        <!-- Floating Icon -->
-        <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-emerald-400/50 shadow-[0_0_20px_rgba(52,211,153,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-            <i class="fas fa-search text-2xl text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.8)]"></i>
-        </div>
+        <!-- Navigation Buttons (Hidden by default, shown via JS if scalable) -->
+        <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-30 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-black/60 hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] disabled:opacity-0 disabled:cursor-not-allowed items-center justify-center hidden md:flex">
+            <i class="fas fa-chevron-left text-lg"></i>
+        </button>
         
-        <!-- Card Body -->
-        <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-emerald-400/5 border border-emerald-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(52,211,153,0.25)] hover:bg-emerald-400/10 overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
-            
-            <div class="relative z-10 flex flex-col items-center text-center h-full">
-                <h4 class="text-2xl font-bold text-emerald-400 mb-3">SEO</h4>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    Get found by local customers. We optimize your site to rank higher and attract organic traffic.
-                </p>
-                <div class="mt-auto flex items-center text-sm font-semibold text-emerald-400 tracking-wide">
-                    Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
-                </div>
-            </div>
-        </div>
-      </a>
+        <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-30 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-black/60 hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] disabled:opacity-0 disabled:cursor-not-allowed items-center justify-center hidden md:flex">
+            <i class="fas fa-chevron-right text-lg"></i>
+        </button>
 
-      <!-- Digital Ads (Cardinal) -->
-      <a href="digital-ads.html" class="group relative block h-full">
-         <!-- Floating Icon -->
-        <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-cardinal/50 shadow-[0_0_20px_rgba(230,0,35,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-            <i class="fas fa-bullseye text-2xl text-cardinal drop-shadow-[0_0_8px_rgba(230,0,35,0.8)]"></i>
-        </div>
-        
-        <!-- Card Body -->
-        <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-cardinal/5 border border-cardinal/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(230,0,35,0.25)] hover:bg-cardinal/10 overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-cardinal/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
+        <!-- Carousel Track -->
+        <div id="serviceCarousel" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 px-4 -mx-4 scrollbar-hide scroll-smooth">
             
-            <div class="relative z-10 flex flex-col items-center text-center h-full">
-                <h4 class="text-2xl font-bold text-cardinal mb-3">Digital Ads</h4>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    Targeted campaigns that convert. We run high-ROI ads on Google & Social to bring you leads fast.
-                </p>
-                <div class="mt-auto flex items-center text-sm font-semibold text-cardinal tracking-wide">
-                    Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
-                </div>
+            <!-- Web Development & Design (Cyan) -->
+            <div class="min-w-[300px] md:min-w-[360px] snap-center">
+                <a href="web-development.html" class="group relative block h-full">
+                    <!-- Floating Icon -->
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-cyan/50 shadow-[0_0_20px_rgba(34,211,238,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                        <i class="fas fa-layer-group text-2xl text-cyan drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"></i>
+                    </div>
+                    
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-cyan/5 border border-cyan/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(34,211,238,0.25)] hover:bg-cyan/10 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <div class="relative z-10 flex flex-col items-center text-center h-full">
+                            <h4 class="text-2xl font-bold text-cyan mb-3">Development & Design</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Everything you need: premium custom designs and high-performance code. We build platforms that scale and convert.
+                            </p>
+                            <div class="mt-auto flex items-center text-sm font-semibold text-cyan tracking-wide">
+                                Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
-      </a>
 
-      <!-- Social Content (Purple) -->
-      <a href="social-media-content.html" class="group relative block h-full">
-        <!-- Floating Icon -->
-        <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-purple-400/50 shadow-[0_0_20px_rgba(192,132,252,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-            <i class="fas fa-users text-2xl text-purple-400 drop-shadow-[0_0_8px_rgba(192,132,252,0.8)]"></i>
-        </div>
-        
-        <!-- Card Body -->
-        <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-purple-400/5 border border-purple-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(192,132,252,0.25)] hover:bg-purple-400/10 overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
-            
-            <div class="relative z-10 flex flex-col items-center text-center h-full">
-                <h4 class="text-2xl font-bold text-purple-400 mb-3">Social Content</h4>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    Stay visible and relevant. We create engaging video and post content to keep your audience hooked.
-                </p>
-                <div class="mt-auto flex items-center text-sm font-semibold text-purple-400 tracking-wide">
-                    Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
-                </div>
+            <!-- SEO (Emerald) -->
+            <div class="min-w-[300px] md:min-w-[360px] snap-center">
+                <a href="seo.html" class="group relative block h-full">
+                    <!-- Floating Icon -->
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-emerald-400/50 shadow-[0_0_20px_rgba(52,211,153,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                        <i class="fas fa-search text-2xl text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.8)]"></i>
+                    </div>
+                    
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-emerald-400/5 border border-emerald-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(52,211,153,0.25)] hover:bg-emerald-400/10 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <div class="relative z-10 flex flex-col items-center text-center h-full">
+                            <h4 class="text-2xl font-bold text-emerald-400 mb-3">SEO</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Get found by local customers. We optimize your site to rank higher and attract organic traffic.
+                            </p>
+                            <div class="mt-auto flex items-center text-sm font-semibold text-emerald-400 tracking-wide">
+                                Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
-      </a>
 
-      <!-- AI Agents (Yellow) -->
-      <a href="ai-agents.html" class="group relative block h-full">
-        <!-- Floating Icon -->
-        <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-yellow-400/50 shadow-[0_0_20px_rgba(250,204,21,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-            <i class="fas fa-robot text-2xl text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"></i>
-        </div>
-        
-        <!-- Card Body -->
-        <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-yellow-400/5 border border-yellow-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(250,204,21,0.25)] hover:bg-yellow-400/10 overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
-            
-            <div class="relative z-10 flex flex-col items-center text-center h-full">
-                <h4 class="text-2xl font-bold text-yellow-400 mb-3">AI Agents</h4>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    Automate your customer service. 24/7 AI agents that answer questions and book appointments.
-                </p>
-                <div class="mt-auto flex items-center text-sm font-semibold text-yellow-400 tracking-wide">
-                    Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
-                </div>
+            <!-- Digital Ads (Cardinal) -->
+            <div class="min-w-[300px] md:min-w-[360px] snap-center">
+                <a href="digital-ads.html" class="group relative block h-full">
+                    <!-- Floating Icon -->
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-cardinal/50 shadow-[0_0_20px_rgba(230,0,35,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                        <i class="fas fa-bullseye text-2xl text-cardinal drop-shadow-[0_0_8px_rgba(230,0,35,0.8)]"></i>
+                    </div>
+                    
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-cardinal/5 border border-cardinal/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(230,0,35,0.25)] hover:bg-cardinal/10 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cardinal/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <div class="relative z-10 flex flex-col items-center text-center h-full">
+                            <h4 class="text-2xl font-bold text-cardinal mb-3">Digital Ads</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Targeted campaigns that convert. We run high-ROI ads on Google & Social to bring you leads fast.
+                            </p>
+                            <div class="mt-auto flex items-center text-sm font-semibold text-cardinal tracking-wide">
+                                Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
-      </a>
 
-      <!-- Mix & Match (White/Silver) -->
-      <a href="contact.html" class="group relative block h-full">
-        <!-- Floating Icon -->
-        <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-white/50 shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-            <i class="fas fa-fingerprint text-2xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"></i>
-        </div>
-        
-        <!-- Card Body -->
-        <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-white/5 border border-white/20 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:bg-white/10 overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
-            
-            <div class="relative z-10 flex flex-col items-center text-center h-full">
-                <h4 class="text-2xl font-bold text-white mb-3">Mix & Match</h4>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    Don't fit in a box? Combine services to build a custom package tailored to your specific goals.
-                </p>
-                <div class="mt-auto flex items-center text-sm font-semibold text-white tracking-wide">
-                    Build My Package <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
-                </div>
+            <!-- Social Content (Purple) -->
+            <div class="min-w-[300px] md:min-w-[360px] snap-center">
+                <a href="social-media-content.html" class="group relative block h-full">
+                    <!-- Floating Icon -->
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-purple-400/50 shadow-[0_0_20px_rgba(192,132,252,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                        <i class="fas fa-users text-2xl text-purple-400 drop-shadow-[0_0_8px_rgba(192,132,252,0.8)]"></i>
+                    </div>
+                    
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-purple-400/5 border border-purple-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(192,132,252,0.25)] hover:bg-purple-400/10 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <div class="relative z-10 flex flex-col items-center text-center h-full">
+                            <h4 class="text-2xl font-bold text-purple-400 mb-3">Social Content</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Stay visible and relevant. We create engaging video and post content to keep your audience hooked.
+                            </p>
+                            <div class="mt-auto flex items-center text-sm font-semibold text-purple-400 tracking-wide">
+                                Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
-      </a>
 
+            <!-- AI Agents (Yellow) -->
+            <div class="min-w-[300px] md:min-w-[360px] snap-center">
+                <a href="ai-agents.html" class="group relative block h-full">
+                    <!-- Floating Icon -->
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-yellow-400/50 shadow-[0_0_20px_rgba(250,204,21,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                        <i class="fas fa-robot text-2xl text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"></i>
+                    </div>
+                    
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-yellow-400/5 border border-yellow-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(250,204,21,0.25)] hover:bg-yellow-400/10 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <div class="relative z-10 flex flex-col items-center text-center h-full">
+                            <h4 class="text-2xl font-bold text-yellow-400 mb-3">AI Agents</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Automate your customer service. 24/7 AI agents that answer questions and book appointments.
+                            </p>
+                            <div class="mt-auto flex items-center text-sm font-semibold text-yellow-400 tracking-wide">
+                                Learn more <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Mix & Match (White/Silver) -->
+            <div class="min-w-[300px] md:min-w-[360px] snap-center">
+                <a href="contact.html" class="group relative block h-full">
+                    <!-- Floating Icon -->
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-white/50 shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                        <i class="fas fa-fingerprint text-2xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"></i>
+                    </div>
+                    
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-white/5 border border-white/20 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:bg-white/10 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <div class="relative z-10 flex flex-col items-center text-center h-full">
+                            <h4 class="text-2xl font-bold text-white mb-3">Mix & Match</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Don't fit in a box? Combine services to build a custom package tailored to your specific goals.
+                            </p>
+                            <div class="mt-auto flex items-center text-sm font-semibold text-white tracking-wide">
+                                Build My Package <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
     </div>
   </div>
 </section>

@@ -485,3 +485,13 @@ h1, h2, h3, .brand-font {
     border-color: rgba(255, 255, 255, 0.2);
     font-weight: 700;
 }
+
+
+/* Utility: Hide Scrollbar (for Carousels) */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
