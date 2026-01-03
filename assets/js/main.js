@@ -268,9 +268,7 @@ function initPageScripts() {
   // 2) Else, if deployed on Netlify, POST as a Netlify Form (AJAX).
   // 3) Else, fall back to mailto as a last resort.
   (function initContactForms() {
-    const forms = Array.from(
-      document.querySelectorAll("form[data-contact-form]")
-    );
+    const forms = Array.from(document.querySelectorAll('form[name="contact"]'));
     if (!forms.length) return;
 
     const config = window.DC_CONFIG || {};
