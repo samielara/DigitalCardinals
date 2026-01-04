@@ -268,22 +268,38 @@ function initPageScripts() {
     const track = document.getElementById("serviceCarousel");
     const prev = document.getElementById("prevBtn");
     const next = document.getElementById("nextBtn");
+    const cards = document.querySelectorAll("[data-carousel-item]");
 
     if (!track || !prev || !next) return;
 
-    // Show buttons if content overflows
-    const checkOverflow = () => {
-      if (track.scrollWidth > track.clientWidth) {
-        prev.classList.remove("hidden");
-        next.classList.remove("hidden");
-        prev.classList.add("flex");
-        next.classList.add("flex");
-      } else {
-        prev.classList.add("hidden");
-        next.classList.add("hidden");
-        prev.classList.remove("flex");
-        next.classList.remove("flex");
-      }
+    // Center Focus Logic
+    const updateActiveScale = () => {
+      const centerPoint = track.scrollLeft + track.clientWidth / 2;
+
+      cards.forEach((card) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const dist = Math.abs(centerPoint - cardCenter);
+        // Threshold: roughly half a card width
+        const isCenter = dist < card.offsetWidth / 2;
+
+        if (isCenter) {
+          card.classList.remove("scale-90", "opacity-40");
+          card.classList.add(
+            "scale-100",
+            "md:scale-110",
+            "opacity-100",
+            "z-10"
+          );
+        } else {
+          card.classList.remove(
+            "scale-100",
+            "md:scale-110",
+            "opacity-100",
+            "z-10"
+          );
+          card.classList.add("scale-90", "opacity-40");
+        }
+      });
     };
 
     // Infinite Loop Logic (No disabled states)
@@ -297,40 +313,53 @@ function initPageScripts() {
       next.style.cursor = "pointer";
     };
 
-    const scrollAmount = () => {
-      // Scroll one card width (approx 420px + gap) - Updated for larger cards
+    const getScrollStep = () => {
+      // Find width including gap
+      if (cards.length > 0) {
+        return cards[0].offsetWidth + 24; // 24 is gap-6
+      }
       return window.innerWidth < 768 ? 340 : 440;
     };
 
     prev.addEventListener("click", () => {
+      const scrollStep = getScrollStep();
       const tolerance = 5;
+
       if (track.scrollLeft <= tolerance) {
         // Loop to end
         track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
       } else {
-        track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+        track.scrollBy({ left: -scrollStep, behavior: "smooth" });
       }
     });
 
     next.addEventListener("click", () => {
+      const scrollStep = getScrollStep();
       const tolerance = 5;
       const maxScroll = track.scrollWidth - track.clientWidth;
+
       if (track.scrollLeft >= maxScroll - tolerance) {
         // Loop to start
         track.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+        track.scrollBy({ left: scrollStep, behavior: "smooth" });
       }
     });
 
-    track.addEventListener("scroll", updateAuthButtons, { passive: true });
+    track.addEventListener(
+      "scroll",
+      () => {
+        updateActiveScale();
+      },
+      { passive: true }
+    );
+
     window.addEventListener("resize", () => {
-      checkOverflow();
-      updateAuthButtons();
+      updateActiveScale();
     });
 
     // Init
-    checkOverflow();
+    updateActiveScale();
     updateAuthButtons();
 
     // Keyboard Nav (Infinite support)
@@ -339,23 +368,28 @@ function initPageScripts() {
     track.addEventListener("keydown", (e) => {
       const tolerance = 5;
       const maxScroll = track.scrollWidth - track.clientWidth;
+      const scrollStep = getScrollStep();
 
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         if (track.scrollLeft <= tolerance) {
           track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
         } else {
-          track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+          track.scrollBy({ left: -scrollStep, behavior: "smooth" });
         }
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
         if (track.scrollLeft >= maxScroll - tolerance) {
           track.scrollTo({ left: 0, behavior: "smooth" });
         } else {
-          track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+          track.scrollBy({ left: scrollStep, behavior: "smooth" });
         }
       }
     });
+
+    // Auto-center initial load if not already
+    // The CSS padding handles this, but we force a check
+    setTimeout(updateActiveScale, 100);
   })();
 
   // Contact forms
