@@ -313,83 +313,93 @@ function initPageScripts() {
       next.style.cursor = "pointer";
     };
 
-    const getScrollStep = () => {
-      // Find width including gap
-      if (cards.length > 0) {
-        return cards[0].offsetWidth + 24; // 24 is gap-6
-      }
-      return window.innerWidth < 768 ? 340 : 440;
+    const getCardWidth = () => {
+      if (cards.length > 0) return cards[0].offsetWidth + 24; // width + gap
+      return 0;
     };
 
-    prev.addEventListener("click", () => {
-      const scrollStep = getScrollStep();
-      const tolerance = 5;
+    // Infinite Loop Logic
+    const handleInfiniteScroll = () => {
+      const cardWidth = getCardWidth();
+      if (!cardWidth) return;
 
-      if (track.scrollLeft <= tolerance) {
-        // Loop to end
-        track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
-      } else {
-        track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+      const scrollLeft = track.scrollLeft;
+      const centerView = scrollLeft + track.clientWidth / 2;
+
+      // Clone AI (Index 0) Center
+      const center0 = cards[0].offsetLeft + cards[0].offsetWidth / 2;
+      // Clone Mix (Index 7, or last) Center
+      const centerLast =
+        cards[cards.length - 1].offsetLeft +
+        cards[cards.length - 1].offsetWidth / 2;
+
+      // Threshold for teleport
+      const threshold = cardWidth / 2;
+
+      if (Math.abs(centerView - center0) < threshold) {
+        // User is at Start Clone (AI) -> Jump to Real AI (Index 6)
+        // Real AI is 2nd from last
+        scrollToCard(cards.length - 2, "auto");
+      } else if (Math.abs(centerView - centerLast) < threshold) {
+        // User is at End Clone (Mix) -> Jump to Real Mix (Index 1)
+        scrollToCard(1, "auto");
       }
-    });
+    };
 
-    next.addEventListener("click", () => {
-      const scrollStep = getScrollStep();
-      const tolerance = 5;
-      const maxScroll = track.scrollWidth - track.clientWidth;
-
-      if (track.scrollLeft >= maxScroll - tolerance) {
-        // Loop to start
-        track.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        track.scrollBy({ left: scrollStep, behavior: "smooth" });
-      }
-    });
-
+    // Scroll Listener with Debounce
+    let isScrolling;
     track.addEventListener(
       "scroll",
       () => {
         updateActiveScale();
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(handleInfiniteScroll, 50);
       },
       { passive: true }
     );
 
-    window.addEventListener("resize", () => {
-      updateActiveScale();
+    prev.addEventListener("click", () => {
+      const step = getCardWidth();
+      track.scrollBy({ left: -step, behavior: "smooth" });
     });
 
-    // Init
-    updateActiveScale();
-    updateAuthButtons();
+    next.addEventListener("click", () => {
+      const step = getCardWidth();
+      track.scrollBy({ left: step, behavior: "smooth" });
+    });
 
-    // Keyboard Nav (Infinite support)
+    // Keyboard Nav
     track.setAttribute("tabindex", "0");
     track.style.outline = "none";
     track.addEventListener("keydown", (e) => {
-      const tolerance = 5;
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      const scrollStep = getScrollStep();
-
+      const step = getCardWidth();
       if (e.key === "ArrowLeft") {
         e.preventDefault();
-        if (track.scrollLeft <= tolerance) {
-          track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
-        } else {
-          track.scrollBy({ left: -scrollStep, behavior: "smooth" });
-        }
+        track.scrollBy({ left: -step, behavior: "smooth" });
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
-        if (track.scrollLeft >= maxScroll - tolerance) {
-          track.scrollTo({ left: 0, behavior: "smooth" });
-        } else {
-          track.scrollBy({ left: scrollStep, behavior: "smooth" });
-        }
+        track.scrollBy({ left: step, behavior: "smooth" });
       }
     });
 
-    // Auto-center initial load if not already
-    // The CSS padding handles this, but we force a check
-    setTimeout(updateActiveScale, 100);
+    // Auto-center "Development & Design" (Index 2) on load
+    const scrollToCard = (index, behavior = "smooth") => {
+      if (cards[index]) {
+        const trackCenter = track.clientWidth / 2;
+        const cardCenter =
+          cards[index].offsetLeft + cards[index].offsetWidth / 2;
+        const targetLeft = cardCenter - trackCenter;
+        track.scrollTo({ left: targetLeft, behavior: behavior });
+      }
+    };
+
+    // Init Logic
+    setTimeout(() => {
+      // Index 2 is "Development & Design"
+      // [Clone AI, Mix, Dev, SEO ... ]
+      scrollToCard(2, "auto");
+      updateActiveScale();
+    }, 100);
   })();
 
   // Contact forms
@@ -572,18 +582,19 @@ window.scrollTabs = function (direction) {
 };
 
 // ... existing code ...
+// ... existing code ...
 window.switchTab = function (tabName) {
-  // Reset all buttons
+  // Reset all buttons (Real + Clones)
   const buttons = document.querySelectorAll("#packages button");
   buttons.forEach((btn) => {
     btn.classList.remove("active");
   });
 
-  // Activate clicked button
-  const activeBtn = document.getElementById("tab-" + tabName);
-  if (activeBtn) {
-    activeBtn.classList.add("active");
-  }
+  // Activate matching buttons (Real + Clones)
+  const matchingBtns = document.querySelectorAll(
+    `#tabs-container button[data-tab="${tabName}"]`
+  );
+  matchingBtns.forEach((btn) => btn.classList.add("active"));
 
   // Hide all content
   const contents = document.querySelectorAll(".package-content");
@@ -597,14 +608,8 @@ window.switchTab = function (tabName) {
     selectedContent.classList.remove("hidden");
   }
 
-  // Auto-center the active tab in the scroll view (Mobile)
-  if (activeBtn) {
-    activeBtn.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center",
-    });
-  }
+  // NOTE: Scroll centering is now handled by Interaction/Arrows/Teleport logic
+  // to prevent fighting with the infinite loop.
 };
 
 // Auto-hide "Service Details" feature blocks if on Home Page (index.html or root)
@@ -619,4 +624,106 @@ document.addEventListener("includesLoaded", () => {
     const details = document.querySelectorAll(".service-detail-block");
     details.forEach((el) => el.classList.add("hidden"));
   }
+});
+
+// Package Tab Navigation (Arrows)
+// Package Tab Navigation (Infinite Loop)
+document.addEventListener("includesLoaded", () => {
+  const container = document.getElementById("tabs-container");
+  const prevBtn = document.getElementById("pkg-prev");
+  const nextBtn = document.getElementById("pkg-next");
+
+  if (!container || !prevBtn || !nextBtn) return;
+
+  const buttons = Array.from(container.querySelectorAll("button"));
+
+  // Helper to center a specific tab index
+  function scrollToTab(index, behavior = "smooth") {
+    if (!buttons[index]) return;
+    const btn = buttons[index];
+    // Calculate center position
+    const left =
+      btn.offsetLeft - container.clientWidth / 2 + btn.clientWidth / 2;
+    container.scrollTo({ left, behavior });
+
+    // Sync Content (Selection)
+    const tabName = btn.getAttribute("data-tab");
+    if (window.switchTab) window.switchTab(tabName);
+  }
+
+  // Find currently centered tab
+  function getCenteredIndex() {
+    const center = container.scrollLeft + container.clientWidth / 2;
+    let closestI = 0;
+    let minDiff = Infinity;
+
+    buttons.forEach((btn, i) => {
+      const btnCenter = btn.offsetLeft + btn.clientWidth / 2;
+      const diff = Math.abs(center - btnCenter);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestI = i;
+      }
+    });
+    return closestI;
+  }
+
+  // Initial Load: Center "Web"
+  let disableScrollLogic = true;
+  const webIndex = buttons.findIndex(
+    (b) => b.getAttribute("data-tab") === "web"
+  );
+
+  if (webIndex > -1) {
+    setTimeout(() => {
+      scrollToTab(webIndex, "auto");
+      // Enable scroll logic after layout settles
+      setTimeout(() => {
+        disableScrollLogic = false;
+      }, 200);
+    }, 100);
+  } else {
+    disableScrollLogic = false;
+  }
+
+  // Infinite Scroll Teleport Logic
+  let scrollTimeout;
+  container.addEventListener("scroll", () => {
+    if (disableScrollLogic) return;
+
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const index = getCenteredIndex();
+      const lastIndex = buttons.length - 1;
+
+      // 0 = Clone Last -> Jump to Real Last (Index last-1)
+      // Last = Clone First -> Jump to Real First (Index 1)
+      if (index === 0) {
+        scrollToTab(lastIndex - 1, "auto");
+      } else if (index === lastIndex) {
+        scrollToTab(1, "auto");
+      } else {
+        // Ensure active state matches where we stopped
+        const tabName = buttons[index].getAttribute("data-tab");
+        if (window.switchTab) window.switchTab(tabName);
+      }
+    }, 50);
+  });
+
+  // Navigation Buttons (Services-like behavior: ScrollBy)
+  prevBtn.addEventListener("click", () => {
+    const current = buttons[getCenteredIndex()];
+    if (current) {
+      const step = current.offsetWidth + 8; // Width + gap (8px)
+      container.scrollBy({ left: -step, behavior: "smooth" });
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    const current = buttons[getCenteredIndex()];
+    if (current) {
+      const step = current.offsetWidth + 8;
+      container.scrollBy({ left: step, behavior: "smooth" });
+    }
+  });
 });

@@ -54,16 +54,19 @@
       </div>
 
       <!-- RIGHT: Visual -->
-      <div class="relative flex justify-center lg:justify-end lg:translate-x-[110px] lg:translate-y-[12px]">
+      <div class="relative flex flex-col items-center justify-center lg:justify-end lg:items-end lg:translate-x-[110px] lg:translate-y-[12px]">
         <img
           src="assets/images/cardinal-logo-v4.png"
           alt="Digital Cardinal Logo"
           class="relative w-64 sm:w-80 lg:w-[420px] pointer-events-none animate-float mix-blend-screen [mask-image:radial-gradient(closest-side,black_60%,transparent_95%)]" />
+          
+        <!-- Scroll Indicator (Moved here) -->
+        <div class="scroll-arrow mt-2 lg:hidden relative z-20"></div>
       </div>
 
     </div>
   </div>
 
-  <!-- Scroll Indicator -->
-  <div class="scroll-arrow absolute left-1/2 -translate-x-1/2 bottom-16 z-20"></div>
+  <!-- Scroll Indicator (Desktop Only - Absolute Bottom if needed, or just hide absolute one on mobile) -->
+  <div class="scroll-arrow hidden lg:block absolute left-1/2 -translate-x-1/2 bottom-16 z-20"></div>
 </section>
