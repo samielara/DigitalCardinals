@@ -411,7 +411,7 @@ h1, h2, h3, .brand-font {
 }
 
 .nav-link.active {
-  color: var(--cardinal-red) !important;
+  color: #ffffff !important;
 }
 
 /* Animated Underline */
@@ -422,12 +422,12 @@ h1, h2, h3, .brand-font {
   left: 0;
   width: 0%;
   height: 1px;
-  background-color: #ffffff; /* White underline */
+  background-color: #E60023; /* Red underline */
   transition: width 0.3s ease-in-out;
 }
 
 .nav-link.active::after {
-  background-color: #ffffff; /* White underline for active as requested */
+  background-color: #E60023;
 }
 
 .nav-link:hover::after,
@@ -437,10 +437,12 @@ h1, h2, h3, .brand-font {
 
 /* CTA "Book Consultation" Button - Make it distinct & smaller */
 .blob-btn--cta {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255,255,255,0.05);
+  border: 1px solid #E60023;
+  background: transparent;
+  color: #ffffff;
   padding: 10px 24px; /* Reduced from default */
   font-size: 0.8rem;  /* Smaller text */
+  box-shadow: 0 0 15px rgba(230, 0, 35, 0.4);
 }
 .blob-btn--cta:hover {
   border-color: rgba(255, 255, 255, 0.4);
@@ -494,4 +496,99 @@ h1, h2, h3, .brand-font {
 .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Override CTA Button Hover to be White with Black Text */
+.blob-btn--cta:hover {
+  border-color: #ffffff !important;
+  color: #000000 !important;
+  background: transparent !important;
+}
+.blob-btn--cta:hover .blob-btn__blob {
+  background: #ffffff !important;
+}
+
+/* ========================================= */
+/* TRAVELLING BORDER ANIMATION BUTTON        */
+/* ========================================= */
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate-border {
+    0% { --gradient-angle: 0deg; }
+    100% { --gradient-angle: 360deg; }
+}
+
+.btn-traveling-border {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 9999px;
+    background: transparent;
+    padding: 2px; /* Border width */
+    /* Hover Glow */
+    box-shadow: 0 0 10px rgba(230, 0, 35, 0.1);
+}
+
+.btn-traveling-border:hover {
+    box-shadow: 0 0 25px rgba(230, 0, 35, 0.6);
+    transform: scale(1.05);
+}
+
+/* The Animated Border Layer */
+.btn-traveling-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px; /* Must match parent padding/border width intent */
+    
+    /* Rotating Gradient */
+    background: conic-gradient(
+        from var(--gradient-angle), 
+        transparent 0%, 
+        transparent 70%, 
+        #E60023 100%
+    );
+    animation: rotate-border 3s linear infinite;
+    
+    /* Masking: Show only the border area */
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* The Content Layer */
+.btn-traveling-border .btn-inner {
+    position: relative;
+    z-index: 2;
+    /* Transparent Background with subtle Blur */
+    background-color: rgba(15, 23, 42, 0.4); 
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.875rem; 
+    padding: 12px 28px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.05em;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
 }

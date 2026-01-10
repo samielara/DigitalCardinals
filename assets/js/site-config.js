@@ -4,7 +4,7 @@
 window.DC_CONFIG = Object.assign(
   {
     // Primary inbox for contact forms + mailto fallback.
-    contactEmail: "SamiElarab@gmail.com",
+    contactEmail: "contact@digitalcardinals.com",
 
     // Optional: direct form endpoint (recommended for production).
     // EXAMPLES:

@@ -20,10 +20,10 @@ This project is a **static HTML + Tailwind (CDN)** marketing site with reusable 
 
 The form supports three modes (in this order):
 
-1) **Direct endpoint** (recommended): set `formEndpoint` in `assets/js/site-config.js`.
+1. **Direct endpoint** (recommended): set `formEndpoint` in `assets/js/site-config.js`.
    - Works with Formspree or any custom API endpoint that accepts a POST.
-2) **Netlify Forms**: if you deploy to Netlify, leaving `formEndpoint` blank will still capture submissions.
-3) **Mailto fallback**: if neither of the above works, the site opens the visitor’s email client pre-filled.
+2. **Netlify Forms**: if you deploy to Netlify, leaving `formEndpoint` blank will still capture submissions.
+3. **Mailto fallback**: if neither of the above works, the site opens the visitor’s email client pre-filled.
 
 Edit this file:
 
@@ -32,8 +32,8 @@ Edit this file:
 ```js
 window.DC_CONFIG = Object.assign(
   {
-    contactEmail: "SamiElarab@gmail.com",
-    formEndpoint: "https://formspree.io/f/xxxxxxxx" // optional
+    contactEmail: "contact@digitalcardinals.com",
+    formEndpoint: "https://formspree.io/f/xxxxxxxx", // optional
   },
   window.DC_CONFIG || {}
 );

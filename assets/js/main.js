@@ -412,7 +412,7 @@ function initPageScripts() {
     if (!forms.length) return;
 
     const config = window.DC_CONFIG || {};
-    const defaultTo = config.contactEmail || "SamiElarab@gmail.com";
+    const defaultTo = config.contactEmail || "contact@digitalcardinals.com";
     const defaultEndpoint = config.formEndpoint || "";
 
     function encodeFormData(formData) {
@@ -584,6 +584,7 @@ window.scrollTabs = function (direction) {
 // ... existing code ...
 // ... existing code ...
 window.switchTab = function (tabName) {
+  console.log("Switching tab to:", tabName);
   // Reset all buttons (Real + Clones)
   const buttons = document.querySelectorAll("#packages button");
   buttons.forEach((btn) => {
@@ -646,10 +647,39 @@ document.addEventListener("includesLoaded", () => {
       btn.offsetLeft - container.clientWidth / 2 + btn.clientWidth / 2;
     container.scrollTo({ left, behavior });
 
-    // Sync Content (Selection)
+    // Sync Content (Selection) immediately for snappiness,
+    // though scroll listener will also confirm it.
     const tabName = btn.getAttribute("data-tab");
     if (window.switchTab) window.switchTab(tabName);
   }
+
+  // GLOBAL CLICK HANDLER (Exposed)
+  window.clickTab = function (tabName) {
+    console.log("Clicked tab:", tabName);
+    // Find the primary (non-clone) button index for this tab
+    // Clones are usually at ends. We want the middle ones.
+    // Heuristic: skip index 0 and index length-1 if possible.
+    let targetIndex = -1;
+
+    // Prefer matches that are NOT edges
+    for (let i = 1; i < buttons.length - 1; i++) {
+      if (buttons[i].getAttribute("data-tab") === tabName) {
+        targetIndex = i;
+        break;
+      }
+    }
+
+    // Fallback (if edge match is only option)
+    if (targetIndex === -1) {
+      targetIndex = buttons.findIndex(
+        (b) => b.getAttribute("data-tab") === tabName
+      );
+    }
+
+    if (targetIndex > -1) {
+      scrollToTab(targetIndex, "smooth");
+    }
+  };
 
   // Find currently centered tab
   function getCenteredIndex() {
@@ -671,13 +701,15 @@ document.addEventListener("includesLoaded", () => {
   // Initial Load: Center "Web"
   let disableScrollLogic = true;
   const webIndex = buttons.findIndex(
-    (b) => b.getAttribute("data-tab") === "web"
+    (b) =>
+      b.getAttribute("data-tab") === "web" &&
+      b.innerText.includes("Development")
   );
+  // Ensure we picked the middle one (index 2 usually) not a clone if any
 
   if (webIndex > -1) {
     setTimeout(() => {
       scrollToTab(webIndex, "auto");
-      // Enable scroll logic after layout settles
       setTimeout(() => {
         disableScrollLogic = false;
       }, 200);
@@ -710,19 +742,25 @@ document.addEventListener("includesLoaded", () => {
     }, 50);
   });
 
-  // Navigation Buttons (Services-like behavior: ScrollBy)
+  // Navigation Buttons
   prevBtn.addEventListener("click", () => {
-    const current = buttons[getCenteredIndex()];
-    if (current) {
-      const step = current.offsetWidth + 8; // Width + gap (8px)
+    const currentI = getCenteredIndex();
+    const prevI = currentI - 1;
+    if (buttons[prevI]) scrollToTab(prevI);
+    else {
+      // Wrap logic if needed, or rely on clone teleport
+      // But if manual click, just scroll
+      const step = buttons[currentI].offsetWidth + 8;
       container.scrollBy({ left: -step, behavior: "smooth" });
     }
   });
 
   nextBtn.addEventListener("click", () => {
-    const current = buttons[getCenteredIndex()];
-    if (current) {
-      const step = current.offsetWidth + 8;
+    const currentI = getCenteredIndex();
+    const nextI = currentI + 1;
+    if (buttons[nextI]) scrollToTab(nextI);
+    else {
+      const step = buttons[currentI].offsetWidth + 8;
       container.scrollBy({ left: step, behavior: "smooth" });
     }
   });
