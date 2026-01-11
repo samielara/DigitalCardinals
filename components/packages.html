@@ -2,64 +2,68 @@
   
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
 
-    <div class="text-center mb-12">
-      <h2 class="text-base text-slate-400 font-semibold tracking-wide uppercase">Packages</h2>
-      <h3 class="mt-2 text-4xl leading-tight font-extrabold tracking-tight text-white sm:text-5xl brand-font">
-        Transparent pricing. Measurable results.
-      </h3>
-      <p class="mt-4 max-w-2xl text-xl text-slate-400 mx-auto">
-        Start lean, then scale with confidence. Every package includes strategy, design, and execution.
-      </p>
+    <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-5xl font-black tracking-[0.2em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-red-500 drop-shadow-sm inline-block">Packages</h1>
     </div>
 
-    <!-- TABS -->
-    <!-- TABS -->
-    <!-- TABS -->
-    <div class="relative flex justify-center mb-16 items-center px-2 md:px-12 group/nav">
+
+    <!-- Floating Segmented Control -->
+    <!-- Navigation Wrapper: Handles Mobile (Floating) vs Desktop (Top-Right Panel) layouts -->
+    <!-- Navigation Wrapper: Unified Control Bar -->
+    <div class="relative max-w-5xl mx-auto mb-16 px-4 flex items-center justify-center gap-4 group/nav">
       
-      <!-- Prev Button -->
-      <button id="pkg-prev" class="absolute left-0 md:left-auto md:relative md:mr-4 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-110 active:scale-95">
-          <i class="fas fa-chevron-left text-sm md:text-lg"></i>
+      <!-- Prev Button (Static Flow) -->
+      <button id="pkg-prev" style="--border-color: #ffffff;" class="flex-shrink-0 w-10 h-10 rounded-full bg-black/40 md:bg-white/5 backdrop-blur-md border border-white/10 md:border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/30 active:scale-95 shadow-lg md:shadow-none font-light z-20">
+          <i class="fas fa-chevron-left text-sm md:text-base"></i>
       </button>
 
-      <!-- Segmented Toggle Control -->
-      <!-- Segmented Toggle Control -->
-      <div id="tabs-container" class="flex items-center w-full md:w-auto md:max-w-3xl px-[calc(50%-90px)] gap-2 mx-auto overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
+      <!-- Scrollable Container (Pill Shape) -->
+      <div id="tabs-container" class="flex-1 flex items-center overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory rounded-full bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl ring-1 ring-white/5 py-1.5 px-1.5 gap-1 md:max-w-xl">
         
-        <!-- [CLONE] AI Agents (Last Item) -->
-        <button onclick="clickTab('ai')" data-tab="ai" class="flex-shrink-0 snap-center whitespace-nowrap px-4 py-2 md:px-6 md:py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent" aria-hidden="true">
-            AI Agents
-        </button>
-
-        <!-- SEO -->
-        <button onclick="clickTab('seo')" id="tab-seo" data-tab="seo" class="flex-shrink-0 snap-center whitespace-nowrap px-4 py-2 md:px-6 md:py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent">
-            SEO & Ads
-        </button>
-
-        <!-- Web Dev -->
-        <button onclick="clickTab('web')" id="tab-web" data-tab="web" class="flex-shrink-0 snap-center whitespace-nowrap px-4 py-2 md:px-6 md:py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent active">
-            Web Development
-        </button>
-
-        <!-- Social -->
-        <button onclick="clickTab('social')" id="tab-social" data-tab="social" class="flex-shrink-0 snap-center whitespace-nowrap px-4 py-2 md:px-6 md:py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent">
+        <!-- [CLONE] Social (Extra Buffer) -->
+        <button onclick="clickTab('social')" data-tab="social" style="--border-color: #ffffff;" class="flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent select-none">
             Social & Content
         </button>
 
-        <!-- AI -->
-        <button onclick="clickTab('ai')" id="tab-ai" data-tab="ai" class="flex-shrink-0 snap-center whitespace-nowrap px-4 py-2 md:px-6 md:py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent">
+        <!-- [CLONE] AI Agents -->
+        <button onclick="clickTab('ai')" data-tab="ai" style="--border-color: #ffffff;" class="flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent select-none">
             AI Agents
         </button>
 
-        <!-- [CLONE] SEO (First Item) -->
-        <button onclick="clickTab('seo')" data-tab="seo" class="flex-shrink-0 snap-center whitespace-nowrap px-4 py-2 md:px-6 md:py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent" aria-hidden="true">
+        <!-- SEO (Real) -->
+        <button onclick="clickTab('seo')" id="tab-seo" data-tab="seo" style="--border-color: #ffffff;" class="flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent select-none">
             SEO & Ads
+        </button>
+
+        <!-- Web Dev (Real) -->
+        <button onclick="clickTab('web')" id="tab-web" data-tab="web" style="--border-color: #ffffff;" class="flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-white bg-white/10 border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)] select-none active-tab">
+            Web Development
+        </button>
+
+        <!-- Social (Real) -->
+        <button onclick="clickTab('social')" id="tab-social" data-tab="social" style="--border-color: #ffffff;" class="flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent select-none">
+            Social & Content
+        </button>
+
+        <!-- AI Agents (Real) -->
+        <button onclick="clickTab('ai')" id="tab-ai" data-tab="ai" style="--border-color: #ffffff;" class="flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent select-none">
+            AI Agents
+        </button>
+
+        <!-- [CLONE] SEO -->
+        <button onclick="clickTab('seo')" data-tab="seo" style="--border-color: #ffffff;" class="flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent select-none">
+            SEO & Ads
+        </button>
+        
+        <!-- [CLONE] Web (Extra Buffer) -->
+        <button onclick="clickTab('web')" data-tab="web" style="--border-color: #ffffff;" class="flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent select-none">
+            Web Development
         </button>
       </div>
 
-      <!-- Next Button -->
-      <button id="pkg-next" class="absolute right-0 md:right-auto md:relative md:ml-4 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-110 active:scale-95">
-          <i class="fas fa-chevron-right text-sm md:text-lg"></i>
+      <!-- Next Button (Static Flow) -->
+      <button id="pkg-next" style="--border-color: #ffffff;" class="flex-shrink-0 w-10 h-10 rounded-full bg-black/40 md:bg-white/5 backdrop-blur-md border border-white/10 md:border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/30 active:scale-95 shadow-lg md:shadow-none font-light z-20">
+          <i class="fas fa-chevron-right text-sm md:text-base"></i>
       </button>
 
     </div>

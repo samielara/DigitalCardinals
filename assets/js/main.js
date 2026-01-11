@@ -276,28 +276,65 @@ function initPageScripts() {
     const updateActiveScale = () => {
       const centerPoint = track.scrollLeft + track.clientWidth / 2;
 
-      cards.forEach((card) => {
+      cards.forEach((card, index) => {
         const cardCenter = card.offsetLeft + card.offsetWidth / 2;
         const dist = Math.abs(centerPoint - cardCenter);
         // Threshold: roughly half a card width
         const isCenter = dist < card.offsetWidth / 2;
 
+        // Find INNER element for styles
+        const spotlight = card.querySelector(".card-spotlight");
+
         if (isCenter) {
+          // Wrapper Styles
           card.classList.remove("scale-90", "opacity-40");
           card.classList.add(
             "scale-100",
-            "md:scale-110",
+            "md:scale-125",
             "opacity-100",
             "z-10"
           );
+
+          // Inner Element Styles (Animation + Color Source)
+          if (spotlight) {
+            spotlight.classList.add("traveling-border-card");
+
+            // Sync Navigation Buttons
+            // [DISABLED] User requested neutral style to match Packages section
+            /*
+             const borderColor = spotlight.style.getPropertyValue("--border-color");
+             if (borderColor && prev && next) {
+               [prev, next].forEach((btn) => {
+                 btn.style.borderColor = borderColor;
+                 btn.style.color = borderColor;
+               });
+               // Update CSS variable for hover effects
+               [prev, next].forEach((btn) => {
+                 btn.style.setProperty("--active-color", borderColor);
+               });
+             }
+             */
+            // Update Indicators
+            const borderColor =
+              spotlight.style.getPropertyValue("--border-color"); // Keep this for indicators
+            if (typeof updateIndicators === "function") {
+              updateIndicators(index, borderColor);
+            }
+          }
         } else {
+          // Wrapper Styles
           card.classList.remove(
             "scale-100",
-            "md:scale-110",
+            "md:scale-125",
             "opacity-100",
             "z-10"
           );
           card.classList.add("scale-90", "opacity-40");
+
+          // Inner Element Styles
+          if (spotlight) {
+            spotlight.classList.remove("traveling-border-card");
+          }
         }
       });
     };
@@ -314,7 +351,7 @@ function initPageScripts() {
     };
 
     const getCardWidth = () => {
-      if (cards.length > 0) return cards[0].offsetWidth + 24; // width + gap
+      if (cards.length > 0) return cards[0].offsetWidth + 64; // width + gap
       return 0;
     };
 
@@ -391,6 +428,70 @@ function initPageScripts() {
         const targetLeft = cardCenter - trackCenter;
         track.scrollTo({ left: targetLeft, behavior: behavior });
       }
+    };
+
+    // Indicators Logic
+    const indicatorsContainer = document.getElementById("service-indicators");
+    let indicators = [];
+
+    // Generate Indicators (excluding clones)
+    if (indicatorsContainer && cards.length > 2) {
+      indicatorsContainer.innerHTML = "";
+      // Real cards are indices 1 to cards.length - 2
+      // Count = cards.length - 2
+      const realCount = cards.length - 2;
+
+      for (let i = 0; i < realCount; i++) {
+        const dot = document.createElement("button");
+        dot.className =
+          "h-1.5 rounded-full transition-all duration-300 bg-white/20 hover:bg-white/40";
+        dot.style.width = "24px"; // Default width
+        dot.ariaLabel = `Go to slide ${i + 1}`;
+
+        // Click to scroll
+        dot.addEventListener("click", () => {
+          // Real Index = i + 1 (Since index 0 is clone)
+          scrollToCard(i + 1);
+        });
+
+        indicatorsContainer.appendChild(dot);
+        indicators.push(dot);
+      }
+    }
+
+    const updateIndicators = (activeIndex, borderColor) => {
+      if (!indicators.length) return;
+
+      // Map carousel index to indicator index
+      // 0 (Clone Last) -> Last Indicator
+      // 1 (Real 1) -> Indicator 0
+      // ...
+      // N (Real N) -> Indicator N-1
+      // N+1 (Clone First) -> Indicator 0
+
+      let indicatorIndex = 0;
+      const lastRealIndex = cards.length - 2;
+
+      if (activeIndex === 0) {
+        indicatorIndex = lastRealIndex - 1;
+      } else if (activeIndex === cards.length - 1) {
+        indicatorIndex = 0;
+      } else {
+        indicatorIndex = activeIndex - 1;
+      }
+
+      // Update styles
+      indicators.forEach((dot, i) => {
+        if (i === indicatorIndex) {
+          dot.style.width = "48px"; // Active width
+          dot.style.backgroundColor = borderColor || "#ffffff";
+          dot.style.opacity = "1";
+        } else {
+          dot.style.width = "24px"; // Inactive width
+          dot.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+          dot.style.opacity = "0.5";
+        }
+      });
     };
 
     // Init Logic
@@ -588,14 +689,40 @@ window.switchTab = function (tabName) {
   // Reset all buttons (Real + Clones)
   const buttons = document.querySelectorAll("#packages button");
   buttons.forEach((btn) => {
-    btn.classList.remove("active");
+    btn.classList.remove(
+      "active",
+      "text-white",
+      "bg-white/10",
+      "border-white/20",
+      "shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+    );
+    btn.classList.add(
+      "text-slate-400",
+      "border-transparent",
+      "hover:text-white",
+      "hover:bg-white/5"
+    );
   });
 
   // Activate matching buttons (Real + Clones)
   const matchingBtns = document.querySelectorAll(
     `#tabs-container button[data-tab="${tabName}"]`
   );
-  matchingBtns.forEach((btn) => btn.classList.add("active"));
+  matchingBtns.forEach((btn) => {
+    btn.classList.add(
+      "active",
+      "text-white",
+      "bg-white/10",
+      "border-white/20",
+      "shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+    );
+    btn.classList.remove(
+      "text-slate-400",
+      "border-transparent",
+      "hover:text-white",
+      "hover:bg-white/5"
+    );
+  });
 
   // Hide all content
   const contents = document.querySelectorAll(".package-content");
@@ -700,16 +827,19 @@ document.addEventListener("includesLoaded", () => {
 
   // Initial Load: Center "Web"
   let disableScrollLogic = true;
-  const webIndex = buttons.findIndex(
-    (b) =>
-      b.getAttribute("data-tab") === "web" &&
-      b.innerText.includes("Development")
-  );
+  // Robustly find the real "Web Development" tab (not a clone)
+  const webBtn = document.getElementById("tab-web");
+  const webIndex = buttons.indexOf(webBtn);
   // Ensure we picked the middle one (index 2 usually) not a clone if any
 
   if (webIndex > -1) {
     setTimeout(() => {
-      scrollToTab(webIndex, "auto");
+      // Use native API for perfect alignment
+      webBtn.scrollIntoView({
+        behavior: "auto",
+        block: "nearest",
+        inline: "center",
+      });
       setTimeout(() => {
         disableScrollLogic = false;
       }, 200);
@@ -721,21 +851,69 @@ document.addEventListener("includesLoaded", () => {
   // Infinite Scroll Teleport Logic
   let scrollTimeout;
   container.addEventListener("scroll", () => {
+    // 1. Real-time Visual Update (Premium Feel)
+    const centerPoint = container.scrollLeft + container.clientWidth / 2;
+    buttons.forEach((btn) => {
+      const btnCenter = btn.offsetLeft + btn.clientWidth / 2;
+      const dist = Math.abs(centerPoint - btnCenter);
+
+      // Visual Threshold (tighter for premium snap feel)
+      if (dist < btn.clientWidth / 2) {
+        btn.classList.add(
+          "active",
+          "text-white",
+          "bg-white/10",
+          "border-white/20",
+          "shadow-[0_0_15px_rgba(255,255,255,0.1)]",
+          "traveling-border-card"
+        );
+        btn.classList.remove(
+          "text-slate-400",
+          "border-transparent",
+          "hover:text-white",
+          "hover:bg-white/5"
+        );
+      } else {
+        btn.classList.remove(
+          "active",
+          "text-white",
+          "bg-white/10",
+          "border-white/20",
+          "shadow-[0_0_15px_rgba(255,255,255,0.1)]",
+          "traveling-border-card"
+        );
+        btn.classList.add(
+          "text-slate-400",
+          "border-transparent",
+          "hover:text-white",
+          "hover:bg-white/5"
+        );
+      }
+    });
+
     if (disableScrollLogic) return;
 
+    // 2. Debounced Logic (Teleport + Content Switch)
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
       const index = getCenteredIndex();
-      const lastIndex = buttons.length - 1;
 
-      // 0 = Clone Last -> Jump to Real Last (Index last-1)
-      // Last = Clone First -> Jump to Real First (Index 1)
-      if (index === 0) {
-        scrollToTab(lastIndex - 1, "auto");
-      } else if (index === lastIndex) {
-        scrollToTab(1, "auto");
+      // DOUBLE CLONE LOGIC
+      // [0:CloneSoc] [1:CloneAI] | [2:SEO] [3:Web] [4:Soc] [5:AI] | [6:CloneSEO] [7:CloneWeb]
+
+      // LEFT SAFE: If index <= 1 (Clones), jump to Real Equivalent
+      // 0 (Clone Soc) -> 4 (Real Soc)
+      // 1 (Clone AI)  -> 5 (Real AI)
+      if (index <= 1) {
+        scrollToTab(index + 4, "auto");
+      }
+      // RIGHT SAFE: If index >= 6 (Clones), jump to Real Equivalent
+      // 6 (Clone SEO) -> 2 (Real SEO)
+      // 7 (Clone Web) -> 3 (Real Web)
+      else if (index >= 6) {
+        scrollToTab(index - 4, "auto");
       } else {
-        // Ensure active state matches where we stopped
+        // Sync Content
         const tabName = buttons[index].getAttribute("data-tab");
         if (window.switchTab) window.switchTab(tabName);
       }
@@ -745,23 +923,30 @@ document.addEventListener("includesLoaded", () => {
   // Navigation Buttons
   prevBtn.addEventListener("click", () => {
     const currentI = getCenteredIndex();
-    const prevI = currentI - 1;
-    if (buttons[prevI]) scrollToTab(prevI);
-    else {
-      // Wrap logic if needed, or rely on clone teleport
-      // But if manual click, just scroll
-      const step = buttons[currentI].offsetWidth + 8;
-      container.scrollBy({ left: -step, behavior: "smooth" });
+
+    // PRE-EMPTIVE TELEPORT (Bounce Strategy)
+    // Real Range: [2:SEO] ... [5:AI]
+
+    if (currentI <= 2) {
+      // We are at Start (SEO) or before.
+      scrollToTab(6, "auto"); // Teleport to Clone SEO
+      setTimeout(() => scrollToTab(5, "smooth"), 50); // Scroll to AI (Real End)
+    } else {
+      scrollToTab(currentI - 1, "smooth");
     }
   });
 
   nextBtn.addEventListener("click", () => {
     const currentI = getCenteredIndex();
-    const nextI = currentI + 1;
-    if (buttons[nextI]) scrollToTab(nextI);
-    else {
-      const step = buttons[currentI].offsetWidth + 8;
-      container.scrollBy({ left: step, behavior: "smooth" });
+
+    // PRE-EMPTIVE TELEPORT (Bounce Strategy)
+
+    if (currentI >= 5) {
+      // We are at End (AI) or after.
+      scrollToTab(1, "auto"); // Teleport to Clone AI (Left)
+      setTimeout(() => scrollToTab(2, "smooth"), 50); // Scroll to SEO (Real Start)
+    } else {
+      scrollToTab(currentI + 1, "smooth");
     }
   });
 });

@@ -1,43 +1,42 @@
-<section id="services" class="py-24 relative overflow-hidden">
-  <!-- Decorative background blob -->
-  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cardinal/5 rounded-full blur-3xl pointer-events-none"></div>
+<section id="services" class="pt-40 pb-34 relative overflow-hidden">
+  <!-- Decorative background blob (Removed) -->
 
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
 
-    <div class="text-center mb-16">
-      <h2 class="text-base text-cardinal font-semibold tracking-wide uppercase">Services</h2>
-      <h3 class="mt-2 text-4xl leading-tight font-extrabold tracking-tight text-white sm:text-5xl brand-font">
-        What we do best.
-      </h3>
-      <p class="mt-4 max-w-2xl text-xl text-slate-400 mx-auto">
-        Build or upgrade your business online.
-      </p>
+    <div class="text-center mb-8">
+      <h1 class="text-3xl md:text-5xl font-black tracking-[0.2em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-red-500 drop-shadow-sm inline-block">Services</h1>
+      <!-- Unified Controls (Arrows + Indicators) -->
+      <div class="mt-8 flex items-center justify-center gap-8">
+          <!-- Prev Button -->
+          <button id="prevBtn" class="w-10 h-10 rounded-full bg-black/40 md:bg-white/5 backdrop-blur-md border border-white/10 md:border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/30 active:scale-95 shadow-lg md:shadow-none font-light">
+              <i class="fas fa-chevron-left text-sm md:text-base"></i>
+          </button>
+
+          <!-- Indicators -->
+          <div id="service-indicators" class="flex justify-center items-center gap-3 z-20 relative"></div>
+
+          <!-- Next Button -->
+          <button id="nextBtn" class="w-10 h-10 rounded-full bg-black/40 md:bg-white/5 backdrop-blur-md border border-white/10 md:border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/30 active:scale-95 shadow-lg md:shadow-none font-light">
+              <i class="fas fa-chevron-right text-sm md:text-base"></i>
+          </button>
+      </div>
     </div>
 
     <!-- Carousel Container Wrapper -->
     <div class="relative group/carousel">
-        
-        <!-- Navigation Buttons (Refined Premium Style) -->
-        <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 md:-translate-x-5 z-40 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-95 disabled:opacity-0 disabled:cursor-not-allowed items-center justify-center group-hover/carousel:opacity-100">
-            <i class="fas fa-chevron-left text-lg md:text-xl"></i>
-        </button>
-        
-        <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 md:translate-x-5 z-40 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-white flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-95 disabled:opacity-0 disabled:cursor-not-allowed items-center justify-center group-hover/carousel:opacity-100">
-            <i class="fas fa-chevron-right text-lg md:text-xl"></i>
-        </button>
 
         <!-- Carousel Track -->
-        <div id="serviceCarousel" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pt-12 pb-12 scrollbar-hide px-[calc(50%-170px)] md:px-[calc(50%-210px)]">
+        <div id="serviceCarousel" class="flex overflow-x-auto snap-x snap-mandatory gap-12 pt-20 pb-12 scrollbar-hide px-[calc(50%-170px)] md:px-[calc(50%-210px)]">
             
             <!-- [CLONE] AI Agents (Yellow) - For Infinite Loop Start -->
-            <div class="min-w-[340px] md:min-w-[420px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item data-clone="last">
+            <div class="min-w-[260px] md:min-w-[320px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item data-clone="last">
                 <a href="ai-agents.html" class="group relative block h-full">
                     <!-- Floating Icon -->
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-yellow-400/50 shadow-[0_0_20px_rgba(250,204,21,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                         <i class="fas fa-robot text-2xl text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"></i>
                     </div>
                     
-                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-yellow-400/5 border border-yellow-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(250,204,21,0.25)] hover:bg-yellow-400/10 overflow-hidden relative">
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-yellow-400/5 border border-yellow-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(250,204,21,0.25)] hover:bg-yellow-400/10 overflow-hidden relative" style="--border-color: #FACC15;">
                         <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
                         <div class="relative z-10 flex flex-col items-center text-center h-full">
                             <h4 class="text-2xl font-bold text-yellow-400 mb-3">AI Agents</h4>
@@ -53,14 +52,14 @@
             </div>
 
             <!-- Mix & Match (White/Silver) -->
-            <div class="min-w-[340px] md:min-w-[420px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
+            <div class="min-w-[260px] md:min-w-[320px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
                 <a href="contact.html" class="group relative block h-full">
                     <!-- Floating Icon -->
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-white/50 shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                         <i class="fas fa-fingerprint text-2xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"></i>
                     </div>
                     
-                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-white/5 border border-white/20 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:bg-white/10 overflow-hidden relative">
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-white/5 border border-white/20 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:bg-white/10 overflow-hidden relative" style="--border-color: #FFFFFF;">
                         <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
                         <div class="relative z-10 flex flex-col items-center text-center h-full">
                             <h4 class="text-2xl font-bold text-white mb-3">Mix & Match</h4>
@@ -76,14 +75,14 @@
             </div>
 
             <!-- Web Development & Design (Cyan) -->
-            <div class="min-w-[340px] md:min-w-[420px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
+            <div class="min-w-[260px] md:min-w-[320px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
                 <a href="web-development.html" class="group relative block h-full">
                     <!-- Floating Icon -->
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-cyan/50 shadow-[0_0_20px_rgba(34,211,238,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                         <i class="fas fa-layer-group text-2xl text-cyan drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"></i>
                     </div>
                     
-                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-cyan/5 border border-cyan/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(34,211,238,0.25)] hover:bg-cyan/10 overflow-hidden relative">
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-cyan/5 border border-cyan/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(34,211,238,0.25)] hover:bg-cyan/10 overflow-hidden relative" style="--border-color: #00f2ff;">
                         <div class="absolute inset-0 bg-gradient-to-br from-cyan/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
                         <div class="relative z-10 flex flex-col items-center text-center h-full">
                             <h4 class="text-2xl font-bold text-cyan mb-3">Development & Design</h4>
@@ -99,14 +98,14 @@
             </div>
 
             <!-- SEO (Emerald) -->
-            <div class="min-w-[340px] md:min-w-[420px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
+            <div class="min-w-[260px] md:min-w-[320px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
                 <a href="seo.html" class="group relative block h-full">
                     <!-- Floating Icon -->
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-emerald-400/50 shadow-[0_0_20px_rgba(52,211,153,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                         <i class="fas fa-search text-2xl text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.8)]"></i>
                     </div>
                     
-                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-emerald-400/5 border border-emerald-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(52,211,153,0.25)] hover:bg-emerald-400/10 overflow-hidden relative">
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-emerald-400/5 border border-emerald-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(52,211,153,0.25)] hover:bg-emerald-400/10 overflow-hidden relative" style="--border-color: #34D399;">
                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
                         <div class="relative z-10 flex flex-col items-center text-center h-full">
                             <h4 class="text-2xl font-bold text-emerald-400 mb-3">SEO</h4>
@@ -122,14 +121,14 @@
             </div>
 
             <!-- Digital Ads (Cardinal) -->
-            <div class="min-w-[340px] md:min-w-[420px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
+            <div class="min-w-[260px] md:min-w-[320px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
                 <a href="digital-ads.html" class="group relative block h-full">
                     <!-- Floating Icon -->
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-cardinal/50 shadow-[0_0_20px_rgba(230,0,35,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                         <i class="fas fa-bullseye text-2xl text-cardinal drop-shadow-[0_0_8px_rgba(230,0,35,0.8)]"></i>
                     </div>
                     
-                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-cardinal/5 border border-cardinal/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(230,0,35,0.25)] hover:bg-cardinal/10 overflow-hidden relative">
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-cardinal/5 border border-cardinal/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(230,0,35,0.25)] hover:bg-cardinal/10 overflow-hidden relative" style="--border-color: #E60023;">
                         <div class="absolute inset-0 bg-gradient-to-br from-cardinal/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
                         <div class="relative z-10 flex flex-col items-center text-center h-full">
                             <h4 class="text-2xl font-bold text-cardinal mb-3">Digital Ads</h4>
@@ -145,14 +144,14 @@
             </div>
 
             <!-- Social Content (Purple) -->
-            <div class="min-w-[340px] md:min-w-[420px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
+            <div class="min-w-[260px] md:min-w-[320px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
                 <a href="social-media-content.html" class="group relative block h-full">
                     <!-- Floating Icon -->
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-purple-400/50 shadow-[0_0_20px_rgba(192,132,252,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                         <i class="fas fa-users text-2xl text-purple-400 drop-shadow-[0_0_8px_rgba(192,132,252,0.8)]"></i>
                     </div>
                     
-                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-purple-400/5 border border-purple-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(192,132,252,0.25)] hover:bg-purple-400/10 overflow-hidden relative">
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-purple-400/5 border border-purple-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(192,132,252,0.25)] hover:bg-purple-400/10 overflow-hidden relative" style="--border-color: #C084FC;">
                         <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
                         <div class="relative z-10 flex flex-col items-center text-center h-full">
                             <h4 class="text-2xl font-bold text-purple-400 mb-3">Social Content</h4>
@@ -168,14 +167,14 @@
             </div>
 
             <!-- AI Agents (Yellow) -->
-            <div class="min-w-[340px] md:min-w-[420px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
+            <div class="min-w-[260px] md:min-w-[320px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item>
                 <a href="ai-agents.html" class="group relative block h-full">
                     <!-- Floating Icon -->
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-yellow-400/50 shadow-[0_0_20px_rgba(250,204,21,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                         <i class="fas fa-robot text-2xl text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"></i>
                     </div>
                     
-                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-yellow-400/5 border border-yellow-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(250,204,21,0.25)] hover:bg-yellow-400/10 overflow-hidden relative">
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-yellow-400/5 border border-yellow-400/40 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(250,204,21,0.25)] hover:bg-yellow-400/10 overflow-hidden relative" style="--border-color: #FACC15;">
                         <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
                         <div class="relative z-10 flex flex-col items-center text-center h-full">
                             <h4 class="text-2xl font-bold text-yellow-400 mb-3">AI Agents</h4>
@@ -191,14 +190,14 @@
             </div>
 
             <!-- [CLONE] Mix & Match (White/Silver) - For Infinite Loop End -->
-            <div class="min-w-[340px] md:min-w-[420px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item data-clone="first">
+            <div class="min-w-[260px] md:min-w-[320px] snap-center transition-all duration-300 transform scale-90 opacity-40" data-carousel-item data-clone="first">
                 <a href="contact.html" class="group relative block h-full">
                     <!-- Floating Icon -->
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-2xl bg-black border border-white/50 shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                         <i class="fas fa-fingerprint text-2xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"></i>
                     </div>
                     
-                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-white/5 border border-white/20 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:bg-white/10 overflow-hidden relative">
+                    <div class="card-spotlight h-full pt-16 pb-8 px-8 rounded-3xl bg-white/5 border border-white/20 transition-all duration-500 group-hover:shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:bg-white/10 overflow-hidden relative" style="--border-color: #FFFFFF;">
                         <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500"></div>
                         <div class="relative z-10 flex flex-col items-center text-center h-full">
                             <h4 class="text-2xl font-bold text-white mb-3">Mix & Match</h4>

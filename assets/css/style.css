@@ -592,3 +592,40 @@ h1, h2, h3, .brand-font {
     height: 100%;
     backdrop-filter: blur(4px);
 }
+
+/* ========================================= */
+/* GENERIC CARD TRAVELING BORDER             */
+/* ========================================= */
+.traveling-border-card {
+    position: relative;
+    /* Requires border-radius on parent to work nicely with 'inherit' */
+}
+
+.traveling-border-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    border-radius: inherit; /* Matches parent card radius */
+    padding: 2px; /* Border Thickness */
+    
+    background: conic-gradient(
+        from var(--gradient-angle), 
+        transparent 0%, 
+        transparent 70%, 
+        var(--border-color, #E60023) 100%
+    );
+    
+    animation: rotate-border 4s linear infinite;
+    
+    /* Masking to create hollow border */
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+}
