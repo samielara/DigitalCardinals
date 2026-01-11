@@ -19,7 +19,7 @@
                 <a data-nav="about" href="/about.html" class="nav-link">About</a>
                 <a data-nav="contact" href="/contact.html" class="nav-link">Contact</a>
 
-                <a href="https://calendar.google.com" target="_blank" rel="noreferrer" class="btn-traveling-border ml-4">
+                <a href="https://calendar.app.google/ojQ7tPNkiXgwziU1A" target="_blank" class="btn-traveling-border ml-4">
                     <span class="btn-inner">Book Consultation</span>
                 </a>
             </div>
@@ -31,36 +31,80 @@
         </div>
     </div>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu"
-        class="hidden md:hidden fixed inset-0 top-20 z-50 bg-black/95 backdrop-blur-2xl transition-all duration-300">
-        <div class="px-6 py-12 flex flex-col items-center justify-center space-y-6 h-[calc(100vh-80px)]">
-            <a data-nav="home" href="/index.html#top" 
-               class="text-xl font-semibold text-slate-300 hover:text-white hover:scale-105 transition-all duration-300 tracking-tight">
-               Home
-            </a>
-            <a data-nav="services" href="/services.html" 
-               class="text-xl font-semibold text-slate-300 hover:text-white hover:scale-105 transition-all duration-300 tracking-tight">
-               Services
-            </a>
-            <a data-nav="packages" href="/packages.html" 
-               class="text-xl font-semibold text-slate-300 hover:text-white hover:scale-105 transition-all duration-300 tracking-tight">
-               Packages
-            </a>
-            <a data-nav="about" href="/about.html" 
-               class="text-xl font-semibold text-slate-300 hover:text-white hover:scale-105 transition-all duration-300 tracking-tight">
-               About
-            </a>
-            <a data-nav="contact" href="/contact.html" 
-               class="text-xl font-semibold text-slate-300 hover:text-white hover:scale-105 transition-all duration-300 tracking-tight">
-               Contact
-            </a>
+    <!-- Mobile Menu Overlay (Instagram-Style Side Drawer) -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-50">
+        
+        <!-- Backdrop (Click to close) -->
+        <div id="mobile-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
 
-            <div class="pt-6 w-full flex justify-center">
-                <a href="https://calendar.google.com" target="_blank" rel="noreferrer"
-                    class="btn-traveling-border w-full max-w-[200px] text-sm">
-                    <span class="btn-inner py-3">Book Consultation</span>
-                </a>
+        <!-- Sidebar Drawer -->
+        <div id="mobile-drawer" class="absolute left-0 top-0 bottom-0 w-[85%] max-w-[320px] shadow-2xl flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] origin-left -translate-x-full">
+            
+            <!-- Drawer Background -->
+            <div class="absolute inset-0 bg-[url('assets/images/brushed-metal.png')] bg-cover bg-left bg-no-repeat"></div>
+            <div class="absolute inset-0 bg-[#0a0a0a]/95"></div>
+
+            <!-- Drawer Content -->
+            <div class="relative z-10 flex flex-col h-full">
+                
+                <!-- Drawer Header: Brand -->
+                <div class="h-24 flex items-center px-8 border-b border-white/5">
+                    <img src="assets/images/header-logo.png" alt="Digital Cardinal" class="h-8 w-auto object-contain opacity-90" />
+                    <span class="ml-3 text-lg font-bold tracking-tighter text-slate-200">
+                        DIGITAL <span class="text-cardinal">CARDINAL</span>
+                    </span>
+                </div>
+
+                <!-- Drawer Links (Icon + Text) -->
+                <div class="flex-1 flex flex-col py-8 px-6 space-y-6 overflow-y-auto">
+                    
+                    <a data-nav="home" href="/index.html#top" class="group flex items-center p-3 rounded-xl transition-all duration-300 hover:bg-white/5 mx-2">
+                        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cardinal group-hover:bg-cardinal/10 transition-colors">
+                            <i class="fas fa-home text-lg"></i>
+                        </div>
+                        <span class="ml-4 text-lg font-medium text-slate-300 group-hover:text-white tracking-wide">Home</span>
+                    </a>
+
+                    <a data-nav="services" href="/services.html" class="group flex items-center p-3 rounded-xl transition-all duration-300 hover:bg-white/5 mx-2">
+                        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cardinal group-hover:bg-cardinal/10 transition-colors">
+                            <i class="fas fa-layer-group text-lg"></i>
+                        </div>
+                        <span class="ml-4 text-lg font-medium text-slate-300 group-hover:text-white tracking-wide">Services</span>
+                    </a>
+
+                    <a data-nav="packages" href="/packages.html" class="group flex items-center p-3 rounded-xl transition-all duration-300 hover:bg-white/5 mx-2">
+                        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cardinal group-hover:bg-cardinal/10 transition-colors">
+                            <i class="fas fa-cubes text-lg"></i>
+                        </div>
+                        <span class="ml-4 text-lg font-medium text-slate-300 group-hover:text-white tracking-wide">Packages</span>
+                    </a>
+
+                    <a data-nav="about" href="/about.html" class="group flex items-center p-3 rounded-xl transition-all duration-300 hover:bg-white/5 mx-2">
+                        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cardinal group-hover:bg-cardinal/10 transition-colors">
+                            <i class="fas fa-user-astronaut text-lg"></i>
+                        </div>
+                        <span class="ml-4 text-lg font-medium text-slate-300 group-hover:text-white tracking-wide">About</span>
+                    </a>
+
+                    <a data-nav="contact" href="/contact.html" class="group flex items-center p-3 rounded-xl transition-all duration-300 hover:bg-white/5 mx-2">
+                        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-cardinal group-hover:bg-cardinal/10 transition-colors">
+                            <i class="fas fa-paper-plane text-lg"></i>
+                        </div>
+                        <span class="ml-4 text-lg font-medium text-slate-300 group-hover:text-white tracking-wide">Contact</span>
+                    </a>
+
+                </div>
+
+                <!-- Bottom Action -->
+                <div class="p-6 border-t border-white/5 bg-black/20">
+                    <a href="https://calendar.app.google/ojQ7tPNkiXgwziU1A" target="_blank" class="btn-traveling-border w-full block">
+                        <span class="btn-inner py-4 w-full flex justify-center items-center gap-2">
+                            <i class="fas fa-calendar-check text-cardinal"></i>
+                            <span class="text-sm font-bold tracking-wider uppercase">Book Consultation</span>
+                        </span>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>

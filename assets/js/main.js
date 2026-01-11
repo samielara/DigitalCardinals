@@ -1,6 +1,43 @@
 // assets/js/main.js
 
 function initPageScripts() {
+  // Force Scroll to Top on Load (Aggressive)
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+
+  // 1. Instant jump (disable smooth scroll temporarily)
+  const html = document.documentElement;
+  const originalScrollBehavior = html.style.scrollBehavior;
+  html.style.scrollBehavior = "auto";
+
+  window.scrollTo(0, 0);
+
+  // 2. Reinforce after layout (catches browser restoration attempts)
+  requestAnimationFrame(() => {
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = "auto"; // Keep it auto
+  });
+
+  // 3. Final check and cleanup & Restore Smooth Scroll
+  // We wait 300ms to ensure no late layout shifts (e.g. carousels) happen
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = ""; // Clear inline override
+    document.documentElement.classList.add("scroll-smooth"); // Re-enable Tailwind class
+  }, 300);
+
+  // 4. One last verification on full window load (images/components done)
+  window.addEventListener("load", () => {
+    // If we are mostly scrolled down, force top again just in case
+    window.scrollTo(0, 0);
+  });
+
+  // Fallback for refresh
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+
   // Navbar: transparent at top, solid on scroll
   // We use the 'is-scrolled' class to toggle styles in style.css
   const navbar = document.getElementById("navbar");
@@ -45,20 +82,64 @@ function initPageScripts() {
       });
     });
 
-  // Mobile Menu Toggle
+  // Mobile Menu Layout & Animation
   const mobileBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
+  const mobileBackdrop = document.getElementById("mobile-backdrop");
+  const mobileDrawer = document.getElementById("mobile-drawer");
+
+  function openMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove("hidden");
+    // Force reflow
+    void mobileMenu.offsetWidth;
+
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.remove("opacity-0");
+      mobileBackdrop.classList.add("opacity-100");
+    }
+    if (mobileDrawer) {
+      mobileDrawer.classList.remove("-translate-x-full");
+      mobileDrawer.classList.add("translate-x-0");
+    }
+  }
+
+  function closeMenu() {
+    if (!mobileMenu) return;
+
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.remove("opacity-100");
+      mobileBackdrop.classList.add("opacity-0");
+    }
+    if (mobileDrawer) {
+      mobileDrawer.classList.remove("translate-x-0");
+      mobileDrawer.classList.add("-translate-x-full");
+    }
+
+    // Wait for transition to finish before hiding
+    setTimeout(() => {
+      mobileMenu.classList.add("hidden");
+    }, 500); // 500ms matches CSS duration
+  }
 
   if (mobileBtn && mobileMenu) {
     mobileBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
+      const isHidden = mobileMenu.classList.contains("hidden");
+      if (isHidden) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
     });
+
+    // Close menu when backdrop is clicked
+    if (mobileBackdrop) {
+      mobileBackdrop.addEventListener("click", closeMenu);
+    }
 
     // Close menu when a link is clicked
     mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-      });
+      link.addEventListener("click", closeMenu);
     });
   }
 
@@ -171,7 +252,7 @@ function initPageScripts() {
       },
     ];
 
-    const intervalMs = 1900;
+    const intervalMs = 2800;
     const animationMs = 260;
 
     const baseClassName = rotator.className;
@@ -805,6 +886,29 @@ document.addEventListener("includesLoaded", () => {
 
     if (targetIndex > -1) {
       scrollToTab(targetIndex, "smooth");
+
+      // MOBILE: Auto-center the middle card (Growth/Popular)
+      setTimeout(() => {
+        const content = document.getElementById(`content-${tabName}`);
+        if (content) {
+          const carousel = content.querySelector(".snap-x"); // Find our mobile carousel
+          if (carousel) {
+            // Scroll to 2nd card (Index 1)
+            // Card Width is roughly 280px + 16px gap
+            // Or use logic: scrollWidth / 3 * 1
+            const cardWidth = 280 + 16;
+            // Better: find the 2nd element
+            const secondCard = carousel.children[1];
+            if (secondCard) {
+              const scrollLeft =
+                secondCard.offsetLeft -
+                carousel.clientWidth / 2 +
+                secondCard.clientWidth / 2;
+              carousel.scrollTo({ left: scrollLeft, behavior: "smooth" });
+            }
+          }
+        }
+      }, 300); // Wait for tab fade-in
     }
   };
 
@@ -949,4 +1053,77 @@ document.addEventListener("includesLoaded", () => {
       scrollToTab(currentI + 1, "smooth");
     }
   });
+
+  // Auto-center the middle package card on LOAD & Handle Icon Effects
+  function initPackageCarousel() {
+    // Handle all carousel containers (Web, SEO, etc.)
+    // We look for .snap-x containers inside .tab-content or just generally
+    const carousels = document.querySelectorAll(".snap-x");
+
+    carousels.forEach((carousel) => {
+      if (!carousel.closest("#serviceCarousel")) {
+        // Exclude Services carousel which has its own logic
+        if (carousel.dataset.hasScrollListener) return;
+        carousel.dataset.hasScrollListener = "true";
+
+        const handleScroll = () => {
+          const centerPoint = carousel.scrollLeft + carousel.clientWidth / 2;
+
+          Array.from(carousel.children).forEach((card) => {
+            if (!card.classList.contains("package-card")) return;
+
+            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+            const dist = Math.abs(centerPoint - cardCenter);
+            const isCenter = dist < card.offsetWidth / 2;
+
+            // Target the floating icon wrapper
+            const icon = card.querySelector(".package-icon");
+
+            if (icon) {
+              if (isCenter) {
+                icon.classList.add(
+                  "traveling-border-absolute",
+                  "scale-110",
+                  "-translate-y-1"
+                );
+              } else {
+                icon.classList.remove(
+                  "traveling-border-absolute",
+                  "scale-110",
+                  "-translate-y-1"
+                );
+              }
+            }
+          });
+        };
+
+        carousel.addEventListener("scroll", handleScroll, { passive: true });
+        // Run immediately to set initial state
+        handleScroll();
+      }
+    });
+
+    // Original Auto-Center Logic for DEFAULT visible tab (Web)
+    const content = document.getElementById("content-web");
+    if (content) {
+      const carousel = content.querySelector(".snap-x");
+      if (carousel) {
+        // Wait for layout
+        setTimeout(() => {
+          // Find the 2nd card (Index 1)
+          const secondCard = carousel.children[1];
+          if (secondCard) {
+            const scrollLeft =
+              secondCard.offsetLeft -
+              carousel.clientWidth / 2 +
+              secondCard.clientWidth / 2;
+            carousel.scrollTo({ left: scrollLeft, behavior: "auto" });
+          }
+        }, 100);
+      }
+    }
+  }
+  // Run on load
+  initPackageCarousel();
+  window.addEventListener("resize", initPackageCarousel);
 });

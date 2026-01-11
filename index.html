@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -10,6 +10,17 @@
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Critical: Force Scroll to Top immediately & Clear Hash
+        if (history.scrollRestoration) history.scrollRestoration = 'manual';
+        
+        // Remove hash to prevent browser jump to section
+        if (window.location.hash) {
+            history.replaceState(null, null, window.location.pathname);
+        }
+        
+        window.scrollTo(0, 0);
+    </script>
 
     <!-- Fonts -->
     <link

@@ -14,10 +14,10 @@
   <!-- lighter gradient over video -->
   <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/30 via-transparent to-black/80 pointer-events-none"></div>
   <div class="relative z-20 w-full max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center">
 
       <!-- LEFT: Text -->
-      <div class="relative text-center lg:text-left lg:pl-[60px]">
+      <div class="relative text-center lg:text-left lg:pl-[60px] mt-16 md:mt-20 lg:mt-0">
         <!-- subtle glow -->
         <div class="pointer-events-none absolute -inset-10 rounded-3xl
                     bg-[radial-gradient(circle_at_25%_25%,rgba(168,85,247,0.18),transparent_60%),
@@ -38,17 +38,17 @@
 
           <!-- Core Services -->
           <div class="mt-8 md:mt-10 flex flex-col items-center lg:items-start gap-5 md:gap-7 max-w-full">
-            <div class="flex flex-row items-center justify-center lg:justify-start gap-4 flex-nowrap w-full">
+            <div class="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-2 md:gap-4 flex-nowrap w-full">
                 <span class="text-[10px] md:text-xs text-slate-400 uppercase tracking-[0.2em] font-bold whitespace-nowrap shrink-0 opacity-70">Core Services:</span>
                 
                 <!-- Rotator Pill -->
                 <div class="px-6 py-2.5 rounded-full bg-white/15 border border-white/10 backdrop-blur-md shadow-[0_0_25px_rgba(255,255,255,0.1)]">
-                    <span id="service-rotator" class="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-100 leading-none whitespace-nowrap" aria-live="off">Social & Video Content</span>
+                    <span id="service-rotator" class="text-xl sm:text-2xl md:text-3xl font-bold leading-none whitespace-nowrap transition-all duration-300" aria-live="off">Social & Video Content</span>
                 </div>
             </div>
             
             <div class="flex flex-nowrap justify-center lg:justify-start gap-2 w-full max-w-full pb-2 overflow-x-auto no-scrollbar mask-linear-fade">
-                <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-slate-200 text-xs md:text-sm font-medium whitespace-nowrap hover:bg-white/20 hover:border-white/20 transition-all shadow-sm backdrop-blur-sm shrink-0">Pay-On-Delivery</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-slate-200 text-xs md:text-sm font-medium whitespace-nowrap hover:bg-white/20 hover:border-white/20 transition-all shadow-sm backdrop-blur-sm shrink-0">Digital Ads</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-slate-200 text-xs md:text-sm font-medium whitespace-nowrap hover:bg-white/20 hover:border-white/20 transition-all shadow-sm backdrop-blur-sm shrink-0">Mobile-Friendly</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-slate-200 text-xs md:text-sm font-medium whitespace-nowrap hover:bg-white/20 hover:border-white/20 transition-all shadow-sm backdrop-blur-sm shrink-0">SEO-Ready</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-slate-200 text-xs md:text-sm font-medium whitespace-nowrap hover:bg-white/20 hover:border-white/20 transition-all shadow-sm backdrop-blur-sm shrink-0">Multilingual</span>
@@ -58,19 +58,23 @@
       </div>
 
       <!-- RIGHT: Visual -->
-      <div class="relative flex flex-col items-center justify-center lg:justify-end lg:items-center lg:translate-x-[50px]">
+      <div class="relative flex flex-col items-center justify-center lg:justify-end lg:items-center lg:translate-x-[45px] -mt-19 lg:mt-0">
         <img
           src="assets/images/hero-logo-transparent.png"
           alt="Digital Cardinal Logo"
           class="relative w-64 sm:w-80 lg:w-[650px] pointer-events-none animate-float mix-blend-normal [mask-image:radial-gradient(closest-side,black_60%,transparent_95%)]" />
           
         <!-- Scroll Indicator (Moved here) -->
-        <div class="scroll-arrow mt-2 lg:hidden relative z-20"></div>
+        <div class="scroll-premium-circle mt-2 lg:hidden relative z-20">
+            <i class="fas fa-chevron-down"></i>
+        </div>
       </div>
 
     </div>
   </div>
 
   <!-- Scroll Indicator (Desktop Only - Absolute Bottom if needed, or just hide absolute one on mobile) -->
-  <div class="scroll-arrow hidden lg:block absolute left-1/2 -translate-x-1/2 bottom-16 z-20"></div>
+  <div class="scroll-premium-circle hidden lg:flex absolute left-1/2 -translate-x-1/2 bottom-10 z-20">
+      <i class="fas fa-chevron-down"></i>
+  </div>
 </section>
