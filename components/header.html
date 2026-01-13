@@ -1,33 +1,38 @@
 <nav class="fixed w-full z-40 transition-all duration-300" id="navbar">
     <div data-navbar-bg class="absolute inset-0 transition-all duration-300 bg-transparent border-b border-transparent"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20 relative">
-            <a href="index.html#top" class="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center gap-3 group transition-transform active:!scale-100 active:!-translate-x-1/2 hover:!scale-100 hover:!-translate-x-1/2 md:active:!translate-x-0 md:hover:!translate-x-0" aria-label="Digital Cardinal Home">
-<img src="assets/images/header-logo.png" alt="Digital Cardinal" class="h-10 md:h-12 w-auto object-contain" />
-                <span class="text-2xl font-bold tracking-tighter brand-font whitespace-nowrap ml-2">
-                    <span class="text-white">DIGITAL</span>
-                    <span class="text-cardinal">CARDINAL</span>
-                </span>
-            </a>
-
-            <!-- Desktop Menu (Text Links) -->
-            <div class="hidden md:flex items-center space-x-2 mr-12 lg:mr-24">
-                <a data-nav="home" href="/index.html#top" class="nav-link">Home</a>
-                <a data-nav="services" href="/services.html" class="nav-link">Services</a>
-                <a data-nav="packages" href="/packages.html" class="nav-link">Packages</a>
-                <a data-nav="about" href="/about.html" class="nav-link">About</a>
-                <a data-nav="contact" href="/contact.html" class="nav-link">Contact</a>
-
-                <a href="https://calendar.app.google/ojQ7tPNkiXgwziU1A" target="_blank" class="btn-traveling-border ml-4">
-                    <span class="btn-inner">Book Consultation</span>
+    <div class="relative max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-center lg:justify-between h-20 relative">
+            <!-- Brand Column -->
+            <div class="flex items-center lg:w-1/2 lg:justify-start">
+                <a href="index.html#top" class="flex items-center gap-3 group transition-transform active:scale-95 hover:scale-100 lg:ml-4" aria-label="Digital Cardinal Home">
+                    <span class="text-2xl font-bold tracking-tighter brand-font whitespace-nowrap">
+                        <span class="text-white">DIGITAL</span>
+                        <span class="text-cardinal">CARDINAL</span>
+                    </span>
                 </a>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none ml-auto" aria-label="Open menu">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <!-- Menu / Mobile Button Column -->
+            <div class="absolute right-0 lg:static flex items-center justify-end lg:justify-start lg:w-1/2">
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-2">
+                    <a data-nav="home" href="/index.html#top" class="nav-link lg:-ml-3">Home</a>
+                    <a data-nav="services" href="/services.html" class="nav-link">Services</a>
+                    <a data-nav="packages" href="/packages.html" class="nav-link">Packages</a>
+                    <a data-nav="about" href="/about.html" class="nav-link">About</a>
+                    <a data-nav="contact" href="/contact.html" class="nav-link">Contact</a>
+
+                    <a href="https://calendar.app.google/ojQ7tPNkiXgwziU1A" target="_blank" class="btn-traveling-border ml-4">
+                        <span class="btn-inner">Book Consultation</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none" aria-label="Open menu">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
     </div>
 
