@@ -35,9 +35,17 @@
                     </div>
                 </div>
             </div>
-            <button id="ai-close-btn" class="text-slate-400 hover:text-white transition-colors p-2">
-                <i class="fas fa-times"></i>
-            </button>
+            <div class="flex items-center gap-2">
+                <!-- Voice Output Toggle -->
+                <button id="voice-toggle-btn" class="text-slate-400 hover:text-cyan transition-all p-2 rounded-lg hover:bg-white/5 relative group" title="Toggle voice responses (Ctrl+S)">
+                    <i class="fas fa-volume-up text-sm"></i>
+                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-emerald-500 rounded-full opacity-0 transition-opacity" id="voice-indicator"></span>
+                    <div class="absolute -bottom-8 right-0 bg-black/90 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Voice Off</div>
+                </button>
+                <button id="ai-close-btn" class="text-slate-400 hover:text-white transition-colors p-2">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Messages Area -->
@@ -65,12 +73,20 @@
         <!-- Input Area -->
         <div class="p-4 bg-white/5 rounded-b-3xl">
             <form id="ai-form" class="relative">
-                <input type="text" id="ai-input" placeholder="Type your question..." class="w-full bg-black/40 border border-white/10 rounded-2xl py-3 pl-4 pr-12 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cardinal/50 transition-all" autocomplete="off">
+                <input type="text" id="ai-input" placeholder="Type or speak your question..." class="w-full bg-black/40 border border-white/10 rounded-2xl py-3 pl-4 pr-24 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cardinal/50 transition-all" autocomplete="off">
+                
+                <!-- Microphone Button -->
+                <button type="button" id="voice-input-btn" class="absolute right-12 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-cyan hover:border-cyan/50 flex items-center justify-center transition-all active:scale-90 group" title="Voice input (Ctrl+M)">
+                    <i class="fas fa-microphone text-xs"></i>
+                    <div class="absolute inset-0 rounded-xl bg-cyan/20 opacity-0 animate-ping pointer-events-none" id="mic-pulse"></div>
+                </button>
+                
+                <!-- Send Button -->
                 <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-cardinal text-white flex items-center justify-center hover:bg-cardinal-glow transition-all active:scale-90">
                     <i class="fas fa-paper-plane text-xs"></i>
                 </button>
             </form>
-            <p class="text-[10px] text-slate-500 text-center mt-3">Powered by Cardinal AI System</p>
+            <p class="text-[10px] text-slate-500 text-center mt-3">Powered by Cardinal AI System • Voice Enabled</p>
         </div>
     </div>
 </div>
