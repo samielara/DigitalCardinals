@@ -1,26 +1,9 @@
 <!-- AI Assistant Component -->
 <div id="ai-assistant-container" class="fixed bottom-6 right-6 z-[9999] font-sans">
-    <!-- Chat Button -->
-    <button id="ai-toggle-btn" class="btn-traveling-border group ai-float-animation">
-        <span class="btn-inner !px-4 md:!px-6 !h-14 md:!h-16 !bg-void-950/40 !backdrop-blur-xl border border-white/5 flex items-center gap-3">
-            <!-- Pulsing External Ring -->
-            <div class="absolute inset-0 rounded-full border-2 border-cyan/30 animate-ping opacity-0 group-hover:opacity-20 pointer-events-none"></div>
-            
-            <!-- Icon Container -->
-            <div class="relative z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center overflow-hidden">
-                <img src="assets/images/ai-icons8.png" alt="AI" class="w-full h-full object-contain invert brightness-200 group-hover:rotate-12 transition-transform duration-500">
-            </div>
-
-            <!-- Desktop Text Label -->
-            <span class="hidden md:block text-sm font-bold text-white tracking-wide whitespace-nowrap opacity-90 group-hover:opacity-100 transition-opacity">Chat</span>
-
-            <!-- Mobile Notification Dot -->
-            <span class="absolute -top-1 -right-1 w-4 h-4 bg-cyan rounded-full border-2 border-void-950 animate-bounce shadow-[0_0_10px_#00f2ff] z-20 md:relative md:top-auto md:right-auto md:w-2 md:h-2 md:border-none md:bg-emerald-400"></span>
-        </span>
-    </button>
+    <!-- Chat Button is now in header.html -->
 
     <!-- Chat Window -->
-    <div id="ai-chat-window" class="absolute bottom-20 right-0 w-[320px] md:w-[380px] h-[500px] bg-void-900/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl flex flex-col transition-all duration-500 transform translate-y-10 opacity-0 pointer-events-none origin-bottom-right">
+    <div id="ai-chat-window" class="fixed top-24 right-6 w-[320px] md:w-[380px] h-[500px] bg-void-900/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl flex flex-col transition-all duration-500 transform -translate-y-4 opacity-0 pointer-events-none origin-top-right">
         <!-- Header -->
         <div class="p-4 border-b border-white/10 flex items-center justify-between bg-white/5 rounded-t-3xl backdrop-blur-md">
             <div class="flex items-center gap-3">
@@ -75,11 +58,12 @@
             <form id="ai-form" class="relative">
                 <input type="text" id="ai-input" placeholder="Type or speak your question..." class="w-full bg-black/40 border border-white/10 rounded-2xl py-3 pl-4 pr-24 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cardinal/50 transition-all" autocomplete="off">
                 
-                <!-- Microphone Button -->
+                <!-- Microphone Button (Disabled)
                 <button type="button" id="voice-input-btn" class="absolute right-12 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-cyan hover:border-cyan/50 flex items-center justify-center transition-all active:scale-90 group" title="Voice input (Ctrl+M)">
                     <i class="fas fa-microphone text-xs"></i>
                     <div class="absolute inset-0 rounded-xl bg-cyan/20 opacity-0 animate-ping pointer-events-none" id="mic-pulse"></div>
                 </button>
+                -->
                 
                 <!-- Send Button -->
                 <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-cardinal text-white flex items-center justify-center hover:bg-cardinal-glow transition-all active:scale-90">

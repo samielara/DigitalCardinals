@@ -2,10 +2,15 @@
     <div data-navbar-bg class="absolute inset-0 transition-all duration-300 bg-transparent border-b border-transparent"></div>
 
     <div class="relative max-w-7xl mx-auto px-6">
-        <div class="flex items-center justify-center lg:justify-between h-20 relative">
+        <div class="flex items-center justify-between lg:justify-between h-20 relative">
             <!-- Brand Column -->
-            <div class="flex items-center lg:w-1/2 lg:justify-start">
-                <a href="index.html#top" class="flex items-center gap-3 group transition-transform active:scale-95 hover:scale-100 lg:ml-4" aria-label="Digital Cardinal Home">
+            <div class="flex items-center lg:w-[40%] lg:justify-start gap-2">
+                <!-- Mobile Menu Button (Left of Title) -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none pl-0 scale-75 origin-left" aria-label="Open menu">
+                    <i class="fas fa-bars text-3xl"></i>
+                </button>
+
+                <a href="index.html#top" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:static lg:transform-none flex items-center gap-3 group transition-transform active:scale-95 hover:scale-100 lg:ml-4" aria-label="Digital Cardinal Home">
                     <span class="text-2xl font-bold tracking-tighter brand-font whitespace-nowrap">
                         <span class="text-white">DIGITAL</span>
                         <span class="text-cardinal">CARDINAL</span>
@@ -14,7 +19,7 @@
             </div>
 
             <!-- Menu / Mobile Button Column -->
-            <div class="absolute right-0 lg:static flex items-center justify-end lg:justify-start lg:w-1/2">
+            <div class="absolute right-0 lg:static flex items-center justify-end lg:justify-start lg:w-[60%]">
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center space-x-2">
                     <a data-nav="home" href="/index.html#top" class="nav-link lg:-ml-3">Home</a>
@@ -26,11 +31,35 @@
                     <a href="https://calendar.app.google/ojQ7tPNkiXgwziU1A" target="_blank" class="btn-traveling-border ml-4">
                         <span class="btn-inner">Book Consultation</span>
                     </a>
+
+                    <!-- Chat Button (Moved to Header) -->
+                    <button class="ai-toggle-trigger btn-traveling-border ml-2 group">
+                        <span class="btn-inner !px-4 !h-12 !bg-void-950/40 !backdrop-blur-xl border border-white/5 flex items-center gap-2">
+                            <!-- Helper Ring -->
+                            <div class="absolute inset-0 rounded-full border-2 border-cyan/30 animate-ping opacity-0 group-hover:opacity-20 pointer-events-none"></div>
+                            
+                            <!-- Icon -->
+                            <div class="relative z-10 w-6 h-6 flex items-center justify-center overflow-hidden">
+                                <img src="assets/images/ai-icons8.png" alt="AI" class="w-full h-full object-contain invert brightness-200 group-hover:rotate-12 transition-transform duration-500">
+                            </div>
+
+                            <!-- Text -->
+                            <span class="hidden xl:block text-sm font-bold text-white tracking-wide whitespace-nowrap opacity-90 group-hover:opacity-100 transition-opacity">Chat</span>
+
+                            <!-- Notification Dot -->
+                            <span class="ai-notification-dot absolute -top-1 -right-1 w-3 h-3 bg-cyan rounded-full border-2 border-void-950 animate-bounce shadow-[0_0_10px_#00f2ff] z-20"></span>
+                        </span>
+                    </button>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none" aria-label="Open menu">
-                    <i class="fas fa-bars text-2xl"></i>
+                <!-- Mobile Only Chat Button (Right, moved from Left) -->
+                <button class="ai-toggle-trigger lg:hidden btn-traveling-border group scale-75 origin-right">
+                     <span class="btn-inner !px-2 !h-10 !bg-void-950/40 !backdrop-blur-xl border border-white/5 flex items-center justify-center">
+                        <div class="relative z-10 w-7 h-7 flex items-center justify-center overflow-hidden">
+                            <img src="assets/images/ai-icons8.png" alt="AI" class="w-full h-full object-contain invert brightness-200">
+                        </div>
+                        <span class="ai-notification-dot absolute -top-1 -right-1 w-3 h-3 bg-cyan rounded-full border-2 border-void-950 animate-bounce shadow-[0_0_10px_#00f2ff] z-20"></span>
+                     </span>
                 </button>
             </div>
         </div>

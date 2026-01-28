@@ -4,7 +4,7 @@
  */
 
 document.addEventListener("includesLoaded", () => {
-  const toggleBtn = document.getElementById("ai-toggle-btn");
+  const toggleBtns = document.querySelectorAll(".ai-toggle-trigger");
   const closeBtn = document.getElementById("ai-close-btn");
   const chatWindow = document.getElementById("ai-chat-window");
   const chatForm = document.getElementById("ai-form");
@@ -12,17 +12,21 @@ document.addEventListener("includesLoaded", () => {
   const messagesContainer = document.getElementById("ai-messages");
   const suggestionBtns = document.querySelectorAll(".suggestion-btn");
 
-  if (!toggleBtn || !chatWindow) return;
+  if (toggleBtns.length === 0 || !chatWindow) return;
 
   // Toggle Chat Window
-  toggleBtn.addEventListener("click", () => {
-    chatWindow.classList.toggle("open");
-    if (chatWindow.classList.contains("open")) {
-      chatInput.focus();
-      // Remove notification dot if exists
-      const dot = toggleBtn.querySelector("span");
-      if (dot) dot.remove();
-    }
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      chatWindow.classList.toggle("open");
+      if (chatWindow.classList.contains("open")) {
+        chatInput.focus();
+        // Remove notification dot from ALL buttons if exists
+        toggleBtns.forEach((b) => {
+          const dot = b.querySelector(".ai-notification-dot");
+          if (dot) dot.remove();
+        });
+      }
+    });
   });
 
   closeBtn.addEventListener("click", () => {
@@ -51,15 +55,22 @@ document.addEventListener("includesLoaded", () => {
   // VOICE ASSISTANT FEATURES (100% FREE)
   // ==========================================
 
+  /* VOICE INPUT DISABLED
   const voiceInputBtn = document.getElementById("voice-input-btn");
+  */
   const voiceToggleBtn = document.getElementById("voice-toggle-btn");
   const voiceIndicator = document.getElementById("voice-indicator");
+  /*
   const micPulse = document.getElementById("mic-pulse");
+  */
 
   let voiceEnabled = false;
+  /*
   let isListening = false;
   let recognition = null;
+  */
 
+  /*
   // Initialize Speech Recognition (if supported)
   if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
     const SpeechRecognition =
@@ -98,7 +109,7 @@ document.addEventListener("includesLoaded", () => {
 
       if (event.error === "not-allowed") {
         alert(
-          "Microphone access denied. Please enable microphone permissions in your browser settings."
+          "Microphone access denied. Please enable microphone permissions in your browser settings.",
         );
       }
     };
@@ -121,6 +132,7 @@ document.addEventListener("includesLoaded", () => {
       }
     });
   }
+*/
 
   // Voice Output Toggle
   if (voiceToggleBtn) {
@@ -150,11 +162,13 @@ document.addEventListener("includesLoaded", () => {
 
   // Keyboard Shortcuts
   document.addEventListener("keydown", (e) => {
-    // Ctrl+M for microphone
+    // Ctrl+M for microphone (DISABLED)
+    /*
     if (e.ctrlKey && e.key === "m" && chatWindow.classList.contains("open")) {
       e.preventDefault();
       if (voiceInputBtn && recognition) voiceInputBtn.click();
     }
+    */
 
     // Ctrl+S for speaker toggle
     if (e.ctrlKey && e.key === "s" && chatWindow.classList.contains("open")) {
@@ -181,7 +195,7 @@ document.addEventListener("includesLoaded", () => {
       (voice) =>
         voice.name.includes("Google") ||
         voice.name.includes("Microsoft") ||
-        voice.lang.startsWith("en")
+        voice.lang.startsWith("en"),
     );
     if (preferredVoice) utterance.voice = preferredVoice;
 
