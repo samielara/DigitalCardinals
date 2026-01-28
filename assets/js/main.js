@@ -189,7 +189,7 @@ function initPageScripts() {
       // We use a MutationObserver in case buttons are loaded dynamically via include.js
       const observer = new MutationObserver(() => {
         const buttons = document.querySelectorAll(
-          ".card-spotlight:not([data-orbit-init])"
+          ".card-spotlight:not([data-orbit-init])",
         );
         buttons.forEach((btn) => {
           btn.setAttribute("data-orbit-init", "true");
@@ -282,15 +282,15 @@ function initPageScripts() {
   // Carousels (services / packages / projects)
   (function initCarousels() {
     const tracks = Array.from(
-      document.querySelectorAll("[data-carousel-track]")
+      document.querySelectorAll("[data-carousel-track]"),
     );
 
     function setButtonState(track) {
       const prev = document.querySelector(
-        `[data-carousel-prev="#${track.id}"]`
+        `[data-carousel-prev="#${track.id}"]`,
       );
       const next = document.querySelector(
-        `[data-carousel-next="#${track.id}"]`
+        `[data-carousel-next="#${track.id}"]`,
       );
 
       if (!prev || !next) return;
@@ -306,10 +306,10 @@ function initPageScripts() {
       if (!track.id) return;
 
       const prev = document.querySelector(
-        `[data-carousel-prev="#${track.id}"]`
+        `[data-carousel-prev="#${track.id}"]`,
       );
       const next = document.querySelector(
-        `[data-carousel-next="#${track.id}"]`
+        `[data-carousel-next="#${track.id}"]`,
       );
 
       const scrollStep = () =>
@@ -373,7 +373,7 @@ function initPageScripts() {
             "scale-100",
             "md:scale-125",
             "opacity-100",
-            "z-10"
+            "z-10",
           );
 
           // Inner Element Styles (Animation + Color Source)
@@ -408,7 +408,7 @@ function initPageScripts() {
             "scale-100",
             "md:scale-125",
             "opacity-100",
-            "z-10"
+            "z-10",
           );
           card.classList.add("scale-90", "opacity-40");
 
@@ -473,7 +473,7 @@ function initPageScripts() {
         window.clearTimeout(isScrolling);
         isScrolling = setTimeout(handleInfiniteScroll, 50);
       },
-      { passive: true }
+      { passive: true },
     );
 
     prev.addEventListener("click", () => {
@@ -607,12 +607,12 @@ function initPageScripts() {
 
     function buildMailto(to, values) {
       const subject = encodeURIComponent(
-        `New inquiry — ${values.service || "Digital Cardinal"}`
+        `New inquiry — ${values.service || "Digital Cardinal"}`,
       );
       const body = encodeURIComponent(
         `Name: ${values.name}\nEmail: ${values.email}\nInterested in: ${
           values.service || ""
-        }\n\nMessage:\n${values.message}\n\n— Sent from digitalcardinal.com`
+        }\n\nMessage:\n${values.message}\n\n— Sent from digitalcardinal.com`,
       );
       return `mailto:${encodeURIComponent(to)}?subject=${subject}&body=${body}`;
     }
@@ -742,6 +742,32 @@ function initPageScripts() {
     });
   })();
 
+  // Hero Video Fade-In Logic (Moved from component to ensure execution)
+  (function initHeroVideo() {
+    const video = document.getElementById("heroVideo");
+    if (!video) return;
+
+    const revealVideo = () => {
+      // Force play in case autoplay was suspended
+      video.play().catch(() => {});
+      requestAnimationFrame(() => {
+        video.classList.remove("opacity-0");
+      });
+    };
+
+    video.addEventListener("canplay", revealVideo, { once: true });
+    video.addEventListener("loadeddata", revealVideo, { once: true });
+    video.addEventListener("playing", revealVideo, { once: true });
+
+    // Fallback: if already loaded
+    if (video.readyState >= 2) {
+      revealVideo();
+    }
+
+    // Safety timeout to ensure it eventually shows even if events fail
+    setTimeout(revealVideo, 3000);
+  })();
+
   console.log("Digital Cardinal: Main systems online.");
 }
 
@@ -775,19 +801,19 @@ window.switchTab = function (tabName) {
       "text-white",
       "bg-white/10",
       "border-white/20",
-      "shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+      "shadow-[0_0_15px_rgba(255,255,255,0.1)]",
     );
     btn.classList.add(
       "text-slate-400",
       "border-transparent",
       "hover:text-white",
-      "hover:bg-white/5"
+      "hover:bg-white/5",
     );
   });
 
   // Activate matching buttons (Real + Clones)
   const matchingBtns = document.querySelectorAll(
-    `#tabs-container button[data-tab="${tabName}"]`
+    `#tabs-container button[data-tab="${tabName}"]`,
   );
   matchingBtns.forEach((btn) => {
     btn.classList.add(
@@ -795,13 +821,13 @@ window.switchTab = function (tabName) {
       "text-white",
       "bg-white/10",
       "border-white/20",
-      "shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+      "shadow-[0_0_15px_rgba(255,255,255,0.1)]",
     );
     btn.classList.remove(
       "text-slate-400",
       "border-transparent",
       "hover:text-white",
-      "hover:bg-white/5"
+      "hover:bg-white/5",
     );
   });
 
@@ -880,7 +906,7 @@ document.addEventListener("includesLoaded", () => {
     // Fallback (if edge match is only option)
     if (targetIndex === -1) {
       targetIndex = buttons.findIndex(
-        (b) => b.getAttribute("data-tab") === tabName
+        (b) => b.getAttribute("data-tab") === tabName,
       );
     }
 
@@ -969,13 +995,13 @@ document.addEventListener("includesLoaded", () => {
           "bg-white/10",
           "border-white/20",
           "shadow-[0_0_15px_rgba(255,255,255,0.1)]",
-          "traveling-border-card"
+          "traveling-border-card",
         );
         btn.classList.remove(
           "text-slate-400",
           "border-transparent",
           "hover:text-white",
-          "hover:bg-white/5"
+          "hover:bg-white/5",
         );
       } else {
         btn.classList.remove(
@@ -984,13 +1010,13 @@ document.addEventListener("includesLoaded", () => {
           "bg-white/10",
           "border-white/20",
           "shadow-[0_0_15px_rgba(255,255,255,0.1)]",
-          "traveling-border-card"
+          "traveling-border-card",
         );
         btn.classList.add(
           "text-slate-400",
           "border-transparent",
           "hover:text-white",
-          "hover:bg-white/5"
+          "hover:bg-white/5",
         );
       }
     });
@@ -1084,13 +1110,13 @@ document.addEventListener("includesLoaded", () => {
                 icon.classList.add(
                   "traveling-border-absolute",
                   "scale-110",
-                  "-translate-y-1"
+                  "-translate-y-1",
                 );
               } else {
                 icon.classList.remove(
                   "traveling-border-absolute",
                   "scale-110",
-                  "-translate-y-1"
+                  "-translate-y-1",
                 );
               }
             }

@@ -1,18 +1,28 @@
 <section id="hero" class="relative min-h-screen flex items-center pt-12 md:pt-20 pb-24 overflow-hidden">
   <!-- HERO BACKGROUND VIDEO -->
+  <!-- HERO BACKGROUND LAYERS -->
+  
+  <!-- 1. Static Poster (Visible Immediately) -->
+  <div class="absolute inset-0 z-0 bg-black">
+      <img src="assets/images/hero-poster.jpg" alt="" class="w-full h-full object-cover opacity-80">
+  </div>
+
+  <!-- 2. Video (Fades in when ready) -->
   <video
-    class="hero-bg-video"
+    id="heroVideo"
+    class="hero-bg-video opacity-0 transition-opacity duration-[2000ms] ease-in-out absolute inset-0 z-10 w-full h-full object-cover"
     autoplay
     muted
     playsinline
     loop
-    preload="metadata"
-    poster="assets/images/hero-poster.jpg"
+    preload="auto"
   >
     <source src="assets/video/hero-aurora.mp4" type="video/mp4" />
   </video>
+
+
   <!-- lighter gradient over video -->
-  <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/30 via-transparent to-black/80 pointer-events-none"></div>
+  <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/30 via-transparent to-black pointer-events-none"></div>
   <div class="relative z-20 w-full max-w-[1400px] mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-4 lg:gap-12 items-center">
 
