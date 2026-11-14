@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Secure payment | Digital Cardinal</title>
+  <meta name="description" content="Pay for your Digital Cardinal service securely in US dollars.">
+  <meta name="theme-color" content="#08090d">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="assets/css/checkout.css">
+  <script src="assets/js/checkout.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Digital Cardinal home">DIGITAL <span>CARDINAL</span></a>
+    <a class="back-link" href="packages.html">Back to packages <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <div class="intro">
+      <p class="eyebrow">DIGITAL CARDINAL · SECURE PAYMENT</p>
+      <h1>Your next step.<br><span>Made simple.</span></h1>
+      <p class="intro-text">Choose your service and review your payment.<br>All amounts are in US dollars (USD).</p>
+    </div>
+    <section id="return-message" class="notice" hidden aria-labelledby="return-heading">
+      <p class="eyebrow">PAYMENT STATUS</p>
+      <h2 id="return-heading">Check your payment confirmation</h2>
+      <p>If you completed payment, check Stripe's confirmation and your email before making another payment. Contact us if you need help confirming your payment or obtaining a receipt.</p>
+      <a class="primary-link" href="contact.html">Contact Digital Cardinal</a>
+    </section>
+    <div id="checkout-layout" class="checkout-layout">
+      <section class="payment-card" aria-labelledby="payment-heading">
+        <div class="card-heading"><span class="step">01</span><h2 id="payment-heading">Payment details</h2></div>
+        <p id="canceled-message" class="notice-small" role="status" hidden>You returned without completing this checkout. Review the amount before trying again.</p>
+        <form id="checkout-form">
+          <label for="product">Product or service</label>
+          <select id="product" name="product">
+            <option value="custom">Custom service / invoice payment</option>
+            <option value="starter">Starter Kit — $1,999.00 USD</option>
+            <option value="growth">Growth Kit — $3,999.00 USD</option>
+          </select>
+          <div id="custom-fields">
+            <label for="amount">Amount to pay (USD)</label>
+            <div class="amount-input"><span aria-hidden="true">$</span><input id="amount" name="amount" type="text" inputmode="decimal" autocomplete="off" required maxlength="8" aria-describedby="amount-help" placeholder="0.00"><span aria-hidden="true">USD</span></div>
+            <p id="amount-help" class="help">Enter your agreed service or invoice amount, from $1.00 to $10,000.00 USD.</p>
+          </div>
+          <label for="reference">Invoice or quote reference <span class="optional">(optional)</span></label>
+          <input id="reference" name="reference" type="text" maxlength="80" placeholder="e.g. INV-2026-1107" autocomplete="off">
+          <p class="help">Use the reference on your invoice so we can match your payment.</p>
+          <div id="checkout-error" class="error" role="alert" hidden></div>
+          <button id="pay-button" type="submit">Continue to Stripe <span aria-hidden="true">↗</span></button>
+          <p class="security-note">Your card details are entered securely on Stripe.</p>
+        </form>
+        <noscript><p class="error">Enable JavaScript to pay online, or <a href="contact.html">contact us</a> to arrange payment.</p></noscript>
+      </section>
+      <aside class="summary-card" aria-labelledby="summary-heading">
+        <p class="eyebrow">YOUR PAYMENT</p>
+        <h2 id="summary-heading">Custom service payment</h2>
+        <p id="summary-description" class="muted">For your agreed project, deposit, or outstanding invoice balance.</p>
+        <div class="summary-line"><span>Service amount</span><strong id="summary-amount" aria-live="polite">Enter an amount</strong></div>
+        <div class="summary-line"><span>Payment currency</span><strong>USD only</strong></div>
+        <p class="summary-note">Review the final USD total, including any applicable tax, on Stripe before you pay.</p>
+        <div class="summary-footer"><span class="status-dot" aria-hidden="true"></span><span>One-time payment</span></div>
+        <p class="help">Questions about your balance?<br><a href="contact.html">Contact us before paying.</a></p>
+      </aside>
+    </div>
+    <footer>Digital Cardinal LLC <span aria-hidden="true">·</span> Payments processed by Stripe</footer>
+  </main>
+</body>
+</html>
